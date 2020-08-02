@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/BroYash/SEER-System/issues"
   },
-  "homepage": "https://github.com/BroYash/SEER-System#readme"
+  "homepage": "https://github.com/BroYash/SEER-System#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
