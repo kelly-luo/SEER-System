@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kelly-luo/SEER-System.git"
+    "url": "git+https://github.com/HelloWorldTeamSE/SEER-System.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kelly-luo/SEER-System/issues"
+    "url": "https://github.com/HelloWorldTeamSE/SEER-System/issues"
   },
   "homepage": "https://github.com/HelloWorldTeamSE/SEER-System#readme",
   "dependencies": {
