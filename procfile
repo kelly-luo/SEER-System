@@ -1,1 +1,1 @@
-web : node C:\Users\k\Documents\GitHub\SEER-System\backend\index.js
+web : cd backend && index.js
