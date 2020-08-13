@@ -1,1 +1,1 @@
-web : node backend\index.js
+echo "web: node app.js" > Procfile
