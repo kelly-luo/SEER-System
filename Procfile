@@ -1,1 +1,1 @@
-web : node index.js
+web : nodemon ./index.js --exec babel-node -e js
