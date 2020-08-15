@@ -1,10 +1,9 @@
-import routes from './routes/routes';
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyparser from 'body-parser';
+import cors from 'cors';
 
 
-const mongoose = require("mongoose");
-const bodyparser = require("body-parser");
-const cors = require("cors");
-const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -28,7 +27,7 @@ app.use(bodyparser.json());
 
 app.use(cors());
 
-routes(app);
+
 
 app.get('/', (req, res) =>
     res.send(`Hello running on ${PORT}. Testing heroku`)

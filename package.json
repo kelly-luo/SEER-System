@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "backend/server.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/server.js"
   },
@@ -31,4 +32,5 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1"
   }
+
 }
