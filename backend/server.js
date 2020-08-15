@@ -1,9 +1,10 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyparser from 'body-parser';
-import cors from 'cors';
 import routes from './routes/routes';
 
+
+const mongoose = require("mongoose");
+const bodyparser = require("body-parser");
+const cors = require("cors");
+const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
