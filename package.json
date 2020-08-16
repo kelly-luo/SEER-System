@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node ./backend/server.js",
-    "heroku-postbuild": "cd frontend && npm install && npm run build"
+    "heroku-postbuild": "cd backend && npm i --only=prod && cd ../frontend && npm i && npm i --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
