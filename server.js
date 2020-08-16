@@ -2,7 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import cors from 'cors';
-import routes from '../backend/Routes/routes.js';
+import routes from '../SEER-System/Routes/routes.js';
+import path from 'path';
 
 
 const app = express();
@@ -30,6 +31,12 @@ app.use(cors());
 
 routes(app);
 
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+    app.use(express.static('frontend/build'));
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname + 'frontend/build/index.html'));
+    });
+  }
 
 
 app.get('/', (req, res) =>

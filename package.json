@@ -2,15 +2,11 @@
   "name": "seer-system",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/server.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./backend/server.js --exec babel-node -e js",
-    "build": "cd frontend && npm run build",
-    "install-frontend": "cd frontend && npm install",
-    "heroku-postbuild": "npm run install-frontend && npm run build",
-    "frontend": "cd frontend && npm start"
-
+    "start": "node server.js",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "repository": {
     "type": "git",
