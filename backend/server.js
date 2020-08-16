@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import cors from 'cors';
+import routes from '../backend/Routes/routes.js';
 
 
 const app = express();
@@ -26,6 +27,8 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
 app.use(cors());
+
+routes(app);
 
 
 
