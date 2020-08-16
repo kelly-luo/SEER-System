@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import cors from 'cors';
-import routes from '../SEER-System/Routes/routes.js';
+import routes from '../backend/Routes/routes.js';
 import path from 'path';
 
 
@@ -16,7 +16,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect('mongodb+srv://Hello:World@database.o473f.mongodb.net/<dbname>?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-    })
+})
     .then(client => {
         console.log('Connected to Database')
 
@@ -32,11 +32,11 @@ app.use(cors());
 routes(app);
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-    app.use(express.static('frontend/build'));
+    app.use(express.static('../frontend/build'));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname + 'frontend/build/index.html'));
+        res.sendFile(path.join(__dirname + '../frontend/build/index.html'));
     });
-  }
+}
 
 
 app.get('/', (req, res) =>
