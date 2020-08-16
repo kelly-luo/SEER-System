@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon ./backend/server.js --exec babel-node -e js",
-    "heroku-postbuild": "cd frontend  && npm start"
+    "heroku-postbuild": "cd frontend && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
