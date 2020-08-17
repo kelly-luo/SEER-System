@@ -17,7 +17,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const url = 'http://localhost:4000/comments';
+    const url = `http://localhost:${process.env.PORT}/comments`;
+    console.log(`PORT NUMBER ${process.env.PORT}`);
 
     axios.get(url)
       .then((response) => {
