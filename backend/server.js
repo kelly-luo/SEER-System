@@ -23,8 +23,6 @@ mongoose.connect(process.env.MONGODB_URI, {
     })
     .catch(console.error)
 
-module.exports = {mongoose}
-
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
