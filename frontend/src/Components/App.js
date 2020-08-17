@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const url = `http://localhost:${process.env.PORT}/comments`;
+    const url = process.env.MONGODB_URI;
 
     axios.get(url)
       .then((response) => {
