@@ -11,7 +11,7 @@
     "heroku-postbuild": "npm run install-frontend && npm run build"
   },
   "engines": {
-    "node" : "14.8.0"
+    "node": "14.8.0"
   },
   "repository": {
     "type": "git",

@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const url = "http://localhost:5000/comments";
+    const url = "http://localhost:3000/comments";
 
     axios.get(url)
       .then((response) => {
