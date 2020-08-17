@@ -10,6 +10,9 @@
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build"
   },
+  "engines": {
+    "node" : "14.8.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HelloWorldTeamSE/SEER-System.git"
