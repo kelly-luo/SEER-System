@@ -23,6 +23,8 @@ mongoose.connect('mongodb+srv://Hello:World@database.o473f.mongodb.net/<dbname>?
     })
     .catch(console.error)
 
+module.exports = {mongoose}
+
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
