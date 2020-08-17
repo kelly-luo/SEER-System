@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 4000;
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://Hello:World@database.o473f.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -31,11 +31,13 @@ app.use(cors());
 
 routes(app);
 
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-    app.use(express.static('../frontend/build'));
-    app.get('*', (req, res) => {
-        res.sendFile('../frontend/build/index.html');
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static('frontend/build'));
+
+    app.get("*", (req,res) =>{
+        res.sendFile(path.resolve(__dirname,"../frontend", "build", "index.html"));
     });
+
 }
 
 
