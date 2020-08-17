@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 4000;
 
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://Hello:World@database.o473f.mongodb.net/<dbname>?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
