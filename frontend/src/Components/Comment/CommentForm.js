@@ -6,7 +6,7 @@ class CommentForm extends React.Component {
     submitComment(event) {
         event.preventDefault();
 
-        axios.post('http://localhost:4000/comments', {
+        axios.post('/comments', {
             firstName: this.refs.firstName.value,
             comment: this.refs.comment.value,
         })
