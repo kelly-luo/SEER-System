@@ -8,7 +8,8 @@
     "start": "npm i && node ./backend/server.js",
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
-    "heroku-postbuild": "npm run install-frontend && npm run build"
+    "heroku-postbuild": "npm run install-frontend && npm run build",
+    "test": "cd frontend && npm run test"
   },
   "engines": {
     "node": "14.8.0"
