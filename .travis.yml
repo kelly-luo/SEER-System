@@ -6,9 +6,5 @@ node_js:
 notifications:
     email: false
 
-install:
-  - npm i
-  - cd frontend && npm i
-
 script:
   - npm test

@@ -9,7 +9,7 @@
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build",
-    "test": "cd frontend && npm test"
+    "test": "npm i && cd frontend && npm i && npm test"
   },
   "engines": {
     "node": "14.8.0"
@@ -39,6 +39,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "request": "^2.88.2"
   }
 }
