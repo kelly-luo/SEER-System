@@ -9,7 +9,7 @@
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build",
-    "test": "cd frontend && npm run test"
+    "test": "cd frontend && npm test"
   },
   "engines": {
     "node": "14.8.0"

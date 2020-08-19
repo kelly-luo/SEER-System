@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from '../Components/App';
 
-test('renders learn react link', () => {
+test('Comment Maker', () => {
   const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
+  const linkElement = getByText(/comments/i);
   expect(linkElement).toBeInTheDocument();
 });
