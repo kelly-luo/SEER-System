@@ -1,13 +1,14 @@
 language: node_js
 node_js:
   - 12
+  - 14.8.0
 
 notifications:
     email: false
 
 install:
-  - cd backend && npm i
-  - cd ../frontend && npm i
+  - npm i
+  - cd frontend && npm i
 
 script:
   - npm test
