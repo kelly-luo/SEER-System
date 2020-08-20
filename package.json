@@ -10,7 +10,6 @@
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build",
     "test": "cd frontend && npm test",
-    "test-backend": "npm i && cd backend && cd Tests && mocha --require server.test.js"
   },
   "engines": {
     "node": "14.8.0"
