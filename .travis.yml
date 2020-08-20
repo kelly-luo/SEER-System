@@ -12,10 +12,11 @@ script:
 
 deploy:
   provider: heroku
-  script: cd .. && npm build
+  script: cd .. && npm run build
   app: teamseer-upskillingapp
   api_key:
     secure: ciwS1k2NQ5vNLRufscpRkukC9l6wyS/ZJPkb68KJ6ZdFuP/Z9Kpwz1ce6JjqETgeKGA5yldtHc/zgpTvQGsVJzzh+0ZtAXrij+DHd6a1VeGMx47VQa04J3AGzh16ax0q6H3cqhhYsLRpi5hInOe/hJZd5Uj7kbq8MDaTS/3yMy/INNHMzPMngYU1PkYhAXPcuJHUvN3wY9xjcYBp6EenTho8rRSkzYKNqvMM5/PIYZ5/IzVZFelM4oxxTSYa42yqWHF1JeYSvU7RN3cJwszZXTuQAe186aXwBZr4L6YlQ80CHt+H57ov1GRzcOKtfPQMGWWjosdjeqhbCXiRX4Lwo1aWeP5jBAvLa/XsL1MfX3TtnaSJBBZFziQ9p9L1P4sa24Nix97lF+4ayHaxU+xCf/ADPTtxiTSkzei8gCF5VYABM+vLkfnoqo8fGLdYBcnw+0Zs4vdBTAL97Ao2jd8o3S0mnQIdTt7T4ZmQXzmmnpiYPhapmDbmBigHxFm7d+YNfXSR2Y+uxOtIfQfwhzCkqZUM6DN660T3Pi7vaBHeCsOBkxOw69XRZYAZwyhoAkHDq9dG5TXcg7kSfhOgvm/9MNOYdSe8U5u2+xdHWe4Oqc3aRSO+QJTuBTGfwt4pq1Lmd+GlkWX+aRqpPsofhqNB6j4UFbmr6Cc9u6r2E0j4Bt0=
   on:
     repo: HelloWorldTeamSE/SEER-System
     branch: master
+    
