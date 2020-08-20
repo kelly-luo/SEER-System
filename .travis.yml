@@ -1,20 +1,16 @@
 language: node_js
 node_js:
-  - 12
-  - 14.8.0
-
+- 12
+- 14.8.0
 notifications:
-    email: false
-
+  email: false
 install:
-  - npm install
-  - cd frontend && npm i
-
+- npm install
+- cd frontend && npm i
 script:
-  - npm test
-
+- npm test
 deploy:
   provider: heroku
   app: teamseer-upskillingapp
   api_key:
-    secure: kcqkSBmG3yoFN/X2FYJenTo6WbVQkq8ggIqtxOJLBUMs6HFKhq6n6dbYwg5MD+0wDTMv7jLUt5WNtef4NOoTk7DxSm2MlH3vee8do1muEbE5uuvN48/gqAK4wEALUbCCpul5mt+ERQFCllWV7GiTrCtE68m8NfqtM7YHUkvSRCC4DAmUWdfAVBhbpaeZzCQewEW59QrGHKMqJ1Tu2uYBlGBbhChKnxEYGo2nulfvG0i5GdV1fZvMrmj3H0EHAC977FgzUde35cf9wLw8Qlnui/zhX/4Z/CTbX9pJcxHb1pw/9Dsa7F1cnV2HihmJIJ/vwNEoXCvV87H2+cInGL7Q+Fr5tkUAAhkDi94/KtDUeEHWQYk3XM7NbVEC3BuRuwW+VCJYxJBAMCwBsEKm/SzfDhVHkGmTHM/sLoPLkvb7HZDNcOs5xXGnKweHXVU4jNEfu+2wVidSX8d3mlmVAMOQ66TyQwZsbHRosF3kxpQ9gAFfplcSfLL4q/gY3HRcNmkNZE3Qj2KWx6mmjFJSEFeP7/mCGk5dffzRmjinf/YBEUlGJ6kcZDLIRjuxHr6LccGe6J/2n+mmxeHZ9hauzRVnP11ZgyUqYKFxKeHlxVZ/SFdpmnOl3V/sfstXe0vQ4+RjX13HX/KGs0XxeHVhTPFS/mgaiPVIrQ/fBPvXmUGJTUc=
+    secure: ciwS1k2NQ5vNLRufscpRkukC9l6wyS/ZJPkb68KJ6ZdFuP/Z9Kpwz1ce6JjqETgeKGA5yldtHc/zgpTvQGsVJzzh+0ZtAXrij+DHd6a1VeGMx47VQa04J3AGzh16ax0q6H3cqhhYsLRpi5hInOe/hJZd5Uj7kbq8MDaTS/3yMy/INNHMzPMngYU1PkYhAXPcuJHUvN3wY9xjcYBp6EenTho8rRSkzYKNqvMM5/PIYZ5/IzVZFelM4oxxTSYa42yqWHF1JeYSvU7RN3cJwszZXTuQAe186aXwBZr4L6YlQ80CHt+H57ov1GRzcOKtfPQMGWWjosdjeqhbCXiRX4Lwo1aWeP5jBAvLa/XsL1MfX3TtnaSJBBZFziQ9p9L1P4sa24Nix97lF+4ayHaxU+xCf/ADPTtxiTSkzei8gCF5VYABM+vLkfnoqo8fGLdYBcnw+0Zs4vdBTAL97Ao2jd8o3S0mnQIdTt7T4ZmQXzmmnpiYPhapmDbmBigHxFm7d+YNfXSR2Y+uxOtIfQfwhzCkqZUM6DN660T3Pi7vaBHeCsOBkxOw69XRZYAZwyhoAkHDq9dG5TXcg7kSfhOgvm/9MNOYdSe8U5u2+xdHWe4Oqc3aRSO+QJTuBTGfwt4pq1Lmd+GlkWX+aRqpPsofhqNB6j4UFbmr6Cc9u6r2E0j4Bt0=
