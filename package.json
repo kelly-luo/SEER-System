@@ -5,7 +5,8 @@
   "main": "backend/server.js",
   "type": "module",
   "scripts": {
-    "start": "npm i && node ./backend/server.js",
+    "start": "npm i && node ./backend/server.js ",
+    "release": "NODE_ENV = production node ./backend/server.js",
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build",
