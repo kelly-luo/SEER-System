@@ -9,8 +9,6 @@ install:
   - cd frontend && npm i
 script:
   - npm test
-  - npm start
-  - npm run heroku-postbuild
 
 deploy:
   provider: heroku
