@@ -1,17 +1,16 @@
 language: node_js
 node_js:
-- 12
-- 14.8.0
+  - 12
+  - 14.8.0
 notifications:
   email: false
 install:
-- npm install
-- cd frontend && npm i
+  - npm install
+  - cd frontend && npm i
 script:
-- npm test
-- npm install
-- cd frontend && npm install
-- cd frontend && npm run build
+  - npm test
+  - npm start
+  - npm run heroku-postbuild
 
 deploy:
   provider: heroku
