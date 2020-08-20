@@ -7,10 +7,10 @@ notifications:
 install:
   - npm install
   - cd frontend && npm i
-  - cd frontend && npm run build
-  
+
 script:
   - npm test
+  - npm run build
 
 deploy:
   provider: heroku
