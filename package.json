@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "npm i && node ./backend/server.js ",
-    "build": "cd frontend && npm run build",
+    "install-frontend": "cd frontend && npm install",
+    "heroku-postbuild": "npm run install-frontend",
     "test": "cd frontend && npm test"
   },
   "engines": {
