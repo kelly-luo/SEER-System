@@ -10,7 +10,7 @@ install:
 
 script:
   - npm test
-  - cd .. && npm run build
+  - npm run build
 
 deploy:
   provider: heroku
