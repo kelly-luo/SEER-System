@@ -9,6 +9,8 @@ install:
 - cd frontend && npm i
 script:
 - npm test
+- npm install
+
 deploy:
   provider: heroku
   app: teamseer-upskillingapp
