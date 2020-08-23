@@ -6,7 +6,7 @@ const routes = (app) => {
     .get(getComments)
 
     // POST endpoint
-    .post(addNewComment);
+        .post(addNewComment);
     
 }
 
