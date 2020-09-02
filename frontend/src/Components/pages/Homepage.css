@@ -44,3 +44,13 @@
     height: 200px;
 }
 
+.customSearch {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 75vw;
+    margin: 0 auto;
+    margin-right: 220px;
+    margin-top: 10px;
+    max-width: 560px;
+}

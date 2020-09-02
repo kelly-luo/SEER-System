@@ -1,7 +1,7 @@
 import React from 'react';
 import './Homepage.css';
 import SearchIcon from '@material-ui/icons/Search';
-import { Button} from 'react-bootstrap';
+import { Button, Row, Container, Col} from 'react-bootstrap';
 
 function Homepage() {
     return (
@@ -12,7 +12,9 @@ function Homepage() {
                     <div className='search_input'>
                         <input />
                         <SearchIcon className="search_inputIcon" />
-                        <Button variant="secondary">Secondary</Button>{' '}
+                    </div>
+                    <div className='customSearch'>
+                        <Button variant="secondary">Custom Search</Button>{' '}
                     </div>
                 </div>
             </div>
