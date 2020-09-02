@@ -5,11 +5,11 @@ import axios from 'axios';
 
 
 
-test('Comment Maker', () => {
+/*test('Comment Maker', () => {
     const { getByText } = render(<App />);
     const linkElement = getByText(/comments/i);
     expect(linkElement).toBeInTheDocument();
-});
+});*/
 
 var expectTest = require('chai').expect;
 var request = require('request');
