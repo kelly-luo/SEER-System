@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/HelloWorldTeamSE/SEER-System#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.2",
     "chai": "^4.2.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -31,7 +33,8 @@
     "lint": "^0.7.0",
     "mocha": "^8.1.1",
     "mongoose": "^5.9.28",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "react-bootstrap": "^1.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
