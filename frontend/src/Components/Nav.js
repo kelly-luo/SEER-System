@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Homepage from './pages/Homepage';
+import Login from './pages/Login';
 
 function Nav() {
     return (
@@ -8,7 +9,7 @@ function Nav() {
             <div className="nav">
                 <Switch>
                     <Route path="/login">
-                        <h1>Login page</h1>
+                        <Login></Login>
                     </Route>
                     <Route path="/register">
                         <h1>Register page</h1>
