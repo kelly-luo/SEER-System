@@ -2,19 +2,22 @@
     display: flex;
     align-items: center;
     border: 1px solid darkgray;
-    height: 30px;
+    height: 45px;
     padding: 10px 20px;
     border-radius: 999px;
     width: 75vw;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 0.5%;
     max-width: 560px;
+    background-color: white;
+    margin-bottom: 10px;
 }
 
 .search_input > input {
     flex:1;
     font-size: medium;
     border: none;
+    
 }
 
 .search_input > input:focus{

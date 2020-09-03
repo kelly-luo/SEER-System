@@ -1,7 +1,9 @@
 import React from 'react';
 import './Homepage.css';
 import NavigationBar from './NavBar'
-import SearchBar from './Searchbar'
+import SearchBar from '../SearchComponents/Searchbar'
+
+
 function Homepage() {
     return (
         <div className='homepage'>
@@ -13,5 +15,6 @@ function Homepage() {
         </div>
     )
 };
+
 
 export default Homepage;

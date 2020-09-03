@@ -1,25 +1,25 @@
 import mongoose from 'mongoose';
-import {commentSchema} from '../Models/schema.js';
+import {articleSchema} from '../Models/schema.js';
 
 
-const Comment = mongoose.model('Comment', commentSchema);
+const Article = mongoose.model('Article', articleSchema);
 
-export const addNewComment = (req, res) => {
-    let newComment = new Comment(req.body);
+export const addNewArticle = (req, res) => {
+    let newArticle = new Article(req.body);
 
-    newComment.save((err, Comment) => {
+    newArticle.save((err, Article) => {
         if (err) {
             res.send(err);
         }
-        res.json(Comment);
+        res.json(Article);
     });
 };
 
-export const getComments = (req, res) => {
-    Comment.find({},(err, Comment) => {
+export const getArticle = (req, res) => {
+    Article.find({},(err, Article) => {
         if (err) {
             res.send(err);
         }
-        res.json(Comment);
+        res.json(Article);
     });
 };
