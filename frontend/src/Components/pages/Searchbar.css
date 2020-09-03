@@ -1,0 +1,26 @@
+.search_input{
+    display: flex;
+    align-items: center;
+    border: 1px solid darkgray;
+    height: 30px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    width: 75vw;
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 560px;
+}
+
+.search_input > input {
+    flex:1;
+    font-size: medium;
+    border: none;
+}
+
+.search_input > input:focus{
+    outline-width: 0;
+}
+
+.search_inputIcon{
+    color: black;
+}

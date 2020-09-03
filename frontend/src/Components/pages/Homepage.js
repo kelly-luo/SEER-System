@@ -1,19 +1,14 @@
 import React from 'react';
 import './Homepage.css';
-import SearchIcon from '@material-ui/icons/Search'
-import { Link } from 'react-router-dom'
-
+import NavigationBar from './NavBar'
+import SearchBar from './Searchbar'
 function Homepage() {
     return (
         <div className='homepage'>
+        <NavigationBar></NavigationBar>
             <div className='homepage_body'>
                 <img src="./SEER_logo.png" alt="" />
-                <div className='search'>
-                    <div className='search_input'>
-                        <input className = 'input_field' />
-                        <Link to="/search"><SearchIcon className="search_inputIcon" /></Link>
-                    </div>
-                </div>
+                <SearchBar></SearchBar>
             </div>
         </div>
     )
