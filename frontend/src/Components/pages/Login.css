@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+    padding: 0;
+    color:black;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+.username_input{
+  display: flex;
+  align-items: center;
+  border: 1px solid darkgray;
+  height: 30px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  width: 75vw;
+  margin: 0 auto;
+  margin-top: 50px;
+  max-width: 560px;
+}
