@@ -1,6 +1,7 @@
 import React from 'react';
 import './Homepage.css';
 import SearchIcon from '@material-ui/icons/Search'
+import { Link } from 'react-router-dom'
 
 function Homepage() {
     return (
@@ -9,14 +10,14 @@ function Homepage() {
                 <img src="./SEER_logo.png" alt="" />
                 <div className='search'>
                     <div className='search_input'>
-                        <input />
-                        <SearchIcon className="search_inputIcon" />
+                        <input className = 'input_field' />
+                        <Link to="/search"><SearchIcon className="search_inputIcon" /></Link>
                     </div>
                 </div>
             </div>
-
         </div>
     )
 };
+
 
 export default Homepage;

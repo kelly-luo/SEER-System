@@ -11,8 +11,8 @@ function App() {
     <div className="app">
       <Nav></Nav>
     </div>
-
   );
 }
+
 
 export default App;
