@@ -20,7 +20,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "mocha",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
@@ -47,6 +47,7 @@
         "babel-preset-stage-0": "^6.24.1",
         "babel-register": "^6.26.0",
         "chai": "^4.2.0",
+        "ignore-styles": "^5.0.1",
         "mocha-jsdom": "^2.0.0"
     }
 }
