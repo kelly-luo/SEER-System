@@ -1,22 +1,24 @@
 import React from 'react';
 import axios from 'axios';
-import SearchResultsData from './SearchResultsData';
+import SearchResultsData from '../SearchComponents/SearchResultsData';
+import './SearchResults.css'
+import SearchHeader from '../SearchComponents/SearchHeader';
 
 class SearchResults extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            comments: []
+            articles: []
         }
     }
     componentDidMount() {
-        const url = '/comments';
+        const url = '/articles';
 
         axios.get(url)
             .then((response) => {
                 this.setState({
-                    comments: response.data
+                    articles: response.data
                 })
             })
             .catch((error) => {
@@ -25,8 +27,8 @@ class SearchResults extends React.Component {
     };
 
 
-    CommentList() {
-        return this.state.comments.map((res, i) => {
+    ArticleList() {
+        return this.state.articles.map((res, i) => {
             return <SearchResultsData obj={res} key={i} />;
         });
     }
@@ -34,11 +36,18 @@ class SearchResults extends React.Component {
 
     render() {
         return (
+
             <div className="searchResults">
-                <tbody>
-                    {this.CommentList()}
-                </tbody>
+                <div className='title'>
+                    <SearchHeader></SearchHeader>
+                </div>
+                <center><div className='searchData'>
+                    <tbody>
+                        {this.ArticleList()}
+                    </tbody>
+                </div></center>
             </div>);
+
     }
 };
 

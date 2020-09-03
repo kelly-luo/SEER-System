@@ -1,0 +1,10 @@
+.header_logo{
+    width: 100px;
+}
+
+.searchHeader{
+    border-bottom-color: #f8f8f8;
+    border-bottom-style: solid;
+    width: 100%;
+    background-color: #f8f8f8;
+}
