@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css'
+import {Link} from 'react-router-dom';
+import './Login.js'
+
 class NavBar extends Component {
     render() {
         console.log("nav bar generated");
@@ -11,7 +14,7 @@ class NavBar extends Component {
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-link" href="#">Sign in</a>
+                        <a class="nav-link active" href="/login">Sign in</a>
                     </div>
                 </div>
             </nav>
