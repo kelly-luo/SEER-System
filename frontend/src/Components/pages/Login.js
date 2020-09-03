@@ -16,8 +16,7 @@ function Login(){
                     <p>Password</p>
                     <input type="password" name="" placeholder="Enter Password"></input>
                     <input type="submit" name="" value="Login"></input>
-                    <a href="#">Password Forgotten?</a><br></br>
-                    <a href="#">Create an account.</a>
+                    
 
 
 
@@ -33,3 +32,6 @@ function Login(){
 };
 
 export default Login;
+
+/*<a href="#">Password Forgotten?</a><br></br>
+                    <a href="#">Create an account.</a>*/
