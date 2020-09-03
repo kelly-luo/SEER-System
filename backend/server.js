@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production'){
 
 
 app.get('/', (req, res) =>
-    res.send(`Hello running on ${PORT}. Testing heroku`)
+    res.send(`Hello running on ${PORT}. Testing herokus`)
 
 )
 
