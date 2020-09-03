@@ -36,18 +36,14 @@ class SearchResults extends React.Component {
 
     render() {
         return (
-
             <div className="searchResults">
-                <div className='title'>
+                <div className='searchHeader'>
                     <SearchHeader></SearchHeader>
                 </div>
-                <center><div className='searchData'>
-                    <tbody>
-                        {this.ArticleList()}
-                    </tbody>
-                </div></center>
+                <div className='searchData'>
+                    {this.ArticleList()}
+                </div>
             </div>);
-
     }
 };
 
