@@ -1,12 +1,12 @@
-import {addNewComment, getComments} from '../Controller/controller.js';
+import {addNewArticle, getArticle} from '../Controller/controller.js';
 
 const routes = (app) => {
-    app.route('/comments')
+    app.route('/articles')
     // GET endpoint
-    .get(getComments)
+        .get(getArticle)
 
     // POST endpoint
-        .post(addNewComment);
+        .post(addNewArticle);
     
 }
 

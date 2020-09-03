@@ -9,7 +9,7 @@ function Login(){
             <link rel="stylesheet" href="Login.css"></link>
 
             <div class="loginbox">
-                <img src="userlogo.png" class="userlogo"></img>
+                <img src="userlogo.png" class="userlogo" alt ="userLogo" ></img>
                 <form id="login-form">
                     <p>Username</p>
                     <input type="type" name="" placeholder="Enter Username"></input>
