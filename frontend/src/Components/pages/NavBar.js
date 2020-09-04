@@ -16,6 +16,7 @@ class NavBar extends Component {
                         <div class="navbar-nav">
                             <Link to ="/" class="nav-link active">Home</Link>
                             <Link to ="/login" class="nav-link active">Sign in</Link>
+                            <Link to ="/register" class="nav-link active">Register</Link>
                         </div>
                     </div>
                 </nav>
