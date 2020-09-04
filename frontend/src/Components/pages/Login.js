@@ -1,9 +1,12 @@
 import React from 'react'
+import NavigationBar from './NavBar'
 import './Login.css';
 
 function Login(){
     return(
         <div className="Login">
+            <NavigationBar></NavigationBar>
+
             <h1>Login Here</h1>
             
             <link rel="stylesheet" href="Login.css"></link>
