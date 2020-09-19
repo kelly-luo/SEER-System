@@ -1,6 +1,7 @@
 import React from 'react';
 import './Homepage.css';
 import NavigationBar from './NavBar'
+import CustomSearchCard from './CustomSearchCard'
 import SearchBar from '../SearchComponents/Searchbar'
 import { Button, Form, Row, Col, Dropdown } from 'react-bootstrap';
 
@@ -19,7 +20,8 @@ function Homepage() {
             </div>
           </div>
           <div className="customForm" class="d-flex justify-content-center">
-            <Form>
+            <CustomSearchCard></CustomSearchCard>
+            {/* <Form>
               <Row>
                 <Col>
                   If
@@ -48,7 +50,7 @@ function Homepage() {
                   <Form.Control placeholder="Value" />
                 </Col>
               </Row>
-            </Form>
+            </Form> */}
           </div>
         </div>
       </div>
