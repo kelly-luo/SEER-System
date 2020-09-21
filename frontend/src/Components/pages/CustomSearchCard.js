@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Row, Col, Dropdown } from 'react-bootstrap';
 import './CustomSearchCard.css';
 
-function CustomSearchCard({title, date, description}) {
+function CustomSearchCard() {
     return (
       <div className="box">
         <Form>
