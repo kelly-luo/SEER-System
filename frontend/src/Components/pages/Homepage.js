@@ -9,12 +9,16 @@ function Homepage() {
 
   const [formList, setFormList] = useState([])
 
+  const Card = () => {
+    return <p>CustomSearchCard</p>
+  }
+
   const addCustomForm = (e) => {
     console.log("Added Form")
     // const info = {
     //   text: "hi"
     // }
-    // setFormList([info,  ...formList])
+    setFormList([<CustomSearchCard />,  ...formList])
     // document.getElementsByClassName('customForm').classList.toggle('active');
   }
 
@@ -31,8 +35,8 @@ function Homepage() {
             </Button>
           </div>
         </div>
-        <div classNameName="customForm" class="d-flex justify-content-center">
-          <CustomSearchCard></CustomSearchCard>
+        <div className="customForm" className="d-flex justify-content-center">
+          <CustomSearchCard seField="SE Field" operator="Operator"></CustomSearchCard>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Row, Col, Dropdown } from 'react-bootstrap';
 import './CustomSearchCard.css';
 
-function CustomSearchCard() {
+function CustomSearchCard({seField, operator}) {
     return (
       <div className="box">
         <Form>
@@ -11,9 +11,7 @@ function CustomSearchCard() {
             <Col>
               <div className="dropdownBox">
               <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic">
-                  Name of Field
-                </Dropdown.Toggle>
+                <Dropdown.Toggle id="dropdown-basic">{seField}</Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                   <Dropdown.Item href="#/action-2">
@@ -28,7 +26,7 @@ function CustomSearchCard() {
             </Col>
             <Col>
               <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic">Operator</Dropdown.Toggle>
+                <Dropdown.Toggle id="dropdown-basic">{operator}</Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                   <Dropdown.Item href="#/action-2">
