@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SearchResultsData from '../SearchComponents/SearchResultsData';
+import NavigationBar from './NavBar'
 import './SearchResults.css'
 import SearchHeader from '../SearchComponents/SearchHeader';
 
@@ -36,14 +37,19 @@ class SearchResults extends React.Component {
 
     render() {
         return (
+        <div>
+            <NavigationBar></NavigationBar>
             <div className="searchResults">
-                <div className='searchHeader'>
-                    <SearchHeader></SearchHeader>
-                </div>
+            
+            <div className='searchHeader'>
+                <SearchHeader></SearchHeader>
+            </div>
                 <div className='searchData'>
                     {this.ArticleList()}
                 </div>
-            </div>);
+            </div>
+        </div>);
+
     }
 };
 

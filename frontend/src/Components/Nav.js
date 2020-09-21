@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Homepage from './pages/Homepage';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import SearchResults from './pages/SearchResults'
 
 function Nav() {
@@ -13,7 +14,7 @@ function Nav() {
                         <Login></Login>
                     </Route>
                     <Route path="/register">
-                        <h1>Register page</h1>
+                        <Register></Register>
                     </Route>
                     <Route path="/search">
                         <SearchResults></SearchResults>
