@@ -1,10 +1,10 @@
 .box {
-    /* height: auto !important; */
+    height: auto !important;
     background: #84c0e4;
     box-shadow: 0px 10px 20px -13px rgba(0,0,0,0.75);
     width: 50%;
-    height: 50%;
-    margin: 3vw auto 0 auto;
+    margin: 30px;
+    margin-bottom: 50px;
     text-align: center;
     border-radius: 1em !important;
     padding: 10px;
