@@ -1,17 +1,26 @@
-    .searchResults {
+.searchResults {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.info{
-    margin-bottom: 15px;
-    border-bottom-color: rgba(141, 138, 138, 0.336);
-    border-bottom-style: dotted;
+.resultsNumber {
+    margin-top: 25px;
+    margin-left: 5px;
+    font-size: small;
 }
 
+
 .searchData{
-    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.results > td > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: darkred;
 }
 
 .logo{

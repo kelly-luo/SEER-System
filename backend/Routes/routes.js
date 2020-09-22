@@ -1,6 +1,6 @@
-import {addNewArticle, getArticle} from '../Controller/controller.js';
+import {addNewArticle, getArticle, getSeMethods, addNewMethod} from '../Controller/controller.js';
 
-const routes = (app) => {
+export const routes = (app) => {
     app.route('/articles')
     // GET endpoint
         .get(getArticle)
@@ -10,4 +10,9 @@ const routes = (app) => {
     
 }
 
-export default routes;
+export const SeRoutes = (app) => {
+    app.route('/methods')
+        .get(getSeMethods)
+
+        .post(addNewMethod)
+}

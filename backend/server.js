@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import cors from 'cors';
-import routes from '../backend/Routes/routes.js';
+import {routes, SeRoutes} from '../backend/Routes/routes.js';
 import path from 'path';
 
 
@@ -28,6 +28,7 @@ app.use(bodyparser.json());
 app.use(cors());
 
 routes(app);
+SeRoutes(app);
 
 if (process.env.NODE_ENV === 'production'){
     app.use(express.static('frontend/build'));

@@ -1,56 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import SearchResultsData from '../SearchComponents/SearchResultsData';
 import NavigationBar from './NavBar'
 import './SearchResults.css'
 import SearchHeader from '../SearchComponents/SearchHeader';
+import * as ReactBootStrap from "react-bootstrap"
 
-class SearchResults extends React.Component {
+function SearchResults() {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            articles: []
-        }
-    }
-    componentDidMount() {
-        const url = '/articles';
+    const [articles, setArticles] = useState([]);
+    const numberOfResults = articles.length;
 
-        axios.get(url)
-            .then((response) => {
-                this.setState({
-                    articles: response.data
-                })
+    useEffect(() => {
+        axios.get('/articles')
+            .then(response => {
+                setArticles(response.data)
             })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
 
+    }, [])
 
-    ArticleList() {
-        return this.state.articles.map((res, i) => {
-            return <SearchResultsData obj={res} key={i} />;
-        });
-    }
-
-
-    render() {
+    const renderArticles = (article, index) => {
         return (
+            <tr className="results" key={index} data-href={article.url}>
+                <td><a href={article.url}>{article.authorss}</a></td>
+                <td><a href={article.url}>{article.title}</a></td>
+                <td><a href={article.url}>{article.journal}</a></td>
+                <td><a href={article.url}>{article.year}</a></td>
+            </tr>
+        );
+    }
+    return (
         <div>
             <NavigationBar></NavigationBar>
             <div className="searchResults">
-            
-            <div className='searchHeader'>
-                <SearchHeader></SearchHeader>
-            </div>
+
+                <div className='searchHeader'>
+                    <SearchHeader></SearchHeader>
+                </div>
+                <p className ="resultsNumber">Number of results: {numberOfResults}</p>
                 <div className='searchData'>
-                    {this.ArticleList()}
+                    <ReactBootStrap.Table striped bordered hover>
+                        <thead>
+                            <tr>
+                                <th>Author</th>
+                                <th>Title</th>
+                                <th>Journal</th>
+                                <th>year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {articles.map(renderArticles)}
+                        </tbody>
+                    </ReactBootStrap.Table>
                 </div>
             </div>
         </div>);
-
-    }
 };
 
 export default SearchResults;
