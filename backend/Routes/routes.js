@@ -1,5 +1,4 @@
 import {addNewArticle, getArticle} from '../Controller/controller.js';
-import {getSeMethods} from '../Controller/customSearchController.js';
 
 const routes = (app) => {
     app.route('/articles')
