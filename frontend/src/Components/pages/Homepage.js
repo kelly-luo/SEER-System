@@ -57,7 +57,7 @@ class Homepage extends React.Component{
             </div>
           </div>
           { customActive && (
-            <div className="customForm" className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center">
               <CustomSearchCard seField="SE Field" operator="Operator"></CustomSearchCard>
             </div>
           )}

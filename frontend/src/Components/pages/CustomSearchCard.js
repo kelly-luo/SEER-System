@@ -9,7 +9,6 @@ function CustomSearchCard({seField, operator}) {
           <Row>
             <Col>If</Col>
             <Col>
-              <div className="dropdownBox">
               <Dropdown>
                 <Dropdown.Toggle id="dropdown-basic">{seField}</Dropdown.Toggle>
                 <Dropdown.Menu>
@@ -22,7 +21,6 @@ function CustomSearchCard({seField, operator}) {
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              </div>
             </Col>
             <Col>
               <Dropdown>
