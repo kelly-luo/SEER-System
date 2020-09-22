@@ -6,8 +6,6 @@ class CustomSearchCard extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = { customActive: false};
-
   }
 
   render() {
