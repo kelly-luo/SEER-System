@@ -2,7 +2,15 @@ import React from 'react';
 import { Form, Row, Col, Dropdown } from 'react-bootstrap';
 import './CustomSearchCard.css';
 
-function CustomSearchCard({seField, operator}) {
+class CustomSearchCard extends React.Component{
+
+  constructor(props) {
+    super(props);
+    this.state = { customActive: false};
+
+  }
+
+  render() {
     return (
       <div className="box">
         <Form>
@@ -10,7 +18,7 @@ function CustomSearchCard({seField, operator}) {
             <Col>If</Col>
             <Col>
               <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic">{seField}</Dropdown.Toggle>
+                <Dropdown.Toggle id="dropdown-basic">{this.props.seField}</Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                   <Dropdown.Item href="#/action-2">
@@ -24,7 +32,7 @@ function CustomSearchCard({seField, operator}) {
             </Col>
             <Col>
               <Dropdown>
-                <Dropdown.Toggle id="dropdown-basic">{operator}</Dropdown.Toggle>
+                <Dropdown.Toggle id="dropdown-basic">{this.props.operator}</Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
                   <Dropdown.Item href="#/action-2">
@@ -43,6 +51,7 @@ function CustomSearchCard({seField, operator}) {
         </Form>
       </div>
     );
+  }
 }
 
 export default CustomSearchCard;
