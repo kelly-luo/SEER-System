@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Form, Row, Col, Dropdown } from 'react-bootstrap';
 import './CustomSearchCard.css';
 
@@ -6,11 +7,41 @@ class CustomSearchCard extends React.Component{
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      seMethods: []
+    }
   }
+
+  componentDidMount() {
+    console.log("AXIOS")
+    const url = '/';
+
+    axios.get(url)
+        .then((response) => {
+            this.setState({
+                seMethods: response.data
+            })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+  };
+
+
+displaySeMethods() {
+  const methods = this.state.seMethods.map((m) =>
+    console.log(m)
+  );
+  return (
+    <ul>{methods}</ul>
+  );
+}
 
   render() {
     return (
       <div className="box">
+        {this.displaySeMethods}
         <Form>
           <Row>
             <Col>If</Col>

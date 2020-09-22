@@ -10,6 +10,11 @@
     padding: 10px;
 }
 
+.dropdown-menu {
+    height: 200px;
+    overflow-y: scroll;
+  }
+
 /* .fadeOut{
     opacity:0;
     width:0;

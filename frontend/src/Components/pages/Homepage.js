@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Homepage.css';
 import NavigationBar from './NavBar'
 import CustomSearchCard from './CustomSearchCard'
