@@ -7,9 +7,6 @@ const routes = (app) => {
 
     // POST endpoint
         .post(addNewArticle);
-    
-    app.route('/')
-        .get(getSeMethods)
 }
 
 export default routes;
