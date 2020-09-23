@@ -4,7 +4,6 @@ import SearchResultsData from '../SearchComponents/SearchResultsData';
 import NavigationBar from './NavBar'
 import './SearchResults.css'
 import SearchHeader from '../SearchComponents/SearchHeader';
-import { Row } from 'react-bootstrap';
 
 class SearchResults extends React.Component {
 
