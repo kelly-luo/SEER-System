@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Row, Col, Dropdown } from 'react-bootstrap';
 import './CustomSearchCard.css';
 
-function CustomSearchCard() {
+function CustomSearchCard({methodTitle, operatorTitle}) {
 
     const [seMethods, setMethods] = useState([]);
 
@@ -26,32 +26,32 @@ function CustomSearchCard() {
     }
 
     return (
-        <div className="box">
-            <Form>
-                <Row>
-                    <Col>If</Col>
-                    <Col>
-                        <Dropdown>
-                            <Dropdown.Toggle id="dropdown-basic">xD</Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                {seMethods.map(displaySeMethods)}
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Col>
-                    <Col>
-                        <Dropdown>
-                            <Dropdown.Toggle id="dropdown-basic">Dx</Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                {seMethods.map(displaySeMethods)}
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Col>
-                    <Col>
-                        <Form.Control placeholder="Value" />
-                    </Col>
-                </Row>
-            </Form>
-        </div>
+      <div className="box">
+        <Form>
+          <Row>
+            <Col>If</Col>
+            <Col>
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic">
+                  {methodTitle}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>{seMethods.map(displaySeMethods)}</Dropdown.Menu>
+              </Dropdown>
+            </Col>
+            <Col>
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic">
+                  {operatorTitle}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>{seMethods.map(displaySeMethods)}</Dropdown.Menu>
+              </Dropdown>
+            </Col>
+            <Col>
+              <Form.Control placeholder="Value" />
+            </Col>
+          </Row>
+        </Form>
+      </div>
     );
 
 };
