@@ -1,0 +1,12 @@
+.reqModeration{
+    margin-top: 20px;
+    font-style: italic;
+    font-weight: bold;
+}
+.moderationDataTable{
+    margin-top: 20px;
+}
+
+.results > button{
+    display: none;
+}
