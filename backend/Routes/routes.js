@@ -1,6 +1,6 @@
-import {addNewArticle, getArticle} from '../Controller/controller.js';
+import {addNewArticle, getArticle, getSeMethods, addNewMethod, updateArticle} from '../Controller/controller.js';
 
-const routes = (app) => {
+export const routes = (app) => {
     app.route('/articles')
     // GET endpoint
         .get(getArticle)
@@ -8,6 +8,14 @@ const routes = (app) => {
     // POST endpoint
         .post(addNewArticle);
     
+    app.route('/articles/:ArticleId')
+        .put(updateArticle)
+    
 }
 
-export default routes;
+export const SeRoutes = (app) => {
+    app.route('/methods')
+        .get(getSeMethods)
+
+        .post(addNewMethod)
+}

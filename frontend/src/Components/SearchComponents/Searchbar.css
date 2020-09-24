@@ -24,6 +24,30 @@
     outline-width: 0;
 }
 
+.search_input > Button:hover{
+    background: rgba(0, 0, 0, 0);
+    outline: none;
+    border: none;
+    box-shadow: none;
+    
+}
+
+.search_input > Button:focus{
+    background: rgba(0, 0, 0, 0);
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+.search_input > Button:active{
+    background: rgba(0, 0, 0, 0);
+    outline: none;
+    border-style: outset;
+    border: none;
+    box-shadow: none;
+}
+
 .search_inputIcon{
     color: black;
+    margin-left: 25px;
 }
