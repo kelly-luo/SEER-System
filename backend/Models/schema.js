@@ -5,40 +5,52 @@ const Schema = mongoose.Schema;
 export const articleSchema = new Schema({
     author: {
         type: String,
-        required: true
+        //required: true
     },
     title: {
         type: String,
-        required: true
+        //required: true
     },
     journal: {
         type: String,
-        required: true
+        //required: true
     },
     year: {
         type: String,
-        required: true
+        //required: true
     },
     volume: {
         type: Number,
-        required: true
+        //required: true
     },
     number: {
         type: Number,
-        required: true
+        //required: true
     },
     pages: {
         type: String,
-        required: true
+        //required: true
     },
     month: {
         type: String,
-        required: true
+        //required: true
     },
     url: {
         type: String,
-        required: true,
+        //required: true,
     },
+    rating:{
+        type: [Number]
+    }
 })
+
+
+export const customSearchSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    }
+})
+
 
 

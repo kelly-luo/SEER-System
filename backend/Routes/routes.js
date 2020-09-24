@@ -1,13 +1,41 @@
-import {addNewArticle, getArticle} from '../Controller/controller.js';
+import { addNewArticle, getModeratorArticle, moderatorAcceptArticle, moderatorDelete, analystDelete, getAnalystArticle, analystAcceptArticle, getPublicArticle, declineArticle, updatePublicArticleRating, getDeclinedArticle, addNewMethod, getSeMethods } from '../Controller/controller.js';
 
-const routes = (app) => {
+export const routes = (app) => {
     app.route('/articles')
-    // GET endpoint
-        .get(getArticle)
+        .get(getPublicArticle)
 
-    // POST endpoint
         .post(addNewArticle);
-    
+
+    app.route('/articles/:ArticleId')
+        .put(updatePublicArticleRating)
+
+    app.route('/moderation')
+        .get(getModeratorArticle)
+
+        .post(moderatorAcceptArticle)
+
+    app.route('/moderation/:ArticleId')
+        .delete(moderatorDelete)
+
+    app.route('/analyst')
+        .get(getAnalystArticle)
+
+        .post(analystAcceptArticle)
+
+    app.route('/analyst/:ArticleId')
+
+        .delete(analystDelete)
+
+
+    app.route('/declinedArticles')
+        .get(getDeclinedArticle)
+        .post(declineArticle)
+
 }
 
-export default routes;
+export const SeRoutes = (app) => {
+    app.route('/methods')
+        .get(getSeMethods)
+
+        .post(addNewMethod)
+}
