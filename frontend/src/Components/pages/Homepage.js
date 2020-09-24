@@ -47,7 +47,7 @@ class Homepage extends React.Component{
       <div className="homepage">
         <NavigationBar></NavigationBar>
         <div className="homepage_body">
-          <img src="./SEER_logo.png" alt="" />
+          <img src="../SEER_logo.png" alt="" />
           <SearchBar></SearchBar>
           <div className="d-flex justify-content-center">
             <div className="p-3">

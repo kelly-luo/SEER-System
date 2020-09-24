@@ -1,4 +1,4 @@
-import {addNewArticle, getArticle, getSeMethods, addNewMethod} from '../Controller/controller.js';
+import {addNewArticle, getArticle, getSeMethods, addNewMethod, updateArticle} from '../Controller/controller.js';
 
 export const routes = (app) => {
     app.route('/articles')
@@ -7,6 +7,9 @@ export const routes = (app) => {
 
     // POST endpoint
         .post(addNewArticle);
+    
+    app.route('/articles/:ArticleId')
+        .put(updateArticle)
     
 }
 

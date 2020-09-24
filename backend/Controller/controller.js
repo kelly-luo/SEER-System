@@ -25,6 +25,15 @@ export const getArticle = (req, res) => {
     });
 };
 
+export const updateArticle = (req, res) => {
+    Article.findOneAndUpdate({_id: req.params.ArticleId},{$push : req.body}, {new: true},(err, Article) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(Article);
+    });
+};
+
 const customSearch = mongoose.model('customSearch', customSearchSchema);
 
 export const addNewMethod = (req, res) => {

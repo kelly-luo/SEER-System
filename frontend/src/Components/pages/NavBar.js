@@ -8,15 +8,15 @@ class NavBar extends Component {
         console.log("nav bar generated");
         return (
             <div className='navBar'>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
-                            <Link to ="/" class="nav-link active">Home</Link>
-                            <Link to ="/login" class="nav-link active">Sign in</Link>
-                            <Link to ="/register" class="nav-link active">Register</Link>
+                    <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div className="navbar-nav">
+                            <Link to ="/" className="nav-link active">Home</Link>
+                            <Link to ="/login" className="nav-link active">Sign in</Link>
+                            <Link to ="/register" className="nav-link active">Register</Link>
                         </div>
                     </div>
                 </nav>

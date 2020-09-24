@@ -16,7 +16,7 @@ function Nav() {
                     <Route path="/register">
                         <Register></Register>
                     </Route>
-                    <Route path="/search/:query">
+                    <Route path="/search/:term">
                         <SearchResults></SearchResults>
                     </Route>
                     <Route path="/">
