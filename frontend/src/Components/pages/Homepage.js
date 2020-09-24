@@ -13,6 +13,7 @@ function Homepage() {
                 <SearchBar></SearchBar>
                 <div class="d-flex justify-content-center">
                     <div class="p-3"><Button id='customButton' variant="secondary" size="sm">Custom Search</Button>{' '}</div>
+                    
                 </div>
             </div>
         </div>
