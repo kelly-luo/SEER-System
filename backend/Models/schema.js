@@ -52,5 +52,11 @@ export const customSearchSchema = new Schema({
     }
 })
 
+export const fileSchema = new Schema({
+    file:{
+        type: Object,
+        required: true,
+    }
+})
 
 

@@ -17,6 +17,7 @@ function SearchResults() {
                 setArticles(response.data)
             })
     }, [term])
+    
 
     const filteredArticles = articles.filter(article => {
         if (term.toLowerCase().trim() === 'all') {

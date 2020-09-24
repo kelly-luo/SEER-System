@@ -1,4 +1,4 @@
-import { addNewArticle, getModeratorArticle, moderatorAcceptArticle, moderatorDelete, analystDelete, getAnalystArticle, analystAcceptArticle, getPublicArticle, declineArticle, updatePublicArticleRating, getDeclinedArticle, addNewMethod, getSeMethods } from '../Controller/controller.js';
+import {addNewFile,getFile, addNewArticle, getModeratorArticle, moderatorAcceptArticle, moderatorDelete, analystDelete, getAnalystArticle, analystAcceptArticle, getPublicArticle, declineArticle, updatePublicArticleRating, getDeclinedArticle, addNewMethod, getSeMethods } from '../Controller/controller.js';
 
 export const routes = (app) => {
     app.route('/articles')
@@ -38,4 +38,14 @@ export const SeRoutes = (app) => {
         .get(getSeMethods)
 
         .post(addNewMethod)
+}
+export const fileRoutes = (app) => {
+    app.route('/files')
+    // GET endpoint
+        .get(getFile)
+
+    // POST endpoint
+        .post(addNewFile);
+        console.log("fileRoutes been activied")
+    
 }

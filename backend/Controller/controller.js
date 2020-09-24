@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
-import {articleSchema, customSearchSchema} from '../Models/schema.js';
+import {articleSchema, customSearchSchema,fileSchema} from '../Models/schema.js';
 
 const publicArticle = mongoose.model('publicArticle', articleSchema);
 const moderatorArticle = mongoose.model('moderatorArticle', articleSchema)
 const analystArticle = mongoose.model('analystArticle', articleSchema)
 const declinedArticle = mongoose.model('declinedArticle', articleSchema)
+const File = mongoose.model('File', fileSchema);
 
 
 export const addNewArticle = (req, res) => {
@@ -136,5 +137,24 @@ export const getSeMethods = (req, res) => {
             res.send(err);
         }
         res.json(customSearch);
+    });
+};
+export const addNewFile = (req, res) => {
+    let NewFile = new File(req.body);
+    console.log("add new file been activited")
+    NewFile.save((err,File) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(File);
+    });
+};
+
+export const getFile = (req, res) => {
+   File.find({},(err, File) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(File);
     });
 };
