@@ -88,7 +88,7 @@ export const getPublicArticle = (req, res) => {
 };
 
 export const updatePublicArticleRating = (req, res) => {
-    publicArticle.findOneAndUpdate({_id: req.params.ArticleId},{$push : req.body}, {new: true},(err, Article) => {
+    publicArticle.findByIdAndUpdate({_id: req.params.ArticleId},{$push : req.body}, {new: true},(err, Article) => {
         if (err) {
             res.send(err);
         }
