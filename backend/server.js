@@ -31,7 +31,7 @@ SeRoutes(app);
 fileRoutes(app);
 
 if (process.env.NODE_ENV === 'production'){
-    const __dirname = process.cwd();
+
     app.use(express.static('frontend/build'));
 
     app.get("*", (req,res) =>{
