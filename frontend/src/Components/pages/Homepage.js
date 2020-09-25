@@ -47,7 +47,7 @@ class Homepage extends React.Component{
       <div className="homepage">
         <NavigationBar></NavigationBar>
         <div className="homepage_body">
-          <img src="./SEER_logo.png" alt="" />
+          <img src="../SEER_logo.png" alt="" />
           <SearchBar></SearchBar>
           <div className="d-flex justify-content-center">
             <div className="p-3">
@@ -58,7 +58,7 @@ class Homepage extends React.Component{
           </div>
           { customActive && (
             <div className="d-flex justify-content-center">
-              <CustomSearchCard methodTitle="SE Field" operatorTitle="Operator"></CustomSearchCard>
+              <CustomSearchCard seField="SE Field" operator="Operator"></CustomSearchCard>
             </div>
           )}
           <div>
