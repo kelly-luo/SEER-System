@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Form, Container, Row, Col, Dropdown } from 'react-bootstrap';
+import { Form, Container, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
 import './CustomSearchCard.css'
 
 function CustomSearchCard() {
 
     const [seMethods, setMethods] = useState([]);
-    // const [nameOfField, setNameOfField] = useState(false);
+    const [selectValue, setSelect] = useState('Select');
+    const [operatorValue, setOperator] = useState('Operator');
+    const [seValue, setSeValue] = useState('SE Method');
     // const [seSelected,setSeSelectedValue]=useState('');
 
     useEffect(() => {
@@ -18,17 +20,28 @@ function CustomSearchCard() {
 
     }, [])
 
-    const selectedItem = (e) => {
-        console.log("Selected: " + e);
-        // setSeSelectedValue(e)
+    // const selectedItem = (e) => {
+    //     console.log("Selected: " + e);
+    //     // setSeSelectedValue(e)
+    // }
+
+    const changeSelect = (e) => {
+      setSelect(e.target.textContent)
+    }
+
+    const changeOperator = (e) => {
+      setOperator(e.target.textContent)
+    }
+
+    const changeSeMethod = (e) => {
+      setSeValue(e.target.textContent)
     }
 
     const displaySeMethods = (method) => {
         return (
             <div>
-                <Dropdown.Item eventKey={'' + method.__v} onClick={selectedItem()}>{method.name}</Dropdown.Item>
+                <Dropdown.Item href="#/action-1" onClick={(e) => changeSeMethod(e)}>{method.name}</Dropdown.Item>
             </div>
-
         );
     }
 
@@ -39,39 +52,26 @@ function CustomSearchCard() {
             <Row>
               <Col md="auto">If</Col>
               <Col md="auto">
-                <Dropdown>
-                  <Dropdown.Toggle id="dropdown-basic">Method</Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item eventKey="1">SE Methods</Dropdown.Item>
-                    <Dropdown.Item eventKey="2">SE Methodology</Dropdown.Item>
-                    <Dropdown.Item eventKey="3">Benefit</Dropdown.Item>
-                    <Dropdown.Item eventKey="3">Participants</Dropdown.Item>
-                    <Dropdown.Item eventKey="4">Name of Field</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                <DropdownButton id="dropdown-basic-button" title={selectValue}>
+                  <Dropdown.Item onClick={(e) => changeSelect(e)}>SE Method</Dropdown.Item>
+                  <Dropdown.Item onClick={(e) => changeSelect(e)}>SE Methodology</Dropdown.Item>
+                  <Dropdown.Item onClick={(e) => changeSelect(e)}>Benefit</Dropdown.Item>
+                  <Dropdown.Item onClick={(e) => changeSelect(e)}>Participants</Dropdown.Item>
+                  <Dropdown.Item onClick={(e) => changeSelect(e)}>Name of Field</Dropdown.Item>
+                </DropdownButton>
               </Col>
               <Col md="auto">
-                <Dropdown>
-                  <Dropdown.Toggle id="dropdown-basic">
-                    Operator
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    <Dropdown.Item eventKey="1">contains</Dropdown.Item>
-                    <Dropdown.Item eventKey="2">does not contain</Dropdown.Item>
-                    <Dropdown.Item eventKey="3">begins with</Dropdown.Item>
-                    <Dropdown.Item eventKey="3">is equal</Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                <DropdownButton id="dropdown-basic-button" title={operatorValue}>
+                  <Dropdown.Item eventKey="1" onClick={(e) => changeOperator(e)}>contains</Dropdown.Item>
+                  <Dropdown.Item eventKey="2" onClick={(e) => changeOperator(e)}>does not contain</Dropdown.Item>
+                  <Dropdown.Item eventKey="3" onClick={(e) => changeOperator(e)}>begins with</Dropdown.Item>
+                  <Dropdown.Item eventKey="4" onClick={(e) => changeOperator(e)}>is equal</Dropdown.Item>
+                </DropdownButton>
               </Col>
               <Col md="auto">
-                <Dropdown>
-                  <Dropdown.Toggle id="dropdown-basic">
-                    SE Method
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    {seMethods.map(displaySeMethods)}
-                  </Dropdown.Menu>
-                </Dropdown>
+                <DropdownButton id="dropdown-basic-button" title={seValue}>
+                  {seMethods.map(displaySeMethods)}
+                </DropdownButton>
                 {/* <Form.Control placeholder="Value" /> */}
               </Col>
             </Row>
