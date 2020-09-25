@@ -12,26 +12,19 @@ function Nav() {
         <Router>
             <div className="nav">
                 <Switch>
-                    <Route path="/login">
-                        <Login></Login>
+                    <Route path="/login" exact component={Login}>
                     </Route>
-                    <Route path="/register">
-                        <Register></Register>
+                    <Route path="/register" exact component={Register}>
                     </Route>
-                    <Route path="/search/:term">
-                        <SearchResults></SearchResults>
+                    <Route path="/search/:term" exact component={SearchResults}>
                     </Route>
-                    <Route path="/moderation">
-                        <ModerationPage></ModerationPage>
+                    <Route path="/moderation" exact component={ModerationPage}>
                     </Route>
-                    <Route path="/analyse">
-                        <AnalystPage></AnalystPage>
+                    <Route path="/analyse" exact component={AnalystPage}>
                     </Route>
-                    <Route path="/upload">
-                        <UploadArticlePage></UploadArticlePage>
+                    <Route path="/upload" exact component={UploadArticlePage}>
                     </Route>
-                    <Route path="/">
-                        <Homepage></Homepage>
+                    <Route path="/" exact component={Homepage}>
                     </Route>
                 </Switch>
             </div>
