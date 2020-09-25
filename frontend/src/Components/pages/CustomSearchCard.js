@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Row, Col, Dropdown } from 'react-bootstrap';
-import './CustomSearchCard.css';
+import './CustomSearchCard.css'
 
 function CustomSearchCard({methodTitle, operatorTitle}) {
 

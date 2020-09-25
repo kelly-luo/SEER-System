@@ -53,12 +53,3 @@ export const customSearchSchema = new Schema({
 
 
 
-export const customSearchSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    }
-})
-
-
-
