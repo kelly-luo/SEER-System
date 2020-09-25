@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "server": "npm i && nodemon ./backend/server.js",
-    "start": "npm i && node ./backend/server.js ",
+    "start": "node ./backend/server.js --exec babel-node -e js",
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build",
