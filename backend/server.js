@@ -17,7 +17,6 @@ mongoose.connect(process.env.URI || 'mongodb+srv://Hello:World@database.o473f.mo
 })
     .then(client => {
         console.log('Connected to Database')
-
     })
     .catch(console.error)
 
@@ -37,7 +36,6 @@ if (process.env.NODE_ENV === 'production'){
     app.get("*", (req,res) =>{
         res.sendFile(path.resolve(__dirname,"../frontend", "build", "index.html"));
     });
-
 }
 
 
