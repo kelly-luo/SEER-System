@@ -33,12 +33,10 @@ fileRoutes(app);
 
 if (process.env.NODE_ENV === 'production'){
 
-    const __dirname = dirname(fileURLToPath(import.meta.url));
-
     app.use(express.static('frontend/build'));
 
     app.get("*", (req,res) =>{
-        res.sendFile(path.resolve(__dirname,"../frontend", "build", "index.html"));
+        res.sendFile(path.resolve("../frontend", "build", "index.html"));
     });
 }
 
