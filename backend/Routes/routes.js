@@ -29,6 +29,7 @@ export const routes = (app) => {
 
     app.route('/declinedArticles')
         .get(getDeclinedArticle)
+        
         .post(declineArticle)
 
 }

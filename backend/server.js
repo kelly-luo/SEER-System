@@ -3,7 +3,8 @@ import mongoose from 'mongoose';
 import bodyparser from 'body-parser';
 import cors from 'cors';
 import {fileRoutes,routes, SeRoutes} from '../backend/Routes/routes.js';
-import path,{dirname} from 'path';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 
 const app = express();
@@ -32,10 +33,12 @@ fileRoutes(app);
 
 if (process.env.NODE_ENV === 'production'){
 
+    const __dirname = dirname(fileURLToPath(import.meta.url));
+
     app.use(express.static('frontend/build'));
 
     app.get("*", (req,res) =>{
-        res.sendFile(path.resolve(dirname,"../frontend", "build", "index.html"));
+        res.sendFile(path.resolve(__dirname,"../frontend", "build", "index.html"));
     });
 }
 
