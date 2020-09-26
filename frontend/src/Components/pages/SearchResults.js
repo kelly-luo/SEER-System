@@ -20,7 +20,7 @@ function SearchResults() {
     
 
     const filteredArticles = articles.filter(article => {
-        if (term.toLowerCase().trim() === 'all') {
+        if (term === undefined) {
             return articles;
         }
         else {

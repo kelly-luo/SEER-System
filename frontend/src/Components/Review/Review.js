@@ -36,7 +36,6 @@ function Review(article) {
                 console.log(err);
             })
         window.location.reload();
-
     }
 
     const declineArticle = (e) => {

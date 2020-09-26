@@ -1,51 +1,54 @@
-import {addNewFile,getFile, addNewArticle, getModeratorArticle, moderatorAcceptArticle, moderatorDelete, analystDelete, getAnalystArticle, analystAcceptArticle, getPublicArticle, declineArticle, updatePublicArticleRating, getDeclinedArticle, addNewMethod, getSeMethods } from '../Controller/controller.js';
 
-export const routes = (app) => {
-    app.route('/articles')
-        .get(getPublicArticle)
-
-        .post(addNewArticle);
-
-    app.route('/articles/:ArticleId')
-        .put(updatePublicArticleRating)
-
-    app.route('/moderation')
-        .get(getModeratorArticle)
-
-        .post(moderatorAcceptArticle)
-
-    app.route('/moderation/:ArticleId')
-        .delete(moderatorDelete)
-
-    app.route('/analyst')
-        .get(getAnalystArticle)
-
-        .post(analystAcceptArticle)
-
-    app.route('/analyst/:ArticleId')
-
-        .delete(analystDelete)
+const router = require('express').Router();
+const articleController = require('../Controller/articleController')
+const customSearchController = require('../Controller/customSearchController');
+const fileController = require('../Controller/fileController')
 
 
-    app.route('/declinedArticles')
-        .get(getDeclinedArticle)
-        .post(declineArticle)
+router
+    .route('/articles')
+    .get(articleController.getPublicArticle)
+    .post(articleController.addNewArticle);
 
-}
 
-export const SeRoutes = (app) => {
-    app.route('/methods')
-        .get(getSeMethods)
+router
+    .route('/articles/:ArticleId')
+    .put(articleController.updatePublicArticleRating);
 
-        .post(addNewMethod)
-}
-export const fileRoutes = (app) => {
-    app.route('/files')
-    // GET endpoint
-        .get(getFile)
+router
+    .route('/moderation')
+    .get(articleController.getModeratorArticle)
+    .post(articleController.moderatorAcceptArticle)
 
-    // POST endpoint
-        .post(addNewFile);
-        console.log("fileRoutes been activied")
-    
-}
+router
+    .route('/moderation/:ArticleId')
+    .delete(articleController.moderatorDelete);
+
+router
+    .route('/analyst')
+    .get(articleController.getAnalystArticle)
+    .post(articleController.analystAcceptArticle)
+
+router
+    .route('/analyst/:ArticleId')
+    .delete(articleController.analystDelete);
+
+router
+    .route('/declined')
+    .get(articleController.getDeclinedArticle)
+    .post(articleController.declineArticle)
+
+router
+    .route('/methods')
+    .get(customSearchController.getSeMethods)
+    .post(customSearchController.addNewMethod)
+
+router
+    .route('/files')
+    .get(fileController.getFile)
+    .post(fileController.addNewFile)
+    console.log("fileRoutes been activied")
+
+
+module.exports = router;
+
