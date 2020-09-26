@@ -9,7 +9,6 @@ function CustomSearchCard() {
     const [selectValue, setSelect] = useState('Select');
     const [operatorValue, setOperator] = useState('Operator');
     const [seValue, setSeValue] = useState('SE Method');
-    // const [seSelected,setSeSelectedValue]=useState('');
 
     useEffect(() => {
         axios.get('/methods')
@@ -19,11 +18,6 @@ function CustomSearchCard() {
             })
 
     }, [])
-
-    // const selectedItem = (e) => {
-    //     console.log("Selected: " + e);
-    //     // setSeSelectedValue(e)
-    // }
 
     const changeSelect = (e) => {
       setSelect(e.target.textContent)

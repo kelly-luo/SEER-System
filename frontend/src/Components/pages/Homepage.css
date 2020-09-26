@@ -16,10 +16,3 @@
     object-fit: contain;
     height: 200px;
 }
-
-.customForm{
-    background-color: darkgray;
-    border: 1px;
-    border-radius: 20%;
-    border-color: darkgray;
-}
