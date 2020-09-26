@@ -15,7 +15,7 @@ function SearchBar() {
             history.push(`/search/${searchInput}`)
         }
         else{
-            history.push(`/search/all`)
+            history.push(`/search`)
         }
         setSearchInput("")
     }
