@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "backend/server.js",
-  "type": "module",
   "scripts": {
     "server": "npm i && nodemon ./backend/server.js",
-    "start": "node ./backend/server.js --exec babel-node -e js",
+    "start": "node ./backend/server.js",
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build",

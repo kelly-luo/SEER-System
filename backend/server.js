@@ -1,10 +1,9 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bodyparser from 'body-parser';
-import cors from 'cors';
-import {fileRoutes,routes, SeRoutes} from '../backend/Routes/routes.js';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyparser = require('body-parser');
+const cors = require('cors');
+const routes = require('./Routes/routes');
+const path = require('path');
 
 
 const app = express();
@@ -24,19 +23,16 @@ mongoose.connect(process.env.URI || 'mongodb+srv://Hello:World@database.o473f.mo
 
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
-
 app.use(cors());
 
-routes(app);
-SeRoutes(app);
-fileRoutes(app);
+app.use(routes);
 
 if (process.env.NODE_ENV === 'production'){
 
     app.use(express.static('frontend/build'));
 
-    app.get("/", (req,res) =>{
-        res.sendFile(path.resolve("../frontend", "build", "index.html"));
+    app.get("*", (req,res) =>{
+        res.sendFile(path.resolve(__dirname,"../frontend", "build", "index.html"));
     });
 }
 
