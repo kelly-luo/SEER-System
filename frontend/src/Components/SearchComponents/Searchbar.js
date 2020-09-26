@@ -12,15 +12,16 @@ function SearchBar() {
   const [customActive, setCustomActive] = useState(false);
   const history = useHistory();
 
-  const search = (e) => {
-    e.preventDefault();
-    if (searchInput !== "") {
-      history.push(`/search/${searchInput}`);
-    } else {
-      history.push(`/search/all`);
+    const search = (e) => {
+        e.preventDefault();
+        if (searchInput !== "") {
+            history.push(`/search/${searchInput}`)
+        }
+        else{
+            history.push(`/search`)
+        }
+        setSearchInput("")
     }
-    setSearchInput("");
-  };
 
   return (
     <div>

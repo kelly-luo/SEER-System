@@ -5,30 +5,26 @@ import Homepage from './pages/Homepage';
 import Login from './pages/Login';
 import ModerationPage from './pages/ModerationPage';
 import Register from './pages/Register';
-import SearchResults from './pages/SearchResults'
-
+import SearchResults from './pages/SearchResults';
+import UploadArticlePage from './pages/UploadPage/UploadArticlePage.js'
 function Nav() {
     return (
         <Router>
             <div className="nav">
                 <Switch>
-                    <Route path="/login">
-                        <Login></Login>
+                    <Route path="/login" exact component={Login}>
                     </Route>
-                    <Route path="/register">
-                        <Register></Register>
+                    <Route path="/register" exact component={Register}>
                     </Route>
-                    <Route path="/search/:term">
-                        <SearchResults></SearchResults>
+                    <Route path={["/search/:term","/search"]} exact component={SearchResults}>
                     </Route>
-                    <Route path="/moderation">
-                        <ModerationPage></ModerationPage>
+                    <Route path="/moderate" exact component={ModerationPage}>
                     </Route>
-                    <Route path="/analyse">
-                        <AnalystPage></AnalystPage>
+                    <Route path="/analyse" exact component={AnalystPage}>
                     </Route>
-                    <Route path="/">
-                        <Homepage></Homepage>
+                    <Route path="/upload" exact component={UploadArticlePage}>
+                    </Route>
+                    <Route path="/" exact component={Homepage}>
                     </Route>
                 </Switch>
             </div>
