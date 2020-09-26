@@ -18,7 +18,7 @@ function Nav() {
                     </Route>
                     <Route path="/search/:term" exact component={SearchResults}>
                     </Route>
-                    <Route path="/moderation" exact component={ModerationPage}>
+                    <Route path="/moderate" exact component={ModerationPage}>
                     </Route>
                     <Route path="/analyse" exact component={AnalystPage}>
                     </Route>
