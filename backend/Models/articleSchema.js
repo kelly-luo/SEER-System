@@ -44,14 +44,6 @@ const articleSchema = new Schema({
     }
 })
 
-export const customSearchSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    }
-})
-
-
 module.exports = articleSchema;
 
 
