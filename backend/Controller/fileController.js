@@ -5,7 +5,8 @@ const File = mongoose.model('File', fileSchema);
 
 module.exports = {
     addNewFile: function (req, res) {
-        File.create(req.body)
+        console.log("add file activited");
+        File.create(req.file)
             .then(File => res.json(File))
             .catch(err => res.status(422).json(err));
     },
