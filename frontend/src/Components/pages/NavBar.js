@@ -17,8 +17,8 @@ class NavBar extends Component {
                             <Link to ="/" className="nav-link active">Home</Link>
                             <Link to ="/login" className="nav-link active">Sign in</Link>
                             <Link to ="/register" className="nav-link active">Register</Link>
-                            <Link to ="/moderation" className="nav-link active">Moderation</Link>
-                            <Link to ="/Analyse" className="nav-link active">Analyse</Link>
+                            <Link to ="/moderate" className="nav-link active">Moderation</Link>
+                            <Link to ="/analyse" className="nav-link active">Analyse</Link>
                         </div>
                     </div>
                 </nav>

@@ -28,10 +28,10 @@ function AnalystPage() {
     }
 
     return (
-        <div className="moderationResults">
+        <div className="analystResults">
             <NavBar></NavBar>
-            <center><h3 className="reqModeration">Number of articles required for analysis: {analystArticles.length}</h3></center>
-            <div className='moderationDataTable'>
+            <center><h3 className="reqAnalyse">Number of articles required for analysis: {analystArticles.length}</h3></center>
+            <div className='analystDataTable'>
                 <ReactBootStrap.Table striped bordered hover>
                     <thead>
                         <tr>

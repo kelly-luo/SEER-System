@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
 
-export const articleSchema = new Schema({
+const articleSchema = new Schema({
     author: {
         type: String,
         //required: true
@@ -45,12 +45,8 @@ export const articleSchema = new Schema({
 })
 
 
-export const customSearchSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    }
-})
 
+
+module.exports = articleSchema;
 
 
