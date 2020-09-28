@@ -10,17 +10,26 @@ import UIButton from '@material-ui/core/Button'
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
   const [customActive, setCustomActive] = useState(false);
+  const [methodValue, setMethodValue] = useState("");
+  const [operatorValue, setOperatorValue] = useState("");
+  const [selectionValue, setSelectionValue] = useState("");
   const history = useHistory();
 
     const search = (e) => {
         e.preventDefault();
         if (searchInput !== "") {
-            history.push(`/search/${searchInput}`)
+          history.push(`/search/${searchInput}`)
+        }else if (customActive == true){
+          history.push(`/search/custom/${methodValue}/${operatorValue}/${selectionValue}`)
         }
         else{
             history.push(`/search`)
         }
         setSearchInput("")
+    }
+
+    const parentFunction = (data) => {
+      console.log("Yayyyyyy data has arrived: " + data)
     }
 
   return (
@@ -52,9 +61,9 @@ function SearchBar() {
         <div className="customSearchContainer">
           {customActive && (
             <div className="d-flex justify-content-center">
-              <CustomSearchCard></CustomSearchCard>
+              <CustomSearchCard functionCallFromParent={parentFunction.bind(this)}></CustomSearchCard>
             </div>
-          )}{" "}
+          )}
         </div>
       </div>
     </div>

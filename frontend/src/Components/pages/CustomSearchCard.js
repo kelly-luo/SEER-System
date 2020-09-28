@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Container, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
 import './CustomSearchCard.css'
 
-function CustomSearchCard() {
+function CustomSearchCard(props) {
 
     const [seMethods, setMethods] = useState([]);
     const [selectValue, setSelect] = useState('Select');
@@ -20,21 +20,25 @@ function CustomSearchCard() {
     }, [])
 
     const changeSelect = (e) => {
+      e.preventDefault();
       setSelect(e.target.textContent)
+      props.functionCallFromParent(e.target.textContent);
     }
 
     const changeOperator = (e) => {
+      e.preventDefault();
       setOperator(e.target.textContent)
     }
 
     const changeSeMethod = (e) => {
+      e.preventDefault();
       setSeValue(e.target.textContent)
     }
 
     const displaySeMethods = (method) => {
         return (
             <div>
-                <Dropdown.Item href="#/action-1" onClick={(e) => changeSeMethod(e)}>{method.name}</Dropdown.Item>
+                <Dropdown.Item onClick={(e) => changeSeMethod(e)}>{method.name}</Dropdown.Item>
             </div>
         );
     }
