@@ -37,9 +37,9 @@ function CustomSearchCard(props) {
       props.changedSeMethodCallback(e.target.textContent);
     }
 
-    const displaySeMethods = (method) => {
+    const displaySeMethods = (method, index) => {
         return (
-            <div>
+            <div key={index}>
                 <Dropdown.Item onClick={(e) => changeSeMethod(e)}>{method.name}</Dropdown.Item>
             </div>
         );
