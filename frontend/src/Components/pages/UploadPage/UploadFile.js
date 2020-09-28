@@ -6,7 +6,8 @@ import * as FormData from 'form-data'
 class UploadFile extends Component {
     state = {
         file: null,
-        fileName: null
+        fileName: null,
+        fileResult:null,
     }
 
     handleFile(e) {
@@ -18,37 +19,25 @@ class UploadFile extends Component {
     }
 
     handleUpload(e) {
-
         let formData = new FormData();
         formData.append("uploaded-file", this.state.file);
         const url = '/files';
-        axios({
-            url: url,
-            method: "POST",
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            data: formData
-        }).then((response) => {
-            //handle response latter
-            console.log(response);
-        })
+        var reader = new FileReader();
+        reader.readAsText(this.state.file, "UTF-8");
+        // reader.onload = () => this.setState({ 
+        //     fileResult: reader.result
+        // })
+        reader.onload = function() {  
+            axios.post(url, {file:reader.result})
+            .then((response) => {
+                //handle response latter
+                console.log(response);
+            })
             .catch((error) => {
                 console.log(error);
             });
-        // axios.post(url, formData,
-        //     {
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //     .then((response) => {
-        //         //handle response latter
-        //         console.log(response);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
+          }
+
     }
     render() {
         return (
@@ -65,6 +54,8 @@ class UploadFile extends Component {
                     <button onClick={(e) => this.handleUpload(e)}>submit</button>
                 </div>
                 <p>{this.state.fileName}</p>
+                <br></br>
+                <p>{this.state.fileResult}</p>
 
             </React.Fragment>
         );
