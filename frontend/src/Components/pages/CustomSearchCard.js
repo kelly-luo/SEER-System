@@ -22,12 +22,13 @@ function CustomSearchCard(props) {
     const changeSelect = (e) => {
       e.preventDefault();
       setSelect(e.target.textContent)
-      props.functionCallFromParent(e.target.textContent);
+      props.changedSelectCallback(e.target.textContent);
     }
 
     const changeOperator = (e) => {
       e.preventDefault();
       setOperator(e.target.textContent)
+      props.changedOperatorCallback(e.target.textContent);
     }
 
     const changeSeMethod = (e) => {

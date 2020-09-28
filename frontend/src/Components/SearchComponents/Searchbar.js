@@ -15,22 +15,28 @@ function SearchBar() {
   const [selectionValue, setSelectionValue] = useState("");
   const history = useHistory();
 
-    const search = (e) => {
-        e.preventDefault();
-        if (searchInput !== "") {
-          history.push(`/search/${searchInput}`)
-        }else if (customActive == true){
-          history.push(`/search/custom/${methodValue}/${operatorValue}/${selectionValue}`)
-        }
-        else{
-            history.push(`/search`)
-        }
-        setSearchInput("")
-    }
+  const search = (e) => {
+      e.preventDefault();
+      if (searchInput !== "") {
+        history.push(`/search/${searchInput}`)
+      }else if (customActive == true){
+        history.push(`/search/custom/${methodValue}/${operatorValue}/${selectionValue}`)
+      }
+      else{
+          history.push(`/search`)
+      }
+      setSearchInput("")
+  }
 
-    const parentFunction = (data) => {
-      console.log("Yayyyyyy data has arrived: " + data)
-    }
+  const changedSelectValue = (data) => {
+    console.log("Yayyyyyy data has arrived: " + data)
+    setSelectionValue(data)
+  }
+
+  const changedOperatorValue = (data) => {
+    console.log("Yayyyyyy operator has arrived: " + data)
+    setOperatorValue(data)
+  }
 
   return (
     <div>
@@ -61,7 +67,7 @@ function SearchBar() {
         <div className="customSearchContainer">
           {customActive && (
             <div className="d-flex justify-content-center">
-              <CustomSearchCard functionCallFromParent={parentFunction.bind(this)}></CustomSearchCard>
+              <CustomSearchCard changedSelectCallback={changedSelectValue.bind(this)} changedOperatorCallback={changedOperatorValue.bind(this)}></CustomSearchCard>
             </div>
           )}
         </div>
