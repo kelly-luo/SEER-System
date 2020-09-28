@@ -38,6 +38,11 @@ function SearchBar() {
     setOperatorValue(data)
   }
 
+  const changedSeMethodValue = (data) => {
+    console.log("Yayyyyyy se method has arrived: " + data)
+    setMethodValue(data)
+  }
+
   return (
     <div>
       <form className="search">
@@ -67,7 +72,11 @@ function SearchBar() {
         <div className="customSearchContainer">
           {customActive && (
             <div className="d-flex justify-content-center">
-              <CustomSearchCard changedSelectCallback={changedSelectValue.bind(this)} changedOperatorCallback={changedOperatorValue.bind(this)}></CustomSearchCard>
+              <CustomSearchCard
+              changedSelectCallback={changedSelectValue.bind(this)}
+              changedOperatorCallback={changedOperatorValue.bind(this)}
+              changedSeMethodCallback={changedSeMethodValue.bind(this)}
+              ></CustomSearchCard>
             </div>
           )}
         </div>

@@ -34,6 +34,7 @@ function CustomSearchCard(props) {
     const changeSeMethod = (e) => {
       e.preventDefault();
       setSeValue(e.target.textContent)
+      props.changedSeMethodCallback(e.target.textContent);
     }
 
     const displaySeMethods = (method) => {
