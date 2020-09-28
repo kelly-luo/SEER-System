@@ -6,6 +6,7 @@ import SearchHeader from '../SearchComponents/SearchHeader';
 import * as ReactBootStrap from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
+import Sortby from '../SearchComponents/Sortby'
 
 function SearchResults() {
     const { term } = useParams();
@@ -57,6 +58,9 @@ function SearchResults() {
                 <div className='searchHeader'>
                     <SearchHeader></SearchHeader>
                 </div>
+                <div className='sortBy'>
+                    <Sortby></Sortby>
+                </div>
                 <p className="resultsNumber">Number of results for query "{term}" : {filteredArticles.length}</p>
                 <div className='searchData'>
                     <ReactBootStrap.Table striped bordered hover>
@@ -76,6 +80,8 @@ function SearchResults() {
                 </div>
             </div>
         </div>);
+
+    
 };
 
 export default SearchResults;

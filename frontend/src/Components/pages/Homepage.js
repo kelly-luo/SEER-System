@@ -46,15 +46,6 @@ class Homepage extends React.Component{
     return (
       <div className="homepage">
         <NavigationBar></NavigationBar>
-<<<<<<< HEAD
-            <div className='homepage_body'>
-                <img src="./SEER_logo.png" alt="" />
-                <SearchBar></SearchBar>
-                <div class="d-flex justify-content-center">
-                    <div class="p-3"><Button id='customButton' variant="secondary" size="sm">Custom Search</Button>{' '}</div>
-                    
-                </div>
-=======
         <div className="homepage_body">
           <img src="../SEER_logo.png" alt="" />
           <SearchBar></SearchBar>
@@ -68,7 +59,6 @@ class Homepage extends React.Component{
           { customActive && (
             <div className="d-flex justify-content-center">
               <CustomSearchCard seField="SE Field" operator="Operator"></CustomSearchCard>
->>>>>>> e59d49cd0e3627ed9009f52deffc7583ea7c31b6
             </div>
           )}
           <div>
