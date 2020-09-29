@@ -20,7 +20,7 @@ function SearchBar() {
       if (searchInput !== "") {
         history.push(`/search/${searchInput}`)
       }else if (customActive == true){
-        history.push(`/search/custom/${methodValue}/${operatorValue}/${selectionValue}`)
+        history.push(`/search/custom/${selectionValue}/${operatorValue}/${methodValue}`)
       }
       else{
           history.push(`/search`)

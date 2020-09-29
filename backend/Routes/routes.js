@@ -1,54 +1,53 @@
-
-const router = require('express').Router();
-const articleController = require('../Controller/articleController')
-const customSearchController = require('../Controller/customSearchController');
-const fileController = require('../Controller/fileController')
-
+const router = require("express").Router();
+const articleController = require("../Controller/articleController");
+const customSearchController = require("../Controller/customSearchController");
+const fileController = require("../Controller/fileController");
 
 router
-    .route('/articles')
-    .get(articleController.getPublicArticle)
-    .post(articleController.addNewArticle);
-
-
-router
-    .route('/articles/:ArticleId')
-    .put(articleController.updatePublicArticleRating);
+  .route("/articles")
+  .get(articleController.getPublicArticle)
+  .post(articleController.addNewArticle);
 
 router
-    .route('/moderation')
-    .get(articleController.getModeratorArticle)
-    .post(articleController.moderatorAcceptArticle)
+  .route("/articles/:ArticleId")
+  .put(articleController.updatePublicArticleRating);
 
 router
-    .route('/moderation/:ArticleId')
-    .delete(articleController.moderatorDelete);
+  .route("/moderation")
+  .get(articleController.getModeratorArticle)
+  .post(articleController.moderatorAcceptArticle);
 
 router
-    .route('/analyst')
-    .get(articleController.getAnalystArticle)
-    .post(articleController.analystAcceptArticle)
+  .route("/moderation/:ArticleId")
+  .delete(articleController.moderatorDelete);
 
 router
-    .route('/analyst/:ArticleId')
-    .delete(articleController.analystDelete);
+  .route("/analyst")
+  .get(articleController.getAnalystArticle)
+  .post(articleController.analystAcceptArticle);
+
+router.route("/analyst/:ArticleId").delete(articleController.analystDelete);
 
 router
-    .route('/declined')
-    .get(articleController.getDeclinedArticle)
-    .post(articleController.declineArticle)
+  .route("/declined")
+  .get(articleController.getDeclinedArticle)
+  .post(articleController.declineArticle);
 
 router
-    .route('/methods')
-    .get(customSearchController.getSeMethods)
-    .post(customSearchController.addNewMethod)
+  .route("/methods")
+  .get(customSearchController.getSeMethods)
+  .post(customSearchController.addMethod);
+  
 
 router
-    .route('/files')
-    .get(fileController.getFile)
-    .post(fileController.addNewFile)
-    console.log("fileRoutes been activied")
+  .route("/methods/:methodId")
+  .put(customSearchController.addNewMethod);
+  
 
+router
+  .route("/files")
+  .get(fileController.getFile)
+  .post(fileController.addNewFile);
+console.log("fileRoutes been activied");
 
 module.exports = router;
-

@@ -9,16 +9,16 @@ function CustomSearchCard(props) {
     const [selectValue, setSelect] = useState('Select');
     const [operatorValue, setOperator] = useState('Operator');
     const [seValue, setSeValue] = useState('SE Method');
-
+    const [seId, setSeId] = useState([]);
+    
     useEffect(() => {
-        axios.get('/methods')
+    axios.get('/methods')
             .then(response => {
                 console.log(response.data)
                 setMethods(response.data)
             })
-
     }, [])
-
+    
     const changeSelect = (e) => {
       e.preventDefault();
       setSelect(e.target.textContent)
