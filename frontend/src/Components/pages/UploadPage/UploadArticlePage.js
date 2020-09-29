@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UploadFile from './UploadFile.js'
+import UploadFile from './UploadFile.js';
 class UploadArticlePage extends Component {
     state = {  }
     render() { 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import * as FormData from 'form-data'
 //const FormData = require('form-data');
+import ArticleForm from './ArticleForm.js';
 
 class UploadFile extends Component {
     state = {
@@ -56,6 +57,8 @@ class UploadFile extends Component {
                 <p>{this.state.fileName}</p>
                 <br></br>
                 <p>{this.state.fileResult}</p>
+                
+                <ArticleForm></ArticleForm>
 
             </React.Fragment>
         );
