@@ -58,7 +58,10 @@ class UploadFile extends Component {
                 <br></br>
                 <p>{this.state.fileResult}</p>
                 
-                <ArticleForm></ArticleForm>
+        <ArticleForm
+            fileInfo = {this.state.file} 
+        >
+            </ArticleForm>
 
             </React.Fragment>
         );
