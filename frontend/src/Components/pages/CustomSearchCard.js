@@ -8,6 +8,8 @@ import { addArray } from '../actions/index.js'
 function CustomSearchCard(props) {
 
   const leftCustomValue = useSelector(state => state.leftCustomValue)
+  const operatorCustomValue = useSelector(state => state.operatorCustomValue)
+  const rightCustomValue = useSelector(state => state.rightCustomValue)
   const dispatch = useDispatch();
 
   const [seMethods, setMethods] = useState([]);
@@ -35,12 +37,14 @@ function CustomSearchCard(props) {
     e.preventDefault();
     setOperator(e.target.textContent)
     props.changedOperatorCallback(e.target.textContent);
+    dispatch(addArray(e.target.textContent))
   }
 
   const changeSeMethod = (e) => {
     e.preventDefault();
     setSeValue(e.target.textContent)
     props.changedSeMethodCallback(e.target.textContent);
+    dispatch(addArray(e.target.textContent))
   }
 
   const displaySeMethods = (method, index) => {
