@@ -16,7 +16,7 @@ function Nav() {
                     </Route>
                     <Route path="/register" exact component={Register}>
                     </Route>
-                    <Route path={["/search/:term","/search"]} exact component={SearchResults}>
+                    <Route path={["/search/:term","/search/custom/:selection/:operator/:seMethod","/search"]} exact component={SearchResults}>
                     </Route>
                     <Route path="/moderate" exact component={ModerationPage}>
                     </Route>

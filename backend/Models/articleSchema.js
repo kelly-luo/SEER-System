@@ -41,11 +41,11 @@ const articleSchema = new Schema({
     },
     rating:{
         type: [Number]
+    },
+    seMethod:{
+        type: String
     }
 })
-
-
-
 
 module.exports = articleSchema;
 
