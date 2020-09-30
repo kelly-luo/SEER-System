@@ -17,19 +17,24 @@ class UploadFile extends Component {
         this.setState({ file: file })
         //console.log(file);
 
+        let formData = new FormData();
+        formData.append("uploaded-file", file);   
+        var reader = new FileReader();
+        reader.readAsText(file, "UTF-8");
+        reader.onload = () => this.setState({ 
+            fileResult: reader.result
+        })
     }
 
     handleUpload(e) {
-        let formData = new FormData();
-        formData.append("uploaded-file", this.state.file);
+
         const url = '/files';
-        var reader = new FileReader();
-        reader.readAsText(this.state.file, "UTF-8");
+
         // reader.onload = () => this.setState({ 
         //     fileResult: reader.result
         // })
-        reader.onload = function() {  
-            axios.post(url, {file:reader.result})
+     
+            axios.post(url, {file:this.state.fileResult})
             .then((response) => {
                 //handle response latter
                 console.log(response);
@@ -37,7 +42,7 @@ class UploadFile extends Component {
             .catch((error) => {
                 console.log(error);
             });
-          }
+        
 
     }
     render() {
