@@ -6,11 +6,32 @@ import SearchHeader from '../SearchComponents/SearchHeader';
 import * as ReactBootStrap from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
+import { Dropdown } from 'react-bootstrap';
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 function SearchResults() {
     const { term } = useParams();
     
     const [articles, setArticles] = useState([]);
+    const [selectOption] = useState('Sort search by');
+
+    const selectSortBy = (e) => {
+        e.preventDefault();
+
+        if(e.target.textContent.toLowerCase() === "author"){
+            setArticles([...articles].sort((a, b) => a.author > b.author ? 1 : -1));
+        }
+        if(e.target.textContent.toLowerCase() === "title"){
+            setArticles([...articles].sort((a, b) => a.title > b.title ? 1 : -1));
+        }
+        if(e.target.textContent.toLowerCase() === "year"){
+            setArticles([...articles].sort((a, b) => a.year < b.year ? 1 : -1));
+        }
+        
+        
+        console.log("Sorted array",articles);
+    }
+
 
     useEffect(() => {
         axios.get('/articles')
@@ -18,7 +39,7 @@ function SearchResults() {
                 setArticles(response.data)
             })
     }, [term])
-    
+
 
     const filteredArticles = articles.filter(article => {
         if (term === undefined) {
@@ -38,9 +59,9 @@ function SearchResults() {
             for (let num of article.rating) {
                 sum = sum + num
             }
-            sum = Math.round((sum / article.rating.length)*10)/10;
+            sum = Math.round((sum / article.rating.length) * 10) / 10;
         }
-        if(isNaN(sum)) sum = 0;
+        if (isNaN(sum)) sum = 0;
 
         return (
             <tr className="results" key={index} data-href={article.url}>
@@ -58,6 +79,16 @@ function SearchResults() {
             <div className="searchResults">
                 <div className='searchHeader'>
                     <SearchHeader></SearchHeader>
+                </div>
+                <div className='sortBy'>
+                    <div>
+
+                        <DropdownButton id="dropdown-item-button" title={selectOption}>
+                            <Dropdown.Item value="author" onClick={(e) => selectSortBy(e)}>Author</Dropdown.Item>
+                            <Dropdown.Item value = "title" onClick={(e) => selectSortBy(e)}>Title</Dropdown.Item>
+                            <Dropdown.Item value = "year" onClick={(e) => selectSortBy(e)}>Year</Dropdown.Item>
+                        </DropdownButton>
+                    </div>
                 </div>
                 <p className="resultsNumber">Number of results for query "{term}" : {filteredArticles.length}</p>
                 <div className='searchData'>
@@ -78,6 +109,8 @@ function SearchResults() {
                 </div>
             </div>
         </div>);
+
+
 };
 
 export default SearchResults;
