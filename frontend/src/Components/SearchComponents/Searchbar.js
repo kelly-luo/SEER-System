@@ -19,7 +19,7 @@ function SearchBar() {
       e.preventDefault();
       if (searchInput !== "") {
         history.push(`/search/${searchInput}`)
-      }else if (customActive == true){
+      }else if (customActive === true){
         history.push(`/search/custom/${selectionValue}/${operatorValue}/${methodValue}`)
       }
       else{
