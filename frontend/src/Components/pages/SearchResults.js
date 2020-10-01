@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
 
 function SearchResults() {
-    const { term, selection, operator, seMethod } = useParams();
+    const { term } = useParams();
     
     const [articles, setArticles] = useState([]);
 
@@ -23,11 +23,6 @@ function SearchResults() {
     const filteredArticles = articles.filter(article => {
         if (term === undefined) {
             return articles;
-        }
-        else if(!(seMethod === undefined)) {
-            return Object.keys(article).some(key =>
-                article[key].toString().toLowerCase().includes(seMethod.toLowerCase().trim())
-            );
         }
         else {
             return Object.keys(article).some(key =>
