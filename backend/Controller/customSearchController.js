@@ -4,8 +4,13 @@ const customSearchSchema = require('../Models/customSearchSchema')
 const customSearch = mongoose.model('customSearch', customSearchSchema);
 
 module.exports = {
-    addNewMethod: function (req, res) {
+    addMethod: function (req, res) {
         customSearch.create(req.body)
+            .then(customSearch => res.json(customSearch))
+            .catch(err => res.status(422).json(err));
+    },
+    addNewMethod: function (req, res) {
+        customSearch.findByIdAndUpdate({ _id: req.params.methodId },{$push : req.body},  {new: true})
             .then(customSearch => res.json(customSearch))
             .catch(err => res.status(422).json(err));
     },

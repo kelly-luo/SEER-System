@@ -12,6 +12,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 
 function SearchResults() {
     const { term } = useParams();
+    
     const [articles, setArticles] = useState([]);
     const [data, setData] = useState([]);
     const [selectOption, setOption] = useState('Sort search by');
