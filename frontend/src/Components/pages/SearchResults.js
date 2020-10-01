@@ -17,7 +17,7 @@ function SearchResults() {
     const [selectOption, setOption] = useState('Sort search by');
     const [selectByAuthor, setByAuthor] = useState(false);
 
-    const selectAuthor = (e) => {
+    const selectSortBy = (e) => {
         e.preventDefault();
 
         if(e.target.textContent.toLowerCase() === "author"){
@@ -86,9 +86,9 @@ function SearchResults() {
                     <div>
 
                         <DropdownButton id="dropdown-item-button" title={selectOption}>
-                            <Dropdown.Item value="author" onClick={(e) => selectAuthor(e)}>Author</Dropdown.Item>
-                            <Dropdown.Item value = "title" onClick={(e) => selectAuthor(e)}>Title</Dropdown.Item>
-                            <Dropdown.Item value = "year" onClick={(e) => selectAuthor(e)}>Year</Dropdown.Item>
+                            <Dropdown.Item value="author" onClick={(e) => selectSortBy(e)}>Author</Dropdown.Item>
+                            <Dropdown.Item value = "title" onClick={(e) => selectSortBy(e)}>Title</Dropdown.Item>
+                            <Dropdown.Item value = "year" onClick={(e) => selectSortBy(e)}>Year</Dropdown.Item>
                         </DropdownButton>
                     </div>
                 </div>
