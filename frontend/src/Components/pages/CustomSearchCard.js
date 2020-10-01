@@ -7,9 +7,9 @@ import { addArray } from '../actions/index.js'
 
 function CustomSearchCard(props) {
 
-  const leftCustomValue = useSelector(state => state.leftCustomValue)
-  const operatorCustomValue = useSelector(state => state.operatorCustomValue)
-  const rightCustomValue = useSelector(state => state.rightCustomValue)
+  // const leftCustomValue = useSelector(state => state.leftCustomValue)
+  // const operatorCustomValue = useSelector(state => state.operatorCustomValue)
+  // const rightCustomValue = useSelector(state => state.rightCustomValue)
   const dispatch = useDispatch();
 
   const [seMethods, setMethods] = useState([]);
