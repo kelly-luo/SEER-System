@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form, Container, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
-import './CustomSearchCard.css'
+import './CustomSearchCard.css';
 import { useDispatch } from 'react-redux';
 import { addArray } from '../actions/index.js'
 
-function CustomSearchCard(props) {
+function CustomSearchCard() {
 
   // const leftCustomValue = useSelector(state => state.leftCustomValue)
   // const operatorCustomValue = useSelector(state => state.operatorCustomValue)
@@ -29,21 +29,22 @@ function CustomSearchCard(props) {
   const changeSelect = (e) => {
     e.preventDefault();
     setSelect(e.target.textContent)
-    props.changedSelectCallback(e.target.textContent);
+    // props.changedSelectCallback(e.target.textContent);
     dispatch(addArray(e.target.textContent))
   }
 
   const changeOperator = (e) => {
     e.preventDefault();
     setOperator(e.target.textContent)
-    props.changedOperatorCallback(e.target.textContent);
+    // props.changedOperatorCallback(e.target.textContent);
     dispatch(addArray(e.target.textContent))
   }
 
   const changeSeMethod = (e) => {
     e.preventDefault();
+    console.log(e.target.textContent)
     setSeValue(e.target.textContent)
-    props.changedSeMethodCallback(e.target.textContent);
+    // props.changedSeMethodCallback(e.target.textContent);
     dispatch(addArray(e.target.textContent))
   }
 

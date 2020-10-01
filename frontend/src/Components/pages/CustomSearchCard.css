@@ -11,19 +11,9 @@
 }
 
 .dropdown-menu {
+    position: relative;
     height: 200px;
+    width: auto;
     overflow-y: auto;
+    overflow-x: auto;
 }
-
-/* .fadeOut{
-    opacity:0;
-    width:0;
-    height:0;
-    transition: width 0.25s 0.25s, height 0.25s 0.25s, opacity 0.25s;
-}
-.fadeIn{
-    opacity:1;
-    width:100px;
-    height:100px;
-    transition: width 0.5s, height 0.5s, opacity 0.5s 0.5s;
-} */

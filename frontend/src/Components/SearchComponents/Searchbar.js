@@ -10,37 +10,17 @@ import UIButton from '@material-ui/core/Button'
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
   const [customActive, setCustomActive] = useState(false);
-  const [methodValue, setMethodValue] = useState("");
-  const [operatorValue, setOperatorValue] = useState("");
-  const [selectionValue, setSelectionValue] = useState("");
   const history = useHistory();
 
   const search = (e) => {
       e.preventDefault();
       if (searchInput !== "") {
         history.push(`/search/${searchInput}`)
-      }else if (customActive === true){
-        history.push(`/search/custom/${selectionValue}/${operatorValue}/${methodValue}`)
       }
       else{
           history.push(`/search`)
       }
       setSearchInput("")
-  }
-
-  const changedSelectValue = (data) => {
-    console.log("Yayyyyyy data has arrived: " + data)
-    setSelectionValue(data)
-  }
-
-  const changedOperatorValue = (data) => {
-    console.log("Yayyyyyy operator has arrived: " + data)
-    setOperatorValue(data)
-  }
-
-  const changedSeMethodValue = (data) => {
-    console.log("Yayyyyyy se method has arrived: " + data)
-    setMethodValue(data)
   }
 
   return (
@@ -73,9 +53,9 @@ function SearchBar() {
           {customActive && (
             <div className="d-flex justify-content-center">
               <CustomSearchCard
-              changedSelectCallback={changedSelectValue.bind(this)}
-              changedOperatorCallback={changedOperatorValue.bind(this)}
-              changedSeMethodCallback={changedSeMethodValue.bind(this)}
+              // changedSelectCallback={changedSelectValue.bind(this)}
+              // changedOperatorCallback={changedOperatorValue.bind(this)}
+              // changedSeMethodCallback={changedSeMethodValue.bind(this)}
               ></CustomSearchCard>
             </div>
           )}
