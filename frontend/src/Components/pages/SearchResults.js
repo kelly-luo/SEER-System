@@ -6,7 +6,6 @@ import SearchHeader from '../SearchComponents/SearchHeader';
 import * as ReactBootStrap from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
-import Sortby from '../SearchComponents/Sortby'
 import { Dropdown } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 
@@ -14,9 +13,7 @@ function SearchResults() {
     const { term } = useParams();
     
     const [articles, setArticles] = useState([]);
-    const [data, setData] = useState([]);
-    const [selectOption, setOption] = useState('Sort search by');
-    const [selectByAuthor, setByAuthor] = useState(false);
+    const [selectOption] = useState('Sort search by');
 
     const selectSortBy = (e) => {
         e.preventDefault();
