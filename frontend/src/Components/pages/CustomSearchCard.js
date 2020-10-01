@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Container, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
 import './CustomSearchCard.css';
 import { useDispatch } from 'react-redux';
-import { addArray } from '../actions/index.js'
+import { addLeft, addMiddle, addRight } from '../actions/index.js'
 
 function CustomSearchCard() {
 
@@ -16,7 +16,6 @@ function CustomSearchCard() {
   const [selectValue, setSelect] = useState('Select');
   const [operatorValue, setOperator] = useState('Operator');
   const [seValue, setSeValue] = useState('SE Method');
-  // const [seId, setSeId] = useState([]);
   
   useEffect(() => {
   axios.get('/methods')
@@ -29,15 +28,17 @@ function CustomSearchCard() {
   const changeSelect = (e) => {
     e.preventDefault();
     setSelect(e.target.textContent)
+    console.log(e.target.textContent)
     // props.changedSelectCallback(e.target.textContent);
-    dispatch(addArray(e.target.textContent))
+    dispatch(addLeft(e.target.textContent))
   }
 
   const changeOperator = (e) => {
     e.preventDefault();
     setOperator(e.target.textContent)
+    console.log(e.target.textContent)
     // props.changedOperatorCallback(e.target.textContent);
-    dispatch(addArray(e.target.textContent))
+    dispatch(addMiddle(e.target.textContent))
   }
 
   const changeSeMethod = (e) => {
@@ -45,7 +46,7 @@ function CustomSearchCard() {
     console.log(e.target.textContent)
     setSeValue(e.target.textContent)
     // props.changedSeMethodCallback(e.target.textContent);
-    dispatch(addArray(e.target.textContent))
+    dispatch(addRight(e.target.textContent))
   }
 
   const displaySeMethods = (method, index) => {
