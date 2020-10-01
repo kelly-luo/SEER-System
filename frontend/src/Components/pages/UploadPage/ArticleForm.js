@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class form extends Component {
     render() { 
         const{fileInfo} = this.props;
-        //console.log(fileInfo);
+        console.log(fileInfo);
 
         return ( 
             <React.Fragment>
