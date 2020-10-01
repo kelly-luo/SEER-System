@@ -13,7 +13,7 @@ class UploadFile extends Component {
 
     handleFile(e) {
         let file = e.target.files[0]
-        this.state.fileName = e.target.files[0].name;
+        this.setState({ fileName:  e.target.files[0].name })
         this.setState({ file: file })
         //console.log(file);
 
