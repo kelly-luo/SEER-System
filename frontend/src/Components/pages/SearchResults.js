@@ -58,9 +58,10 @@ function SearchResults() {
             if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
                 console.log("HI")
                 var string = rightCustomValue.items[0]
+                var left = leftCustomValue.items[0]
 
-                return Object.keys(article).some(key =>
-                    article[key].toString().toLowerCase().includes(string.toLowerCase().trim())
+                return Object.keys(article).some(
+                    article[left].toString().toLowerCase().includes(string.toLowerCase().trim()) 
                 );
             }
             return articles;
