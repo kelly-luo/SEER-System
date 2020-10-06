@@ -8,8 +8,12 @@ import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
 import { Dropdown } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton'
+import { useSelector } from 'react-redux';
 
 function SearchResults() {
+    const leftCustomValue = useSelector(state => state.leftCustomValue)
+    const operatorCustomValue = useSelector(state => state.operatorCustomValue)
+    const rightCustomValue = useSelector(state => state.rightCustomValue)
     const { term } = useParams();
     
     const [articles, setArticles] = useState([]);
@@ -28,7 +32,6 @@ function SearchResults() {
             setArticles([...articles].sort((a, b) => a.year < b.year ? 1 : -1));
         }
         
-        
         console.log("Sorted array",articles);
     }
 
@@ -42,12 +45,34 @@ function SearchResults() {
 
 
     const filteredArticles = articles.filter(article => {
+        // if(leftCustomValue !== null && operatorCustomValue !== null && rightCustomValue !== null){
+        //     console.log(rightCustomValue.items[0])
+
+        //     var string = rightCustomValue.items[0];
+            
+        //     return Object.keys(article).some(key =>
+        //         article[key].toString().includes("Pair Programming")
+        //     );
+        // }
         if (term === undefined) {
+            if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
+                console.log("HI")
+                var string = rightCustomValue.items[0]
+
+                return Object.keys(article).some(key =>
+                    article[key].toString().toLowerCase().includes(string.toLowerCase().trim())
+                );
+            }
             return articles;
         }
         else {
+            console.log(rightCustomValue.items)
+            console.log(rightCustomValue.items[0]);
+            // if it has SEmethod then add to term
+            var newTerm = term.concat(rightCustomValue.items[0]);
+
             return Object.keys(article).some(key =>
-                article[key].toString().toLowerCase().includes(term.toLowerCase().trim())
+                console.log(article[key].toString().toLowerCase().includes(term.toLowerCase().trim()))
             );
         }
 

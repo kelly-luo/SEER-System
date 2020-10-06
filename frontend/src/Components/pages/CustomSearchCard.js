@@ -6,10 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addLeft, addMiddle, addRight } from '../actions/index.js'
 
 function CustomSearchCard() {
-
-  // const leftCustomValue = useSelector(state => state.leftCustomValue)
-  // const operatorCustomValue = useSelector(state => state.operatorCustomValue)
-  // const rightCustomValue = useSelector(state => state.rightCustomValue)
+  
   const dispatch = useDispatch();
 
   const [seMethods, setMethods] = useState([]);
