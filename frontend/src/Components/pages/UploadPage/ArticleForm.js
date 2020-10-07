@@ -2,16 +2,12 @@ import React, { Component } from 'react';
 
 class form extends Component {
     render() { 
-        const{fileInfo} = this.props;
-        console.log(fileInfo);
-
         return ( 
             <React.Fragment>
                 <form>
                     <div className="form-group">
                         <label >Author</label>
-                        <textarea className="form-control"  rows="1"></textarea>
-
+                    <textarea className="form-control"  rows="1" >{this.props.author}</textarea>
                     </div>
                     <div className="form-group">
                         <label>Title</label>

@@ -9,31 +9,46 @@ class UploadFile extends Component {
         file: null,
         fileName: null,
         fileResult:null,
+        author:null,
+        title:null,
+        publisher:null,
+        year:null,
+        month:null,
+        journal:null
     }
 
     handleFile(e) {
+
         let file = e.target.files[0]
         this.setState({ fileName:  e.target.files[0].name })
         this.setState({ file: file })
         //console.log(file);
-
         let formData = new FormData();
         formData.append("uploaded-file", file);   
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
-        reader.onload = () => this.setState({ 
-            fileResult: reader.result
-        })
+        reader.onload = (e) => {
+            const lines = reader.result.split(/\r\n|\n/);
+            var authorResult ="";
+            console.log(lines.length);
+            for(var count = 0 ; count<lines.length;count++)
+            {
+
+                if(isIncluded(lines[count],"author"))
+                {
+                    authorResult+=lines[count];
+                }
+            }
+            
+            this.setState({author:authorResult});
+            console.log(this.state.author);
+           // textarea.value = lines.join('\n'); 
     }
+}
 
     handleUpload(e) {
 
         const url = '/files';
-
-        // reader.onload = () => this.setState({ 
-        //     fileResult: reader.result
-        // })
-     
             axios.post(url, {file:this.state.fileResult})
             .then((response) => {
                 //handle response latter
@@ -64,13 +79,16 @@ class UploadFile extends Component {
                 <p>{this.state.fileResult}</p>
                 
         <ArticleForm
-            fileInfo = {this.state.file} 
+            author = {this.state.author}
         >
             </ArticleForm>
 
             </React.Fragment>
         );
     }
-}
 
+}
+function isIncluded(result,text) {
+    return result.includes(text);
+}
 export default UploadFile;
