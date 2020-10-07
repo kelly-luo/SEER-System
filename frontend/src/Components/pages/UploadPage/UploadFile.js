@@ -41,8 +41,8 @@ class UploadFile extends Component {
             }
             
             this.setState({author:authorResult});
-            console.log(this.state.author);
-           // textarea.value = lines.join('\n'); 
+         //   console.log(this.state.author);
+           
     }
 }
 
