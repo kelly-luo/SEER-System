@@ -9,7 +9,7 @@ class UploadFile extends Component {
         file: null,
         fileName: null,
         fileResult:null,
-        author:null,
+        author:"",
         title:null,
         publisher:null,
         year:null,
@@ -81,9 +81,9 @@ class UploadFile extends Component {
         <ArticleForm
             author = {this.state.author}
         >
-            </ArticleForm>
+        </ArticleForm>
 
-            </React.Fragment>
+     </React.Fragment>
         );
     }
 
