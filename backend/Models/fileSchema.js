@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 
 const fileSchema = new Schema({
-    file:{
+    author:{
         type: String,
         required: true,
     }

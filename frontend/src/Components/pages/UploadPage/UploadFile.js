@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import * as FormData from 'form-data'
 //const FormData = require('form-data');
 import ArticleForm from './ArticleForm.js';
@@ -46,20 +45,6 @@ class UploadFile extends Component {
     }
 }
 
-    handleUpload(e) {
-
-        const url = '/files';
-            axios.post(url, {file:this.state.fileResult})
-            .then((response) => {
-                //handle response latter
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        
-
-    }
     render() {
         return (
             <React.Fragment>
@@ -72,7 +57,7 @@ class UploadFile extends Component {
                             aria-describedby="inputGroupFileAddon01" onChange={(e) => this.handleFile(e)} />
                         <label className="custom-file-label" htmlFor="inputGroupFile01" >choose a file</label>
                     </div>
-                    <button onClick={(e) => this.handleUpload(e)}>submit</button>
+           
                 </div>
                 <p>{this.state.fileName}</p>
                 <br></br>
