@@ -45,35 +45,25 @@ function SearchResults() {
 
 
     const filteredArticles = articles.filter(article => {
-        // if(leftCustomValue !== null && operatorCustomValue !== null && rightCustomValue !== null){
-        //     console.log(rightCustomValue.items[0])
-
-        //     var string = rightCustomValue.items[0];
-            
-        //     return Object.keys(article).some(key =>
-        //         article[key].toString().includes("Pair Programming")
-        //     );
-        // }
         if (term === undefined) {
             if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
-                console.log("HI")
-                var string = rightCustomValue.items[0]
-                var left = leftCustomValue.items[0]
+                var right = rightCustomValue.items[0]
+                var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
 
-                return Object.keys(article).some(
-                    article[left].toString().toLowerCase().includes(string.toLowerCase().trim()) 
+                return Object.keys(article).some(key =>
+                    (key === left.toLowerCase()) ? article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false
                 );
             }
             return articles;
         }
         else {
-            console.log(rightCustomValue.items)
-            console.log(rightCustomValue.items[0]);
-            // if it has SEmethod then add to term
-            var newTerm = term.concat(rightCustomValue.items[0]);
+            // var right = rightCustomValue.items[0]
+            // var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
+            // // if it has SEmethod then add to term
+            // var newTerm = term.concat(rightCustomValue.items[0]);
 
             return Object.keys(article).some(key =>
-                console.log(article[key].toString().toLowerCase().includes(term.toLowerCase().trim()))
+                article[key].toString().toLowerCase().includes(term.toLowerCase().trim())
             );
         }
 
