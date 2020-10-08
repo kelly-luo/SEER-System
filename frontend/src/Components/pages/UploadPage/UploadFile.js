@@ -17,16 +17,19 @@ class UploadFile extends Component {
     }
 
     handleFile(e) {
-
+        //read file and save into state
         let file = e.target.files[0]
         this.setState({ fileName: e.target.files[0].name })
         this.setState({ file: file })
-        //console.log(file);
+
         let formData = new FormData();
         formData.append("uploaded-file", file);
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
+        
+        //read file data and extract data 
         reader.onload = (e) => {
+            //split the file line by line
             const lines = reader.result.split(/\r\n|\n/);
             var authorResult = "";
             var titleResult = "";
@@ -35,7 +38,7 @@ class UploadFile extends Component {
             var monthResult = "";
             var journalResult = "";
 
-            console.log(lines.length);
+            //check each line containes that key word
             for (var count = 0; count < lines.length; count++) {
 
                 if (isIncluded(lines[count], "author")) {
@@ -54,7 +57,8 @@ class UploadFile extends Component {
                     journalResult += lines[count];
                 }
             }
-
+            
+            //update state
             this.setState({ author: authorResult });
             this.setState({ title: titleResult });
             this.setState({ publisher: publisherResult });
@@ -84,6 +88,7 @@ class UploadFile extends Component {
                 <br></br>
                 <p>{this.state.fileResult}</p>
 
+                {/* pass down the state to the article form */}
                 <ArticleForm
                     author={this.state.author}
                     title={this.state.title}
