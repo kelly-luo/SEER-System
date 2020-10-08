@@ -11,25 +11,42 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 
 function SearchResults() {
     const { term } = useParams();
-    
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
 
-    const selectSortBy = (e) => {
+    const sortByAuthor = (e) =>{
         e.preventDefault();
-
         if(e.target.textContent.toLowerCase() === "author"){
             setArticles([...articles].sort((a, b) => a.author > b.author ? 1 : -1));
         }
+    }
+
+    const sortByTitle = (e) =>{
+        e.preventDefault();
         if(e.target.textContent.toLowerCase() === "title"){
             setArticles([...articles].sort((a, b) => a.title > b.title ? 1 : -1));
         }
+    }
+
+    const sortByYear = (e) =>{
+        e.preventDefault();
         if(e.target.textContent.toLowerCase() === "year"){
             setArticles([...articles].sort((a, b) => a.year < b.year ? 1 : -1));
         }
-        
-        
-        console.log("Sorted array",articles);
+    
+    }
+
+    const sortByJournal = (e) =>{
+        e.preventDefault();
+        if(e.target.textContent.toLowerCase() === "journal"){
+            setArticles([...articles].sort((a, b) => a.journal < b.journal ? 1 : -1));
+        }
+    }
+
+    const sortByRating = (e) => {
+        if (e.target.textContent.toLowerCase() === "rating") {
+            setArticles([...articles].sort((a, b) => a.rating > b.rating ? 1 : -1));
+        }
     }
 
 
@@ -84,9 +101,12 @@ function SearchResults() {
                     <div>
 
                         <DropdownButton id="dropdown-item-button" title={selectOption}>
-                            <Dropdown.Item value="author" onClick={(e) => selectSortBy(e)}>Author</Dropdown.Item>
-                            <Dropdown.Item value = "title" onClick={(e) => selectSortBy(e)}>Title</Dropdown.Item>
-                            <Dropdown.Item value = "year" onClick={(e) => selectSortBy(e)}>Year</Dropdown.Item>
+                            <Dropdown.Item value="author" onClick={(e) => sortByAuthor(e)}>Author</Dropdown.Item>
+                            <Dropdown.Item value = "title" onClick={(e) => sortByTitle(e)}>Title</Dropdown.Item>
+                            <Dropdown.Item value = "rating" onClick={(e) => sortByJournal(e)}>Journal</Dropdown.Item>
+                            <Dropdown.Item value = "year" onClick={(e) => sortByYear(e)}>Year</Dropdown.Item>
+                            <Dropdown.Item value = "rating" onClick={(e) => sortByRating(e)}>Rating</Dropdown.Item>
+                            
                         </DropdownButton>
                     </div>
                 </div>
@@ -94,13 +114,15 @@ function SearchResults() {
                 <div className='searchData'>
                     <ReactBootStrap.Table striped bordered hover>
                         <thead>
-                            <tr>
-                                <th>Author</th>
-                                <th>Title</th>
-                                <th>Journal</th>
-                                <th>Year</th>
-                                <th>Rating</th>
-                            </tr>
+                            <th><button onClick={sortByAuthor}>Author</button></th>
+                            <th><button onClick={sortByTitle}>Title</button></th>                                
+                            <th><button onClick={sortByJournal}>Journal</button></th> 
+                            <th><button onClick={sortByYear}>Year</button></th> 
+                            <th><button onClick={sortByRating}>Rating</button></th> 
+                                
+                                
+                                
+
                         </thead>
                         <tbody>
                             {filteredArticles.map(renderArticles)}
