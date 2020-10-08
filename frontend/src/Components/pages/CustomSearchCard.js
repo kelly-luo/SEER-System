@@ -48,9 +48,11 @@ function CustomSearchCard() {
 
   const displaySeMethods = (method, index) => {
       return (
-          <div key={index}>
-              <Dropdown.Item onClick={(e) => changeSeMethod(e)}>{method.name}</Dropdown.Item>
-          </div>
+        <div key={index}>
+          {(method.name === 'SeMethod') ? method.seMethod.map((seList) => 
+            <Dropdown.Item onClick={(e) => changeSeMethod(e)}>{seList}</Dropdown.Item>
+          ) : null}
+        </div>
       );
   }
 
