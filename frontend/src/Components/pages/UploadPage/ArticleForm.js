@@ -4,8 +4,10 @@ import axios from 'axios';
 class form extends Component {
  
     handleUpload(e) {
+
+        e.preventDefault();
         
-        const url = '/files';
+        const url = '/articles';
             axios.post(url, 
                 {
                     author:document.getElementById("author-text-area").value,
