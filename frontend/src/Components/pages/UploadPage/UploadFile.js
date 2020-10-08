@@ -7,43 +7,64 @@ class UploadFile extends Component {
     state = {
         file: null,
         fileName: null,
-        fileResult:null,
-        author:"",
-        title:null,
-        publisher:null,
-        year:null,
-        month:null,
-        journal:null
+        fileResult: null,
+        author: "",
+        title: "",
+        publisher: "",
+        year: "",
+        month: "",
+        journal: ""
     }
 
     handleFile(e) {
 
         let file = e.target.files[0]
-        this.setState({ fileName:  e.target.files[0].name })
+        this.setState({ fileName: e.target.files[0].name })
         this.setState({ file: file })
         //console.log(file);
         let formData = new FormData();
-        formData.append("uploaded-file", file);   
+        formData.append("uploaded-file", file);
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
         reader.onload = (e) => {
             const lines = reader.result.split(/\r\n|\n/);
-            var authorResult ="";
-            console.log(lines.length);
-            for(var count = 0 ; count<lines.length;count++)
-            {
+            var authorResult = "";
+            var titleResult = "";
+            var publisherResult = "";
+            var yearResult = "";
+            var monthResult = "";
+            var journalResult = "";
 
-                if(isIncluded(lines[count],"author"))
-                {
-                    authorResult+=lines[count];
+            console.log(lines.length);
+            for (var count = 0; count < lines.length; count++) {
+
+                if (isIncluded(lines[count], "author")) {
+                    authorResult += lines[count];
+                }
+                if (isIncluded(lines[count], "title")) {
+                    titleResult += lines[count];
+                }
+                if (isIncluded(lines[count], "publisher")) {
+                    publisherResult += lines[count];
+                } if (isIncluded(lines[count], "year")) {
+                    yearResult += lines[count];
+                } if (isIncluded(lines[count], "month")) {
+                    monthResult += lines[count];
+                } if (isIncluded(lines[count], "journal")) {
+                    journalResult += lines[count];
                 }
             }
-            
-            this.setState({author:authorResult});
-         //   console.log(this.state.author);
-           
+
+            this.setState({ author: authorResult });
+            this.setState({ title: titleResult });
+            this.setState({ publisher: publisherResult });
+            this.setState({ year: yearResult });
+            this.setState({ month: monthResult });
+            this.setState({ journal: journalResult });
+
+
+        }
     }
-}
 
     render() {
         return (
@@ -57,23 +78,28 @@ class UploadFile extends Component {
                             aria-describedby="inputGroupFileAddon01" onChange={(e) => this.handleFile(e)} />
                         <label className="custom-file-label" htmlFor="inputGroupFile01" >choose a file</label>
                     </div>
-           
+
                 </div>
                 <p>{this.state.fileName}</p>
                 <br></br>
                 <p>{this.state.fileResult}</p>
-                
-        <ArticleForm
-            author = {this.state.author}
-        >
-        </ArticleForm>
 
-     </React.Fragment>
+                <ArticleForm
+                    author={this.state.author}
+                    title={this.state.title}
+                    publisher={this.state.publisher}
+                    year={this.state.year}
+                    month={this.state.month}
+                    journal={this.state.journal}
+                >
+                </ArticleForm>
+
+            </React.Fragment>
         );
     }
 
 }
-function isIncluded(result,text) {
+function isIncluded(result, text) {
     return result.includes(text);
 }
 export default UploadFile;
