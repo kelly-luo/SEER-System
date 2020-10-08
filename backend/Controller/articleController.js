@@ -6,10 +6,10 @@ const moderatorArticle = mongoose.model('moderatorArticle', articleSchema)
 const analystArticle = mongoose.model('analystArticle', articleSchema)
 const declinedArticle = mongoose.model('declinedArticle', articleSchema)
 //const File = mongoose.model('File', fileSchema);
-
+const auth = require("../middleware/auth")
 
 module.exports = {
-    addNewArticle: function (req, res) {
+    addNewArticle: (req,res) =>{
         moderatorArticle.create(req.body)
             .then(newArticle => res.json(newArticle))
             .catch(err => res.status(422).json(err));

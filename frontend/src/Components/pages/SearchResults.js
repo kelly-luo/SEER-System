@@ -34,7 +34,7 @@ function SearchResults() {
 
 
     useEffect(() => {
-        axios.get('/articles')
+        axios.get('/getArticles')
             .then(response => {
                 setArticles(response.data)
             })

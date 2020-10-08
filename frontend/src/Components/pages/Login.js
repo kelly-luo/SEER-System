@@ -19,16 +19,7 @@ function Login(){
                     <p>Password</p>
                     <input type="password" name="" placeholder="Enter Password"></input>
                     <input type="submit" name="" value="Login"></input>
-                    
-
-
-
-                
                 </form>
-                    
-
-
-                
             </div>
         </div>
     )

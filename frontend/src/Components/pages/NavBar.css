@@ -3,3 +3,9 @@
     flex-direction: column;
     width: 100vw;
 }
+
+.components{
+    display: flex;
+    position: absolute;
+    right: 30px;
+}

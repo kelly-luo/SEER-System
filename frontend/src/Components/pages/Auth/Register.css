@@ -1,0 +1,10 @@
+.password{
+    margin-bottom: 3px;
+}
+
+.loginbox input[type="password"] {
+  border: none;
+  color: black;
+  font-size: 16px;
+}
+
