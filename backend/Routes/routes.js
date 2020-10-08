@@ -13,7 +13,8 @@ router
 
 router
   .route("/articles/:ArticleId")
-  .put(articleController.updatePublicArticleRating);
+  .put(articleController.updatePublicArticleRating)
+  .get(articleController.getSpecificArticle);
 
 router
   .route("/moderation")
@@ -31,7 +32,8 @@ router
 
 router
   .route("/analyst/:ArticleId")
-  .delete(articleController.analystDelete);
+  .delete(articleController.analystDelete)
+  
 
 router
   .route("/declined")

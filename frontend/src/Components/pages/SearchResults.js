@@ -8,28 +8,29 @@ import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
 import { Dropdown } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton'
+import ArticleModal from './ArticleModal';
 
 function SearchResults() {
     const { term } = useParams();
-    
+
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
 
     const selectSortBy = (e) => {
         e.preventDefault();
 
-        if(e.target.textContent.toLowerCase() === "author"){
+        if (e.target.textContent.toLowerCase() === "author") {
             setArticles([...articles].sort((a, b) => a.author > b.author ? 1 : -1));
         }
-        if(e.target.textContent.toLowerCase() === "title"){
+        if (e.target.textContent.toLowerCase() === "title") {
             setArticles([...articles].sort((a, b) => a.title > b.title ? 1 : -1));
         }
-        if(e.target.textContent.toLowerCase() === "year"){
+        if (e.target.textContent.toLowerCase() === "year") {
             setArticles([...articles].sort((a, b) => a.year < b.year ? 1 : -1));
         }
-        
-        
-        console.log("Sorted array",articles);
+
+
+        console.log("Sorted array", articles);
     }
 
 
@@ -53,6 +54,14 @@ function SearchResults() {
 
     })
 
+    const articleModal = (e) => {
+        return (
+            <div>
+                <ArticleModal id={e.currentTarget.id}></ArticleModal>
+            </div>
+        )
+    }
+
     const renderArticles = (article, index) => {
         let sum = 0;
         if (article.rating != null) {
@@ -64,12 +73,13 @@ function SearchResults() {
         if (isNaN(sum)) sum = 0;
 
         return (
-            <tr className="results" key={index} data-href={article.url}>
-                <td><a href={article.url}>{article.author}</a></td>
-                <td><a href={article.url}>{article.title}</a></td>
-                <td><a href={article.url}>{article.journal}</a></td>
-                <td><a href={article.url}>{article.year}</a></td>
+            <tr id={article._id} className="results" key={index} onClick={(e) => articleModal(e)}>
+                <td>{article.author}</td>
+                <td>{article.title}</td>
+                <td>{article.journal}</td>
+                <td>{article.year}</td>
                 <td><StarRating id={article._id}></StarRating> Avg user rating: {sum}</td>
+                <td><ArticleModal id={article._id}></ArticleModal></td>
             </tr>
         );
     }
@@ -82,11 +92,10 @@ function SearchResults() {
                 </div>
                 <div className='sortBy'>
                     <div>
-
                         <DropdownButton id="dropdown-item-button" title={selectOption}>
                             <Dropdown.Item value="author" onClick={(e) => selectSortBy(e)}>Author</Dropdown.Item>
-                            <Dropdown.Item value = "title" onClick={(e) => selectSortBy(e)}>Title</Dropdown.Item>
-                            <Dropdown.Item value = "year" onClick={(e) => selectSortBy(e)}>Year</Dropdown.Item>
+                            <Dropdown.Item value="title" onClick={(e) => selectSortBy(e)}>Title</Dropdown.Item>
+                            <Dropdown.Item value="year" onClick={(e) => selectSortBy(e)}>Year</Dropdown.Item>
                         </DropdownButton>
                     </div>
                 </div>
