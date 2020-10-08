@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import * as FormData from 'form-data'
 //const FormData = require('form-data');
 import ArticleForm from './ArticleForm.js';
@@ -8,43 +7,69 @@ class UploadFile extends Component {
     state = {
         file: null,
         fileName: null,
-        fileResult:null,
+        fileResult: null,
+        author: "",
+        title: "",
+        publisher: "",
+        year: "",
+        month: "",
+        journal: ""
     }
 
     handleFile(e) {
+        //read file and save into state
         let file = e.target.files[0]
-        this.setState({ fileName:  e.target.files[0].name })
+        this.setState({ fileName: e.target.files[0].name })
         this.setState({ file: file })
-        //console.log(file);
 
         let formData = new FormData();
-        formData.append("uploaded-file", file);   
+        formData.append("uploaded-file", file);
         var reader = new FileReader();
         reader.readAsText(file, "UTF-8");
-        reader.onload = () => this.setState({ 
-            fileResult: reader.result
-        })
-    }
-
-    handleUpload(e) {
-
-        const url = '/files';
-
-        // reader.onload = () => this.setState({ 
-        //     fileResult: reader.result
-        // })
-     
-            axios.post(url, {file:this.state.fileResult})
-            .then((response) => {
-                //handle response latter
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
         
+        //read file data and extract data 
+        reader.onload = (e) => {
+            //split the file line by line
+            const lines = reader.result.split(/\r\n|\n/);
+            var authorResult = "";
+            var titleResult = "";
+            var publisherResult = "";
+            var yearResult = "";
+            var monthResult = "";
+            var journalResult = "";
 
+            //check each line containes that key word
+            for (var count = 0; count < lines.length; count++) {
+
+                if (isIncluded(lines[count], "author")) {
+                    authorResult += lines[count];
+                }
+                if (isIncluded(lines[count], "title")) {
+                    titleResult += lines[count];
+                }
+                if (isIncluded(lines[count], "publisher")) {
+                    publisherResult += lines[count];
+                } if (isIncluded(lines[count], "year")) {
+                    yearResult += lines[count];
+                } if (isIncluded(lines[count], "month")) {
+                    monthResult += lines[count];
+                } if (isIncluded(lines[count], "journal")) {
+                    journalResult += lines[count];
+                }
+            }
+            
+            //update state
+            this.setState({ author: authorResult });
+            this.setState({ title: titleResult });
+            this.setState({ publisher: publisherResult });
+            this.setState({ year: yearResult });
+            this.setState({ month: monthResult });
+            this.setState({ journal: journalResult });
+
+
+        }
     }
+
     render() {
         return (
             <React.Fragment>
@@ -57,20 +82,29 @@ class UploadFile extends Component {
                             aria-describedby="inputGroupFileAddon01" onChange={(e) => this.handleFile(e)} />
                         <label className="custom-file-label" htmlFor="inputGroupFile01" >choose a file</label>
                     </div>
-                    <button onClick={(e) => this.handleUpload(e)}>submit</button>
+
                 </div>
                 <p>{this.state.fileName}</p>
                 <br></br>
                 <p>{this.state.fileResult}</p>
-                
-        <ArticleForm
-            fileInfo = {this.state.file} 
-        >
-            </ArticleForm>
+
+                {/* pass down the state to the article form */}
+                <ArticleForm
+                    author={this.state.author}
+                    title={this.state.title}
+                    publisher={this.state.publisher}
+                    year={this.state.year}
+                    month={this.state.month}
+                    journal={this.state.journal}
+                >
+                </ArticleForm>
 
             </React.Fragment>
         );
     }
-}
 
+}
+function isIncluded(result, text) {
+    return result.includes(text);
+}
 export default UploadFile;

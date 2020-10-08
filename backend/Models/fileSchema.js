@@ -4,9 +4,19 @@ const Schema = mongoose.Schema;
 
 
 const fileSchema = new Schema({
-    file:{
+    author: {
         type: String,
-        required: true,
+    }
+    , title: {
+        type: String,
+    }, publisher: {
+        type: String,
+    }, year: {
+        type: String,
+    }, month: {
+        type: String,
+    }, journal: {
+        type: String,
     }
 })
 
