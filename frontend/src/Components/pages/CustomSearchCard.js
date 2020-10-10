@@ -21,8 +21,8 @@ function CustomSearchCard() {
               setMethods(response.data)
           })
   }, [])
-  
-  const changeSelect = (e) => {
+
+  export const changeSelect = (e) => {
     e.preventDefault();
     setSelect(e.target.textContent)
     console.log(e.target.textContent)
@@ -76,14 +76,14 @@ function CustomSearchCard() {
                 <Dropdown.Item eventKey="1" onClick={(e) => changeOperator(e)}>contains</Dropdown.Item>
                 <Dropdown.Item eventKey="2" onClick={(e) => changeOperator(e)}>does not contain</Dropdown.Item>
                 <Dropdown.Item eventKey="3" onClick={(e) => changeOperator(e)}>begins with</Dropdown.Item>
-                <Dropdown.Item eventKey="4" onClick={(e) => changeOperator(e)}>is equal</Dropdown.Item>
+                <Dropdown.Item eventKey="4" onClick={(e) => changeOperator(e)}>ends with</Dropdown.Item>
+                <Dropdown.Item eventKey="5" onClick={(e) => changeOperator(e)}>is equal</Dropdown.Item>
               </DropdownButton>
             </Col>
             <Col md="auto">
               <DropdownButton id="dropdown-basic-button" title={seValue}>
                 {seMethods.map(displaySeMethods)}
               </DropdownButton>
-              {/* <Form.Control placeholder="Value" /> */}
             </Col>
           </Row>
         </Container>
