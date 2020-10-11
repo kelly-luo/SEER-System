@@ -11,7 +11,7 @@ export class Logout extends Component {
     render() {
         return (
            <Fragment>
-               <button className = 'nav-link active' onClick={this.props.logout}>Logout</button>
+               <button className = 'nav-link active' onClick={this.props.logout}><a className="link" href={window.location.href.includes("search")? window.location.href: '/'}>Logout</a></button>
            </Fragment>
         )
     }

@@ -65,6 +65,7 @@ router
 router
   .route("/getUser/:UserId")
   .put(userController.changeRole)
+  .delete(userController.deleteUser)
 
 router
   .route("/articles")

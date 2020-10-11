@@ -3,13 +3,12 @@ const articleController = require("../Controller/articleController");
 const customSearchController = require("../Controller/customSearchController");
 const fileController = require("../Controller/fileController");
 const userController = require("../Controller/userController")
-const auth = require("../middleware/auth")
 
 
 
 
 
-specificRouter.use(auth)
+specificRouter
   .route('/users')
   .get(userController.getUsers);
 

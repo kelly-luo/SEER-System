@@ -63,6 +63,7 @@ class Register extends Component {
         };
 
         this.props.register(newUser)
+
     }
 
     render(){

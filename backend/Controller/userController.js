@@ -101,6 +101,7 @@ module.exports = {
                                 user: {
                                     id: user.id,
                                     name: user.name,
+                                    role: user.role,
                                     email: user.email
                                 }
                             });
@@ -116,9 +117,13 @@ module.exports = {
     },
 
     getUsers: function (req, res) {
+        const token = req.header('x-auth-token')
+        const decoded = jwt.verify(token, keys.secretOrKey);
+        req.user = decoded;
         User.findById(req.user.id)
             .select('-password')
             .then(user => res.json(user))
+            .catch(err => res.status(422).json(err));
     },
 
     getAllUsers: function (req, res) {
@@ -130,5 +135,10 @@ module.exports = {
 		User.findOneAndUpdate({ _id: req.params.UserId },  req.body, {new: true})
 			.then(user => res.json(user))
 			.catch(err => res.status(422).json(err));
+    },
+    deleteUser: function (req, res) {
+        User.deleteOne({ _id: req.params.UserId })
+            .then(User => res.json(User))
+            .catch(err => res.status(422).json(err));
     }
 }
