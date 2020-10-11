@@ -117,6 +117,9 @@ module.exports = {
     },
 
     getUsers: function (req, res) {
+        const token = req.header('x-auth-token')
+        const decoded = jwt.verify(token, keys.secretOrKey);
+        req.user = decoded;
         User.findById(req.user.id)
             .select('-password')
             .then(user => res.json(user))

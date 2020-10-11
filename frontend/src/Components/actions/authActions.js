@@ -5,18 +5,22 @@ import { USER_LOADED, USER_LOADING, AUTH_ERROR, REGISTER_SUCCESS, REGISTER_FAIL,
 export const loadUser = () => (dispatch, getState) => {
 
 
-    dispatch({ type: USER_LOADING });
-    axios.get('/users', tokenConfig(getState))
-        .then(res => dispatch({
-            type: USER_LOADED,
-            payload: res.data,
-        }))
-        .catch(err => {
-            dispatch(returnErrors(err.response.data, err.response.status));
-            dispatch({
-                type: AUTH_ERROR,
+    if (tokenConfig(getState).headers['x-auth-token'] !== null) {
+        dispatch({ type: USER_LOADING });
+        axios.get('/users', tokenConfig(getState))
+            .then(res => dispatch({
+                type: USER_LOADED,
+                payload: res.data,
+            }))
+            .catch(err => {
+                dispatch(returnErrors(err.response.data, err.response.status));
+                dispatch({
+                    type: AUTH_ERROR,
+                })
             })
-        })
+    }
+
+
 }
 
 
@@ -73,11 +77,8 @@ export const tokenConfig = getState => {
 
     const config = {
         headers: {
-            'Content-type': 'application/json'
+            'x-auth-token': token
         }
-    }
-    if (token) {
-        config.header['x-auth-token'] = token;
     }
     return config;
 
