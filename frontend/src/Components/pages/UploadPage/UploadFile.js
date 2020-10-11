@@ -104,7 +104,7 @@ class UploadFile extends Component {
     }
 
 }
-function isIncluded(result, text) {
+export function isIncluded(result, text) {
     return result.includes(text);
 }
 export default UploadFile;
