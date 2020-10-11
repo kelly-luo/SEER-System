@@ -9,6 +9,7 @@ import "./Button.css"
 
 
 class Login extends Component {
+
     state = {
         modal: false,
         email: '',
@@ -62,6 +63,8 @@ class Login extends Component {
         }
 
         this.props.login(user);
+
+
         
     }
 

@@ -3,6 +3,7 @@ import axios from 'axios'
 import * as ReactBootStrap from "react-bootstrap"
 import NavBar from './NavBar'
 import ChangeRole from './ChangeRole';
+import DeleteUserButton from './DeleteUserButton';
 
 function AdminPage() {
 
@@ -21,6 +22,7 @@ function AdminPage() {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td><ChangeRole page="getUser" user={user}></ChangeRole></td>
+                <td><DeleteUserButton user={user._id}></DeleteUserButton></td>
             </tr>
         );
     }
@@ -37,6 +39,7 @@ function AdminPage() {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>

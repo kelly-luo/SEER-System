@@ -4,6 +4,15 @@ button{
     outline:none;
 }
 
+.link{
+    color: black;
+}
+
+.link:hover{
+    color:black;
+    text-decoration: none;
+}
+
 button :active{
     border: none;
     outline:none;
