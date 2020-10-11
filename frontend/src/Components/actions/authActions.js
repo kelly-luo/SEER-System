@@ -5,7 +5,6 @@ import { USER_LOADED, USER_LOADING, AUTH_ERROR, REGISTER_SUCCESS, REGISTER_FAIL,
 export const loadUser = () => (dispatch, getState) => {
 
     
-
     if (tokenConfig(getState).headers["x-auth-token"] !== null) {
         dispatch({ type: USER_LOADING });
         axios.get('/users', tokenConfig(getState))
@@ -19,6 +18,9 @@ export const loadUser = () => (dispatch, getState) => {
                     type: AUTH_ERROR,
                 })
             })
+    }
+    else{
+        console.log("Hello")
     }
 }
 
