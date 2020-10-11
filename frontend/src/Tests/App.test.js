@@ -11,8 +11,9 @@
     expect(linkElement).toBeInTheDocument();
 });*/
 
-var expectTest = require('chai').expect;
-var request = require('request');
+// import chai from 'chai'
+// import { expect } from 'chai';
+// const var request = require('request');
 
 //it('Backend Page', function (done) {
   //  request("http://localhost:4000", function (error, response, body) {
@@ -21,9 +22,9 @@ var request = require('request');
     //});
 //});
 
-var assert = require('assert');
+// var assert = require('assert');
 describe('Simple String Test', function () {
     it('should return number of charachters in a string', function () {
-        assert.equal("Hello World!".length, 12);
+        expect("Hello World!".length, 12);
     });
 });

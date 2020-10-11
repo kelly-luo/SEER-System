@@ -1,8 +1,10 @@
-import { isIncluded } from '../Components/pages/UploadPage/UploadFile';
- 
+import { isIncluded } from '../Components/pages/UploadPage/UploadFile.js';
+var chai = reuire("chai");
+var expect = chai.expect;
+
 describe('App Component', () => {
     it('renders the Counter wrapper', () => {
-        var expect = isIncluded("Hello World", "World");
-        expect(true);
+        var result = isIncluded("Hello World", "World");
+        expect(result.to.be.equal(true));
     });
 });

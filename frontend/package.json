@@ -33,7 +33,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "mocha --require @babel/register --require ./helpers.js --require ./dom.js '../frontend/src/Tests/*.test.js'",
+        "test": "mocha '../frontend/src/Tests/*.test.js'",
         "test:unit:watch": "npm run test:unit -- --watch",
         "eject": "react-scripts eject"
     },
