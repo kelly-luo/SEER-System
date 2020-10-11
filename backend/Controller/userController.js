@@ -123,6 +123,7 @@ module.exports = {
         User.findById(req.user.id)
             .select('-password')
             .then(user => res.json(user))
+            .catch(err => res.status(422).json(err));
     },
 
     getAllUsers: function (req, res) {
