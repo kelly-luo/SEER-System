@@ -2,7 +2,6 @@ import axios from 'axios';
 import { returnErrors } from "./errorAction"
 import { USER_LOADED, USER_LOADING, AUTH_ERROR, REGISTER_SUCCESS, REGISTER_FAIL, LOGOUT_SUCCESS, LOGIN_SUCCESS, LOGIN_FAIL } from "./index"
 
-
 export const loadUser = () => (dispatch, getState) => {
 
     dispatch({ type: USER_LOADING });
@@ -39,6 +38,7 @@ export const login = ({ email, password }) => dispatch => {
 }
 
 export const logout = () => {
+    
     return {
         type: LOGOUT_SUCCESS
     }
