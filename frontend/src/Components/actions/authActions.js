@@ -74,13 +74,11 @@ export const register = ({ name, email, password, password2 }) => dispatch => {
 export const tokenConfig = getState => {
     const token = getState().auth.token;
 
+
     const config = {
         headers: {
-            'Content-Type': 'application/json'
+            'x-auth-token': token
         }
-    }
-    if(token){
-        config.headers['x-auth-token'] = token;
     }
     return config;
 
