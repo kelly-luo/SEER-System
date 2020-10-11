@@ -6,17 +6,20 @@ export const loadUser = () => (dispatch, getState) => {
 
     dispatch({ type: USER_LOADING });
 
-    axios.get('/users', tokenConfig(getState))
-        .then(res => dispatch({
-            type: USER_LOADED,
-            payload: res.data,
-        }))
-        .catch(err => {
-            dispatch(returnErrors(err.response.data, err.response.status));
-            dispatch({
-                type: AUTH_ERROR,
+    if (tokenConfig(getState).headers["x-auth-token"] !== null) {
+        axios.get('/users', tokenConfig(getState))
+            .then(res => dispatch({
+                type: USER_LOADED,
+                payload: res.data,
+            }))
+            .catch(err => {
+                dispatch(returnErrors(err.response.data, err.response.status));
+                dispatch({
+                    type: AUTH_ERROR,
+                })
             })
-        })
+    }
+
 }
 
 export const login = ({ email, password }) => dispatch => {
@@ -38,7 +41,7 @@ export const login = ({ email, password }) => dispatch => {
 }
 
 export const logout = () => {
-    
+
     return {
         type: LOGOUT_SUCCESS
     }
