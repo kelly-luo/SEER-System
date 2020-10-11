@@ -4,9 +4,10 @@ import { USER_LOADED, USER_LOADING, AUTH_ERROR, REGISTER_SUCCESS, REGISTER_FAIL,
 
 export const loadUser = () => (dispatch, getState) => {
 
-    dispatch({ type: USER_LOADING });
+    
 
     if (tokenConfig(getState).headers["x-auth-token"] !== null) {
+        dispatch({ type: USER_LOADING });
         axios.get('/users', tokenConfig(getState))
             .then(res => dispatch({
                 type: USER_LOADED,

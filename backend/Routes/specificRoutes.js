@@ -9,7 +9,7 @@ const auth = require("../middleware/auth")
 
 
 
-specificRouter
+specificRouter.use(auth)
   .route('/users')
   .get(userController.getUsers);
 
