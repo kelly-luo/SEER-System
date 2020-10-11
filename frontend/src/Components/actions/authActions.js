@@ -19,7 +19,6 @@ export const loadUser = () => (dispatch, getState) => {
                 })
             })
     }
-
 }
 
 export const login = ({ email, password }) => dispatch => {
