@@ -6,7 +6,6 @@ const moderatorArticle = mongoose.model('moderatorArticle', articleSchema)
 const analystArticle = mongoose.model('analystArticle', articleSchema)
 const declinedArticle = mongoose.model('declinedArticle', articleSchema)
 //const File = mongoose.model('File', fileSchema);
-const auth = require("../middleware/auth")
 
 module.exports = {
     addNewArticle: (req,res) =>{

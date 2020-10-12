@@ -17,58 +17,46 @@ class NavBar extends Component {
 
     render() {
         const { isAuthenticated, user } = this.props.auth;
-        var authLinks;
-        var guestLinks;
-        if (user === null) {
-            guestLinks = (
-                <Fragment>
-                    <Register></Register>
-                    <Login></Login>
-                </Fragment>
-            )
-        }
-        else {
-            if (user.role === "registeredUser") {
-                authLinks = (
-                    <Fragment>
-                        <Link to="/upload" className="nav-link active">Upload</Link>
-                        <Link to="/profile" className="nav-link active">Profile</Link>
-                        <Logout></Logout>
-                    </Fragment>
-                )
-            }
-            if (user.role === "moderator") {
-                authLinks = (
-                    <Fragment>
-                        <Link to="/upload" className="nav-link active">Upload</Link>
-                        <Link to="/moderate" className="nav-link active">Moderation</Link>
-                        <Link to="/profile" className="nav-link active">Profile</Link>
-                        <Logout></Logout>
-                    </Fragment>
-                )
-            }
-            if (user.role === "analyst") {
-                authLinks = (
-                    <Fragment>
-                        <Link to="/upload" className="nav-link active">Upload</Link>
-                        <Link to="/analyse" className="nav-link active">Analyse</Link>
-                        <Link to="/profile" className="nav-link active">Profile</Link>
-                        <Logout></Logout>
-                    </Fragment>
-                )
-            } if (user.role === "admin") {
-                authLinks = (
-                    <Fragment>
-                        <Link to="/upload" className="nav-link active">Upload</Link>
-                        <Link to="/moderate" className="nav-link active">Moderation</Link>
-                        <Link to="/analyse" className="nav-link active">Analyse</Link>
-                        <Link to="/admin" className="nav-link active">Admin</Link>
-                        <Link to="/profile" className="nav-link active">Profile</Link>
-                        <Logout></Logout>
-                    </Fragment>
-                )
-            }
-        }
+
+        const guestLinks = (
+            <Fragment>
+                <Register></Register>
+                <Login></Login>
+            </Fragment>
+        )
+        const authLinks = (
+            <Fragment>
+                <Link to="/upload" className="nav-link active">Upload</Link>
+                <Link to="/profile" className="nav-link active">Profile</Link>
+                <Logout></Logout>
+            </Fragment>
+        )
+        const moderatorLinks = (
+            <Fragment>
+                <Link to="/upload" className="nav-link active">Upload</Link>
+                <Link to="/moderate" className="nav-link active">Moderation</Link>
+                <Link to="/profile" className="nav-link active">Profile</Link>
+                <Logout></Logout>
+            </Fragment>
+        )
+        const analystLinks = (
+            <Fragment>
+                <Link to="/upload" className="nav-link active">Upload</Link>
+                <Link to="/analyse" className="nav-link active">Analyse</Link>
+                <Link to="/profile" className="nav-link active">Profile</Link>
+                <Logout></Logout>
+            </Fragment>
+        )
+        const adminLinks = (
+            <Fragment>
+                <Link to="/upload" className="nav-link active">Upload</Link>
+                <Link to="/moderate" className="nav-link active">Moderation</Link>
+                <Link to="/analyse" className="nav-link active">Analyse</Link>
+                <Link to="/admin" className="nav-link active">Admin</Link>
+                <Link to="/profile" className="nav-link active">Profile</Link>
+                <Logout></Logout>
+            </Fragment>
+        )
         return (
             <div className='navBar' >
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -78,8 +66,8 @@ class NavBar extends Component {
                     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div className="navbar-nav">
                             <Link to="/" className="nav-link active">Home</Link>
-                            <div className = "components">
-                                {isAuthenticated ? authLinks : guestLinks}
+                            <div className="components">
+                                {isAuthenticated ? (user.role === 'admin' ? adminLinks : user.role === 'moderator' ? moderatorLinks : user.role === 'analyst' ? analystLinks : authLinks) : guestLinks}
                             </div>
                         </div>
                     </div>
