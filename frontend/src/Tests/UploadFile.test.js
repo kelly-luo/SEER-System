@@ -1,5 +1,6 @@
 import { isIncluded } from '../Components/pages/UploadPage/UploadFile.js';
-var chai = reuire("chai");
+
+import { chai } from "chai";
 var expect = chai.expect;
 
 describe('App Component', () => {
