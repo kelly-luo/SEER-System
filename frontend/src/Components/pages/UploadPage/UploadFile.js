@@ -59,6 +59,28 @@ class UploadFile extends Component {
             }
             
             //update state
+            authorResult=authorResult.replaceAll("author = "," ");
+            authorResult=authorResult.replaceAll("{"," ");
+            authorResult=authorResult.replaceAll("}"," ");
+
+            titleResult=titleResult.replaceAll("title = "," ");
+            titleResult= titleResult.replaceAll("{"," ");
+            titleResult= titleResult.replaceAll("}"," ");
+
+            publisherResult=publisherResult.replaceAll("publisher = "," ");
+            publisherResult= publisherResult.replaceAll( "{"," ");
+            publisherResult= publisherResult.replaceAll("}"," ");
+
+            yearResult=yearResult.replaceAll("year = "," ");
+            yearResult= yearResult.replaceAll( "{"," ");
+            yearResult= yearResult.replaceAll( "}"," ");
+
+            monthResult=monthResult.replaceAll("month = "," ");
+
+            journalResult=journalResult.replaceAll("journal = "," ");
+            journalResult= journalResult.replaceAll( "{"," ");
+            journalResult= journalResult.replaceAll("}"," ");
+
             this.setState({ author: authorResult });
             this.setState({ title: titleResult });
             this.setState({ publisher: publisherResult });
