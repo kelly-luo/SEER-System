@@ -22,7 +22,7 @@ function CustomSearchCard() {
           })
   }, [])
 
-  export const changeSelect = (e) => {
+  const changeSelect = (e) => {
     e.preventDefault();
     setSelect(e.target.textContent)
     console.log(e.target.textContent)
@@ -81,9 +81,11 @@ function CustomSearchCard() {
               </DropdownButton>
             </Col>
             <Col md="auto">
-              <DropdownButton id="dropdown-basic-button" title={seValue}>
-                {seMethods.map(displaySeMethods)}
+            {selectValue !== 'Select' ?               
+              <DropdownButton id="dropdown-basic-button" title={selectValue}>
+                 {seMethods.map(displaySeMethods)}
               </DropdownButton>
+            : null}
             </Col>
           </Row>
         </Container>
