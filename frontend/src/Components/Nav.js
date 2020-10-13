@@ -4,7 +4,8 @@ import AdminPage from './pages/AdminPage';
 import AnalystPage from './pages/AnalystPage';
 import Homepage from './pages/Homepage';
 import SearchResults from './pages/SearchResults';
-import UploadArticlePage from './pages/UploadPage/UploadArticlePage.js'
+import UploadArticlePage from './pages/UploadPage/UploadArticlePage'
+import ModerationPage from "./pages/ModerationPage"
 
 function Nav() {
     
@@ -15,6 +16,8 @@ function Nav() {
                     <Route path={["/search/:term","/search/custom/:selection/:operator/:seMethod","/search"]} exact component={SearchResults}>
                     </Route>
                     <Route path="/analyse" exact component={AnalystPage}>
+                    </Route>
+                    <Route path="/moderate" exact component={ModerationPage}>
                     </Route>
                     <Route path="/upload" exact component={UploadArticlePage}>
                     </Route>
