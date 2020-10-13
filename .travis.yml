@@ -8,7 +8,7 @@ install:
   - cd frontend && npm i
 
 script:
-  - npm test
+  - cd .. && npm test
 
 before_deploy:
   - cd .. && npm run build
