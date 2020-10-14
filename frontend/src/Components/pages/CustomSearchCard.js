@@ -66,9 +66,8 @@ function CustomSearchCard() {
               <DropdownButton id="dropdown-basic-button" title={selectValue}>
                 <Dropdown.Item onClick={(e) => changeSelect(e)}>SE Method</Dropdown.Item>
                 <Dropdown.Item onClick={(e) => changeSelect(e)}>SE Methodology</Dropdown.Item>
-                <Dropdown.Item onClick={(e) => changeSelect(e)}>Benefit</Dropdown.Item>
-                <Dropdown.Item onClick={(e) => changeSelect(e)}>Participants</Dropdown.Item>
-                <Dropdown.Item onClick={(e) => changeSelect(e)}>Name of Field</Dropdown.Item>
+                <Dropdown.Item onClick={(e) => changeSelect(e)}>Title</Dropdown.Item>
+                <Dropdown.Item onClick={(e) => changeSelect(e)}>Author</Dropdown.Item>
               </DropdownButton>
             </Col>
             <Col md="auto">
@@ -81,10 +80,14 @@ function CustomSearchCard() {
               </DropdownButton>
             </Col>
             <Col md="auto">
-            {selectValue !== 'Select' ?               
-              <DropdownButton id="dropdown-basic-button" title={selectValue}>
+            {selectValue !== 'Select' ?   
+              selectValue === 'Author' || selectValue === 'Title'? 
+              <Form>
+              <Form.Control placeholder={`Enter ${selectValue}`} />
+              </Form>
+              : <DropdownButton id="dropdown-basic-button" title={selectValue}>
                  {seMethods.map(displaySeMethods)}
-              </DropdownButton>
+              </DropdownButton>       
             : null}
             </Col>
           </Row>
