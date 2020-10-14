@@ -24,6 +24,12 @@ class form extends Component {
             .catch((error) => {
                 console.log(error);
             });
+            document.getElementById("author-text-area").value = "";
+           document.getElementById("title-text-area").value = "";
+            document.getElementById("publisher-text-area").value= "";
+          document.getElementById("year-text-area").value= "";
+           document.getElementById("month-text-area").value= "";
+            document.getElementById("journal-text-area").value= "";
         
 
     }
