@@ -40,8 +40,8 @@ function CustomSearchCard() {
 
   const changeSeMethod = (e) => {
     e.preventDefault();
-    console.log(e.target.textContent)
-    setSeValue(e.target.textContent)
+    console.log(e.target.value)
+    setSeValue(e.target.value)
     // props.changedSeMethodCallback(e.target.textContent);
     dispatch(addRight(e.target.textContent))
   }
@@ -74,16 +74,19 @@ function CustomSearchCard() {
               <DropdownButton id="dropdown-basic-button" title={operatorValue}>
                 <Dropdown.Item eventKey="1" onClick={(e) => changeOperator(e)}>contains</Dropdown.Item>
                 <Dropdown.Item eventKey="2" onClick={(e) => changeOperator(e)}>does not contain</Dropdown.Item>
-                <Dropdown.Item eventKey="3" onClick={(e) => changeOperator(e)}>begins with</Dropdown.Item>
-                <Dropdown.Item eventKey="4" onClick={(e) => changeOperator(e)}>ends with</Dropdown.Item>
-                <Dropdown.Item eventKey="5" onClick={(e) => changeOperator(e)}>is equal</Dropdown.Item>
+                {selectValue !== 'SE Method' && selectValue !== 'SE Methodology' ? <>
+                  <Dropdown.Item eventKey="3" onClick={(e) => changeOperator(e)}>begins with</Dropdown.Item>
+                  <Dropdown.Item eventKey="4" onClick={(e) => changeOperator(e)}>ends with</Dropdown.Item>
+                  <Dropdown.Item eventKey="5" onClick={(e) => changeOperator(e)}>is equal</Dropdown.Item>
+                  </>
+                  : null}
               </DropdownButton>
             </Col>
             <Col md="auto">
             {selectValue !== 'Select' ?   
               selectValue === 'Author' || selectValue === 'Title'? 
               <Form>
-              <Form.Control placeholder={`Enter ${selectValue}`} />
+              <Form.Control placeholder={`Enter ${selectValue}`} onChange={(e) => changeSeMethod(e)}/>
               </Form>
               : <DropdownButton id="dropdown-basic-button" title={selectValue}>
                  {seMethods.map(displaySeMethods)}
