@@ -4,9 +4,11 @@ import { Form, Container, Row, Col, Dropdown, DropdownButton } from 'react-boots
 import './CustomSearchCard.css';
 import { useDispatch } from 'react-redux';
 import { addLeft, addMiddle, addRight } from '../actions/index.js'
+import { useHistory } from "react-router-dom";
 
 function CustomSearchCard() {
-  
+
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const [seMethods, setMethods] = useState([]);
@@ -21,6 +23,13 @@ function CustomSearchCard() {
               setMethods(response.data)
           })
   }, [])
+
+  useEffect(() => {
+    history.listen((location, action) => {
+      console.log(`The current URL is ${location.pathname}${location.search}${location.hash}`)
+      console.log(`The last navigation action was ${action}`)
+    })
+  });
 
   const changeSelect = (e) => {
     e.preventDefault();
