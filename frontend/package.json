@@ -12,6 +12,7 @@
         "bootstrap": "^4.5.2",
         "firebase": "^7.22.1",
         "form-data": "^3.0.0",
+        "jest-dom": "^4.0.0",
         "jwt-decode": "^3.0.0",
         "materialize-css": "^1.0.0-rc.2",
         "mdbreact": "^4.27.0",

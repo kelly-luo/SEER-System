@@ -9,7 +9,9 @@
     "build": "cd frontend && npm run build",
     "install-frontend": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-frontend && npm run build",
-    "test": "cd frontend && npm test"
+    "test": "concurrently \"npm run test-backend\"  \"npm run test-frontend\"",
+    "test-frontend": "cd frontend && npm test",
+    "test-backend": "cd backend && mocha Tests/**/*.js --timeout 10000"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,8 @@
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.2",
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "concurrently": "^5.3.0",
     "config": "^3.3.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
