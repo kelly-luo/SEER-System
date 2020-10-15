@@ -28,6 +28,7 @@
     width: 50px;
     height: 100px;
 }
+
 .dropdown-menu {
     height: auto;
     overflow-y: hidden;
@@ -35,5 +36,12 @@
     margin: 30px;
     margin-bottom: 50px;
     text-align: center;
+  }
+  
+  .tableButtons {
+      position: sticky;
+      background-color: lightblue;
+      padding: 12px;
+      width: 150pt;
 
   }

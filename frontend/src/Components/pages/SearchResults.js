@@ -17,21 +17,21 @@ function SearchResults() {
     const sortByAuthor = (e) =>{
         e.preventDefault();
         if(e.target.textContent.toLowerCase() === "author"){
-            setArticles([...articles].sort((a, b) => a.author > b.author ? 1 : -1));
+            setArticles([...articles].sort((a, b) => a.author.trim() > b.author.trim() ? 1 : -1));
         }
     }
 
     const sortByTitle = (e) =>{
         e.preventDefault();
         if(e.target.textContent.toLowerCase() === "title"){
-            setArticles([...articles].sort((a, b) => a.title > b.title ? 1 : -1));
+            setArticles([...articles].sort((a, b) => a.title.trim() > b.title.trim() ? 1 : -1));
         }
     }
 
     const sortByYear = (e) =>{
         e.preventDefault();
         if(e.target.textContent.toLowerCase() === "year"){
-            setArticles([...articles].sort((a, b) => a.year < b.year ? 1 : -1));
+            setArticles([...articles].sort((a, b) => a.year.trim() < b.year.trim() ? 1 : -1));
         }
     
     }
@@ -39,13 +39,14 @@ function SearchResults() {
     const sortByJournal = (e) =>{
         e.preventDefault();
         if(e.target.textContent.toLowerCase() === "journal"){
-            setArticles([...articles].sort((a, b) => a.journal < b.journal ? 1 : -1));
+            setArticles([...articles].sort((a, b) => a.journal.trim() < b.journal.trim() ? 1 : -1));
         }
     }
 
     const sortByRating = (e) => {
         if (e.target.textContent.toLowerCase() === "rating") {
-            setArticles([...articles].sort((a, b) => a.rating > b.rating ? 1 : -1));
+            console.log("Sum of ratings: " + setArticles([...articles].reduce((a, b) => a.rating + b.rating, 0)))
+            setArticles([...articles].sort((a, b) => a.rating.index > b.rating.index ? 1 : -1));
         }
     }
 
@@ -99,14 +100,12 @@ function SearchResults() {
                 </div>
                 <div className='sortBy'>
                     <div>
-
                         <DropdownButton id="dropdown-item-button" title={selectOption}>
                             <Dropdown.Item value="author" onClick={(e) => sortByAuthor(e)}>Author</Dropdown.Item>
                             <Dropdown.Item value = "title" onClick={(e) => sortByTitle(e)}>Title</Dropdown.Item>
                             <Dropdown.Item value = "rating" onClick={(e) => sortByJournal(e)}>Journal</Dropdown.Item>
                             <Dropdown.Item value = "year" onClick={(e) => sortByYear(e)}>Year</Dropdown.Item>
                             <Dropdown.Item value = "rating" onClick={(e) => sortByRating(e)}>Rating</Dropdown.Item>
-                            
                         </DropdownButton>
                     </div>
                 </div>
@@ -114,15 +113,13 @@ function SearchResults() {
                 <div className='searchData'>
                     <ReactBootStrap.Table striped bordered hover>
                         <thead>
-                            <th><button onClick={sortByAuthor}>Author</button></th>
-                            <th><button onClick={sortByTitle}>Title</button></th>                                
-                            <th><button onClick={sortByJournal}>Journal</button></th> 
-                            <th><button onClick={sortByYear}>Year</button></th> 
-                            <th><button onClick={sortByRating}>Rating</button></th> 
-                                
-                                
-                                
-
+                            <tr>
+                            <th><button className="tableButtons" onClick={sortByAuthor}>Author</button></th>
+                            <th><button className="tableButtons" onClick={sortByTitle}>Title</button></th>                                
+                            <th><button className="tableButtons" onClick={sortByJournal}>Journal</button></th> 
+                            <th><button className="tableButtons" onClick={sortByYear}>Year</button></th> 
+                            <th><button className="tableButtons" onClick={sortByRating}>Rating</button></th> 
+                            </tr>    
                         </thead>
                         <tbody>
                             {filteredArticles.map(renderArticles)}
@@ -131,8 +128,6 @@ function SearchResults() {
                 </div>
             </div>
         </div>);
-
-
 };
 
 export default SearchResults;
