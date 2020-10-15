@@ -12,7 +12,6 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap"
 
 function SearchResults() {
     const { term } = useParams();
-
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
     // eslint-disable-next-line
@@ -23,21 +22,40 @@ function SearchResults() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const selectSortBy = (e) => {
+    const sortByAuthor = (e) =>{
         e.preventDefault();
-
-        if (e.target.textContent.toLowerCase() === "author") {
-            setArticles([...articles].sort((a, b) => a.author > b.author ? 1 : -1));
+        if(e.target.textContent.toLowerCase() === "author"){
+            setArticles([...articles].sort((a, b) => a.author.trim() > b.author.trim() ? 1 : -1));
         }
-        if (e.target.textContent.toLowerCase() === "title") {
-            setArticles([...articles].sort((a, b) => a.title > b.title ? 1 : -1));
-        }
-        if (e.target.textContent.toLowerCase() === "year") {
-            setArticles([...articles].sort((a, b) => a.year < b.year ? 1 : -1));
-        }
+    }
 
+    const sortByTitle = (e) =>{
+        e.preventDefault();
+        if(e.target.textContent.toLowerCase() === "title"){
+            setArticles([...articles].sort((a, b) => a.title.trim() > b.title.trim() ? 1 : -1));
+        }
+    }
 
-        console.log("Sorted array", articles);
+    const sortByYear = (e) =>{
+        e.preventDefault();
+        if(e.target.textContent.toLowerCase() === "year"){
+            setArticles([...articles].sort((a, b) => a.year.trim() < b.year.trim() ? 1 : -1));
+        }
+    
+    }
+
+    const sortByJournal = (e) =>{
+        e.preventDefault();
+        if(e.target.textContent.toLowerCase() === "journal"){
+            setArticles([...articles].sort((a, b) => a.journal.trim().toLowerCase() > b.journal.trim().toLowerCase() ? 1 : -1));
+        }
+    }
+
+    const sortByRating = (e) => {
+        if (e.target.textContent.toLowerCase() === "rating") {
+            console.log("Sum of ratings: " + setArticles([...articles].reduce((a, b) => a.rating + b.rating, 0)))
+            setArticles([...articles].sort((a, b) => a.rating.index > b.rating.index ? 1 : -1));
+        }
     }
 
 
@@ -111,9 +129,11 @@ function SearchResults() {
                 <div className='sortBy'>
                     <div>
                         <DropdownButton id="dropdown-item-button" title={selectOption}>
-                            <Dropdown.Item value="author" onClick={(e) => selectSortBy(e)}>Author</Dropdown.Item>
-                            <Dropdown.Item value="title" onClick={(e) => selectSortBy(e)}>Title</Dropdown.Item>
-                            <Dropdown.Item value="year" onClick={(e) => selectSortBy(e)}>Year</Dropdown.Item>
+                            <Dropdown.Item value="author" onClick={(e) => sortByAuthor(e)}>Author</Dropdown.Item>
+                            <Dropdown.Item value = "title" onClick={(e) => sortByTitle(e)}>Title</Dropdown.Item>
+                            <Dropdown.Item value = "rating" onClick={(e) => sortByJournal(e)}>Journal</Dropdown.Item>
+                            <Dropdown.Item value = "year" onClick={(e) => sortByYear(e)}>Year</Dropdown.Item>
+                            <Dropdown.Item value = "rating" onClick={(e) => sortByRating(e)}>Rating</Dropdown.Item>
                         </DropdownButton>
                     </div>
                 </div>
@@ -123,12 +143,12 @@ function SearchResults() {
                     <ReactBootStrap.Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th>Author</th>
-                                <th>Title</th>
-                                <th>Journal</th>
-                                <th>Year</th>
-                                <th>Rating</th>
-                            </tr>
+                            <th><button className="tableButtons" onClick={sortByAuthor}>Author</button></th>
+                            <th><button className="tableButtons" onClick={sortByTitle}>Title</button></th>                                
+                            <th><button className="tableButtons" onClick={sortByJournal}>Journal</button></th> 
+                            <th><button className="tableButtons" onClick={sortByYear}>Year</button></th> 
+                            <th><button className="tableButtons" onClick={sortByRating}>Rating</button></th> 
+                            </tr>    
                         </thead>
                         <tbody>
                             {filteredArticles.map(renderArticles)}
@@ -137,8 +157,6 @@ function SearchResults() {
                 </div>
             </div>
         </div>);
-
-
 };
 
 
