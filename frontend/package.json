@@ -34,7 +34,8 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test:unit": "mocha --require @babel/register --require ./src/Tests/helpers.js --require ./src/Tests/dom.js --require ignore-styles 'src/Tests/*.test.js'",
+        "test:unit:watch": "npm run test:unit -- --watch",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
@@ -52,5 +53,20 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "http://localhost:4000"
+    "proxy": "http://localhost:4000",
+    "devDependencies": {
+        "@babel/core": "^7.11.6",
+        "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+        "@babel/register": "^7.11.5",
+        "babel-plugin-inline-react-svg": "^1.1.1",
+        "babel-preset-react-app-babel-7": "^4.0.2-0",
+        "chai": "^4.2.0",
+        "chai-enzyme": "^1.0.0-beta.1",
+        "cheerio": "^1.0.0-rc.3",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.5",
+        "ignore-styles": "^5.0.1",
+        "jsdom": "^16.4.0",
+        "mocha": "^8.1.3"
+    }
 }

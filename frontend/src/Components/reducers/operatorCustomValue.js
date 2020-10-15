@@ -1,6 +1,6 @@
 const operatorCustomValue = (state = {items: []}, action) => {
     switch(action.type){
-        case 'ADD':
+        case 'ADD_MIDDLE_DROPDOWN':
             return { items: [...state.items, action.payload] };
         case 'RESET_LIST':
             return {

@@ -8,9 +8,13 @@ import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
 import { Dropdown } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton'
+import { useSelector } from 'react-redux';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap"
 
 function SearchResults() {
+    const leftCustomValue = useSelector(state => state.leftCustomValue)
+    const operatorCustomValue = useSelector(state => state.operatorCustomValue)
+    const rightCustomValue = useSelector(state => state.rightCustomValue)
     const { term } = useParams();
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
@@ -69,12 +73,38 @@ function SearchResults() {
 
     const filteredArticles = articles.filter(article => {
         if (term === undefined) {
+            if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
+                var right = rightCustomValue.items[0]
+                var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
+                var operator = operatorCustomValue.items[0]
+
+                if(operator === 'contains'){
+                    return Object.keys(article).some(key =>
+                        (key === left) ? article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false
+                    );
+                }else if(operator === 'does not contain'){
+                    return Object.keys(article).some(key =>
+                        (key === left) ? !article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false
+                    );
+                }
+
+            }
             return articles;
         }
         else {
-            return Object.keys(article).some(key =>
-                article[key].toString().toLowerCase().includes(term.toLowerCase().trim())
-            );
+            if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
+                // var right = rightCustomValue.items[0]
+                // var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
+
+                return Object.keys(article).some(key =>
+                    article[key].toString().toLowerCase().includes(term.toLowerCase().trim()) && ((key === left) ? article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false)
+                );
+            }else{
+                return Object.keys(article).some(key =>
+                    article[key].toString().toLowerCase().includes(term.toLowerCase().trim())
+                );
+            }
+
         }
 
     })
