@@ -44,7 +44,7 @@ function CustomSearchCard() {
     setSelect(e.target.textContent);
     console.log(e.target.textContent);
     dispatch(addLeft(e.target.textContent));
-    
+
     if (e.currentTarget.textContent === "SE Method") {
       setFilterSeMethod(seMethods[0]);
     }
@@ -80,7 +80,6 @@ function CustomSearchCard() {
 
   return (
     <div className="box">
-      <Form>
         <Container>
           <Row>
             <Col md="auto">If</Col>
@@ -154,7 +153,6 @@ function CustomSearchCard() {
             </Col>
           </Row>
         </Container>
-      </Form>
     </div>
   );
 }
