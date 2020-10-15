@@ -47,7 +47,7 @@ function SearchResults() {
     const sortByJournal = (e) =>{
         e.preventDefault();
         if(e.target.textContent.toLowerCase() === "journal"){
-            setArticles([...articles].sort((a, b) => a.journal.trim() > b.journal.trim() ? 1 : -1));
+            setArticles([...articles].sort((a, b) => a.journal.trim().toLowerCase() > b.journal.trim().toLowerCase() ? 1 : -1));
         }
     }
 
