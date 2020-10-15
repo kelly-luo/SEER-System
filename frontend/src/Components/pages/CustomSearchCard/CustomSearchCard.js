@@ -21,7 +21,7 @@ function CustomSearchCard() {
   const [filterSeMethod, setFilterSeMethod] = useState([]);
   const [selectValue, setSelect] = useState("Select");
   const [operatorValue, setOperator] = useState("Operator");
-  // const [seValue, setSeValue] = useState("SE Method");
+  const [seValue, setSeValue] = useState("SE Method");
 
   useEffect(() => {
     axios.get("/methods").then((response) => {
@@ -64,7 +64,7 @@ function CustomSearchCard() {
     e.preventDefault();
     console.log(e.target.value);
     // TOO DOOOOO dropdown box for e.target.textContent
-    // setSeValue(e.target.value);
+    setSeValue(e.target.textContent);
     dispatch(addRight(e.target.textContent));
   };
 
@@ -144,7 +144,7 @@ function CustomSearchCard() {
                 ) : (
                   <DropdownButton
                     id="dropdown-basic-button"
-                    title={selectValue}
+                    title={seValue}
                   >
                     {filterSeMethod.seMethod.map(displaySeMethods)}
                   </DropdownButton>
