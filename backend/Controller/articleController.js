@@ -7,9 +7,8 @@ const analystArticle = mongoose.model('analystArticle', articleSchema)
 const declinedArticle = mongoose.model('declinedArticle', articleSchema)
 //const File = mongoose.model('File', fileSchema);
 
-
 module.exports = {
-    addNewArticle: function (req, res) {
+    addNewArticle: (req,res) =>{
         moderatorArticle.create(req.body)
             .then(newArticle => res.json(newArticle))
             .catch(err => res.status(422).json(err));
@@ -40,7 +39,7 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     analystDelete: function (req, res) {
-        analystArticle.remove({ _id: req.params.ArticleId })
+        analystArticle.deleteOne({ _id: req.params.ArticleId })
             .then(Article => res.json(Article))
             .catch(err => res.status(422).json(err));
     },
@@ -61,6 +60,11 @@ module.exports = {
     },
     getDeclinedArticle: function (req, res) {
         declinedArticle.find({})
+            .then(Articles => res.json(Articles))
+            .catch(err => res.status(422).json(err));
+    },
+    getSpecificArticle: function (req, res) {
+        publicArticle.find({ _id: req.params.ArticleId})
             .then(Articles => res.json(Articles))
             .catch(err => res.status(422).json(err));
     },

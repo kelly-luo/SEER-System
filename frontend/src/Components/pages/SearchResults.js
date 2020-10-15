@@ -8,11 +8,19 @@ import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
 import { Dropdown } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton'
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap"
 
 function SearchResults() {
     const { term } = useParams();
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
+    // eslint-disable-next-line
+    const [showModal, setShowModal] = useState(false);
+    const [index, setIndex] = useState();
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const sortByAuthor = (e) =>{
         e.preventDefault();
@@ -39,7 +47,7 @@ function SearchResults() {
     const sortByJournal = (e) =>{
         e.preventDefault();
         if(e.target.textContent.toLowerCase() === "journal"){
-            setArticles([...articles].sort((a, b) => a.journal.trim() < b.journal.trim() ? 1 : -1));
+            setArticles([...articles].sort((a, b) => a.journal.trim() > b.journal.trim() ? 1 : -1));
         }
     }
 
@@ -52,7 +60,7 @@ function SearchResults() {
 
 
     useEffect(() => {
-        axios.get('/articles')
+        axios.get('/getArticles')
             .then(response => {
                 setArticles(response.data)
             })
@@ -71,6 +79,24 @@ function SearchResults() {
 
     })
 
+    const toggleTrueFalse = () => {
+        setShowModal(handleShow)
+    }
+
+    const ModalContent = () => {
+        return (
+            <Modal isOpen={show} toggle={handleClose}>
+                <ModalHeader>Title: {articles[index].title}</ModalHeader>
+                <ModalBody>Description: {articles[index].description}</ModalBody>
+                <ModalBody>DOI: {articles[index].DOI}</ModalBody>
+                <ModalFooter>
+                    <Button color="primary" onClick={() => { toggleTrueFalse(); window.open(articles[index].url) }}>Go to article</Button>
+                </ModalFooter>
+            </Modal>
+
+        )
+    }
+
     const renderArticles = (article, index) => {
         let sum = 0;
         if (article.rating != null) {
@@ -82,15 +108,17 @@ function SearchResults() {
         if (isNaN(sum)) sum = 0;
 
         return (
-            <tr className="results" key={index} data-href={article.url}>
-                <td><a href={article.url}>{article.author}</a></td>
-                <td><a href={article.url}>{article.title}</a></td>
-                <td><a href={article.url}>{article.journal}</a></td>
-                <td><a href={article.url}>{article.year}</a></td>
+            <tr id={article} className="results" key={index} onClick={() => { setIndex(index); toggleTrueFalse(); }}>
+                <td>{article.author}</td>
+                <td>{article.title}</td>
+                <td>{article.journal}</td>
+                <td>{article.year}</td>
                 <td><StarRating id={article._id}></StarRating> Avg user rating: {sum}</td>
             </tr>
         );
     }
+
+
     return (
         <div>
             <NavigationBar></NavigationBar>
@@ -110,6 +138,7 @@ function SearchResults() {
                     </div>
                 </div>
                 <p className="resultsNumber">Number of results for query "{term}" : {filteredArticles.length}</p>
+                {show ? <ModalContent /> : null}
                 <div className='searchData'>
                     <ReactBootStrap.Table striped bordered hover>
                         <thead>
@@ -129,5 +158,6 @@ function SearchResults() {
             </div>
         </div>);
 };
+
 
 export default SearchResults;

@@ -1,0 +1,27 @@
+button{
+    background: none;
+    border: none;
+    outline:none;
+}
+
+.link{
+    color: black;
+}
+
+.link:hover{
+    color:black;
+    text-decoration: none;
+}
+
+button :active{
+    border: none;
+    outline:none;
+}
+button :focus{
+    outline: none;
+    border:none;
+}
+
+.nav-link.active{
+    outline:none;
+}

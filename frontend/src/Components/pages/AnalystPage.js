@@ -3,7 +3,7 @@ import axios from 'axios';
 import NavBar from './NavBar'
 import * as ReactBootStrap from "react-bootstrap"
 import "./AnalystPage.css"
-import Review from '../Review/Review';
+import AnalystReview from '../Review/AnalystReview';
 
 function AnalystPage() {
     const [analystArticles, setAnalystArticles] = useState([]);
@@ -22,7 +22,7 @@ function AnalystPage() {
                 <td><a href={article.url}>{article.title}</a></td>
                 <td><a href={article.url}>{article.journal}</a></td>
                 <td><a href={article.url}>{article.year}</a></td>
-                <td><Review page="analyst" article={article}></Review></td>
+                <td><AnalystReview article={article}></AnalystReview></td>
             </tr>
         );
     }
