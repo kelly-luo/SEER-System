@@ -2,15 +2,19 @@ const router = require("express").Router();
 const articleController = require("../Controller/articleController");
 const customSearchController = require("../Controller/customSearchController");
 const fileController = require("../Controller/fileController");
+const userController = require("../Controller/userController")
+
+
+
 
 router
-  .route("/articles")
+  .route("/getArticles")
   .get(articleController.getPublicArticle)
-  .post(articleController.addNewArticle);
 
 router
   .route("/articles/:ArticleId")
-  .put(articleController.updatePublicArticleRating);
+  .put(articleController.updatePublicArticleRating)
+  .get(articleController.getSpecificArticle);
 
 router
   .route("/moderation")
@@ -26,7 +30,10 @@ router
   .get(articleController.getAnalystArticle)
   .post(articleController.analystAcceptArticle);
 
-router.route("/analyst/:ArticleId").delete(articleController.analystDelete);
+router
+  .route("/analyst/:ArticleId")
+  .delete(articleController.analystDelete)
+  
 
 router
   .route("/declined")
@@ -37,12 +44,32 @@ router
   .route("/methods")
   .get(customSearchController.getSeMethods)
   .post(customSearchController.addMethod);
-  
+
 
 router
   .route("/methods/:methodId")
   .put(customSearchController.addNewMethod);
-  
+
+router
+  .route("/register")
+  .post(userController.addNewUser)
+
+router
+  .route("/login")
+  .post(userController.login)
+
+router
+  .route("/getUser")
+  .get(userController.getAllUsers)
+
+router
+  .route("/getUser/:UserId")
+  .put(userController.changeRole)
+  .delete(userController.deleteUser)
+
+router
+  .route("/articles")
+  .post(articleController.addNewArticle);
 
 router
   .route("/files")
@@ -51,3 +78,4 @@ router
 console.log("fileRoutes been activied");
 
 module.exports = router;
+

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './Searchbar.css';
 import SearchIcon from '@material-ui/icons/Search';
-import CustomSearchCard from '../pages/CustomSearchCard.js'
+import CustomSearchCard from '../pages/CustomSearchCard/CustomSearchCard.js'
 import { useHistory } from "react-router-dom";
 import BootstrapButton from 'react-bootstrap/Button';
 import UIButton from '@material-ui/core/Button'

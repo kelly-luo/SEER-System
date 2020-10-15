@@ -7,6 +7,9 @@ const articleSchema = new Schema({
         type: String,
         //required: true
     },
+    description:{
+        type: String,
+    },
     title: {
         type: String,
         //required: true
@@ -38,6 +41,9 @@ const articleSchema = new Schema({
     url: {
         type: String,
         //required: true,
+    },
+    DOI:{
+        type: String,
     },
     rating:{
         type: [Number]
