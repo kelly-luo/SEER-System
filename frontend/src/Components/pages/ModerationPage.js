@@ -35,11 +35,11 @@ function ModerationPage() {
                 <ReactBootStrap.Table striped bordered hover>
                     <thead>
                         <tr>
-                            <th>Author</th>
-                            <th>Title</th>
-                            <th>Journal</th>
-                            <th>Year</th>
-                            <th>Review</th>
+                            <th style={{width: "33.66%"}}>Author</th>
+                            <th style={{width: "33.66%"}}>Title</th>
+                            <th style={{width: "14.66%"}}>Journal</th>
+                            <th style={{width: "5%"}}>Year</th>
+                            <th style={{width: "11%", fontStyle:"bold"}}>Review</th>
                         </tr>
                     </thead>
                     <tbody>

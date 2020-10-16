@@ -95,7 +95,7 @@ function SearchResults() {
                 <td>{article.title}</td>
                 <td>{article.journal}</td>
                 <td>{article.year}</td>
-                <td><StarRating id={article._id}></StarRating> Avg user rating: {sum}</td>
+                <td><StarRating id={article._id}></StarRating> Avg user rating: {article.rating}</td>
             </tr>
         );
     }
@@ -123,11 +123,11 @@ function SearchResults() {
                     <ReactBootStrap.Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th>Author</th>
-                                <th>Title</th>
-                                <th>Journal</th>
-                                <th>Year</th>
-                                <th>Rating</th>
+                                <th style={{width: "31.66%"}}>Author</th>
+                                <th style={{width: "31.66%"}}>Title</th>
+                                <th style={{width: "16.66%"}}>Journal</th>
+                                <th style={{width: "5%"}}>Year</th>
+                                <th style={{width: "15%"}}>Rating</th>
                             </tr>
                         </thead>
                         <tbody>

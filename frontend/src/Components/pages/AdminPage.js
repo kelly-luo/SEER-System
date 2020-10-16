@@ -36,10 +36,10 @@ function AdminPage() {
                 <ReactBootStrap.Table striped bordered hover>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Actions</th>
+                            <th style={{width: "25%"}}>Name</th>
+                            <th style={{width: "25%"}}>Email</th>
+                            <th style={{width: "25%"}}>Role</th>
+                            <th style={{width: "25%"}}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
