@@ -17,7 +17,7 @@ function SearchResults() {
     const rightCustomValue = useSelector(state => state.rightCustomValue)
     const { term } = useParams();
     const { custom } = useParams();
-    
+
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
     const [showModal, setShowModal] = useState(false);
@@ -78,19 +78,18 @@ function SearchResults() {
     const filteredArticles = articles.filter(article => {
         console.log(custom)
 
-        if (term === undefined) {
-            if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
-                var right = rightCustomValue.items[0]
+        if (term === undefined || term === 'custom') {
+            if(custom !== null){
                 var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
                 var operator = operatorCustomValue.items[0]
 
                 if(operator === 'contains'){
                     return Object.keys(article).some(key =>
-                        (key === left) ? article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false
+                        (key === left) ? article[left].toString().toLowerCase().includes(custom.toLowerCase().trim()) : false
                     );
                 }else if(operator === 'does not contain'){
                     return Object.keys(article).some(key =>
-                        (key === left) ? !article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false
+                        (key === left) ? !article[left].toString().toLowerCase().includes(custom.toLowerCase().trim()) : false
                     );
                 }
 
@@ -98,12 +97,9 @@ function SearchResults() {
             return articles;
         }
         else {
-            if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
-                // var right = rightCustomValue.items[0]
-                // var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
-
+            if(custom !== null){
                 return Object.keys(article).some(key =>
-                    article[key].toString().toLowerCase().includes(term.toLowerCase().trim()) && ((key === left) ? article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false)
+                    article[key].toString().toLowerCase().includes(term.toLowerCase().trim()) && ((key === left) ? article[left].toString().toLowerCase().includes(custom.toLowerCase().trim()) : false)
                 );
             }else{
                 return Object.keys(article).some(key =>
