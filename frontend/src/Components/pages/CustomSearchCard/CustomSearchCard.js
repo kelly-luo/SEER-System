@@ -10,10 +10,10 @@ import {
 } from "react-bootstrap";
 import "./CustomSearchCard.css";
 import { useDispatch } from "react-redux";
-import { addLeft, addMiddle, addRight, resetMiddle } from "../../actions/index";
+import { addLeft, addMiddle, addRight, resetLists } from "../../actions/index";
 import { useHistory } from "react-router-dom";
 
-function CustomSearchCard() {
+function CustomSearchCard(props) {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -51,7 +51,7 @@ function CustomSearchCard() {
           dispatch(addMiddle(operatorValue));
         }
         if(prevLocation === '/search'){
-          dispatch(resetMiddle());
+          dispatch(resetLists());
         }
 
       });
@@ -81,10 +81,12 @@ function CustomSearchCard() {
 
     if(selectValue === "SE Method" || selectValue === "SE Methodology"){
       setSeValue(e.target.textContent);
-      dispatch(addRight(e.target.textContent));
+      props.changedSeMethodCallback(e.target.textContent);
+      // dispatch(addRight(e.target.textContent));
     }else{
       setSeValue(e.target.value);
-      dispatch(addRight(e.target.value));
+      props.changedSeMethodCallback(e.target.value);
+      // dispatch(addRight(e.target.value));
     }
     console.log(seValue)
   };

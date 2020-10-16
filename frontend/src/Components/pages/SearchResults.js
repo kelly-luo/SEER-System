@@ -16,9 +16,10 @@ function SearchResults() {
     const operatorCustomValue = useSelector(state => state.operatorCustomValue)
     const rightCustomValue = useSelector(state => state.rightCustomValue)
     const { term } = useParams();
+    const { custom } = useParams();
+    
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
-    // eslint-disable-next-line
     const [showModal, setShowModal] = useState(false);
     const [index, setIndex] = useState();
     const [show, setShow] = useState(false);
@@ -75,6 +76,8 @@ function SearchResults() {
 
 
     const filteredArticles = articles.filter(article => {
+        console.log(custom)
+
         if (term === undefined) {
             if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
                 var right = rightCustomValue.items[0]
