@@ -8,11 +8,14 @@ import { useParams } from "react-router-dom"
 import StarRating from '../SearchComponents/StarRating'
 import { Dropdown } from 'react-bootstrap';
 import DropdownButton from 'react-bootstrap/DropdownButton'
+import { useSelector } from 'react-redux';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap"
 
 function SearchResults() {
+    const leftCustomValue = useSelector(state => state.leftCustomValue)
+    const operatorCustomValue = useSelector(state => state.operatorCustomValue)
+    const rightCustomValue = useSelector(state => state.rightCustomValue)
     const { term } = useParams();
-
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
     // eslint-disable-next-line
@@ -23,21 +26,40 @@ function SearchResults() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const selectSortBy = (e) => {
+    const sortByAuthor = (e) =>{
         e.preventDefault();
-
-        if (e.target.textContent.toLowerCase() === "author") {
-            setArticles([...articles].sort((a, b) => a.author > b.author ? 1 : -1));
+        if(e.target.textContent.toLowerCase() === "author"){
+            setArticles([...articles].sort((a, b) => a.author.trim() > b.author.trim() ? 1 : -1));
         }
-        if (e.target.textContent.toLowerCase() === "title") {
-            setArticles([...articles].sort((a, b) => a.title > b.title ? 1 : -1));
-        }
-        if (e.target.textContent.toLowerCase() === "year") {
-            setArticles([...articles].sort((a, b) => a.year < b.year ? 1 : -1));
-        }
+    }
 
+    const sortByTitle = (e) =>{
+        e.preventDefault();
+        if(e.target.textContent.toLowerCase() === "title"){
+            setArticles([...articles].sort((a, b) => a.title.trim() > b.title.trim() ? 1 : -1));
+        }
+    }
 
-        console.log("Sorted array", articles);
+    const sortByYear = (e) =>{
+        e.preventDefault();
+        if(e.target.textContent.toLowerCase() === "year"){
+            setArticles([...articles].sort((a, b) => a.year.trim() < b.year.trim() ? 1 : -1));
+        }
+    
+    }
+
+    const sortByJournal = (e) =>{
+        e.preventDefault();
+        if(e.target.textContent.toLowerCase() === "journal"){
+            setArticles([...articles].sort((a, b) => a.journal.trim().toLowerCase() > b.journal.trim().toLowerCase() ? 1 : -1));
+        }
+    }
+
+    const sortByRating = (e) => {
+        if (e.target.textContent.toLowerCase() === "rating") {
+            console.log("Sum of ratings: " + setArticles([...articles].reduce((a, b) => a.rating + b.rating, 0)))
+            setArticles([...articles].sort((a, b) => a.rating.index > b.rating.index ? 1 : -1));
+        }
     }
 
 
@@ -51,12 +73,38 @@ function SearchResults() {
 
     const filteredArticles = articles.filter(article => {
         if (term === undefined) {
+            if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
+                var right = rightCustomValue.items[0]
+                var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
+                var operator = operatorCustomValue.items[0]
+
+                if(operator === 'contains'){
+                    return Object.keys(article).some(key =>
+                        (key === left) ? article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false
+                    );
+                }else if(operator === 'does not contain'){
+                    return Object.keys(article).some(key =>
+                        (key === left) ? !article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false
+                    );
+                }
+
+            }
             return articles;
         }
         else {
-            return Object.keys(article).some(key =>
-                article[key].toString().toLowerCase().includes(term.toLowerCase().trim())
-            );
+            if(Array.isArray(rightCustomValue.items) && rightCustomValue.items.length){
+                // var right = rightCustomValue.items[0]
+                // var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
+
+                return Object.keys(article).some(key =>
+                    article[key].toString().toLowerCase().includes(term.toLowerCase().trim()) && ((key === left) ? article[left].toString().toLowerCase().includes(right.toLowerCase().trim()) : false)
+                );
+            }else{
+                return Object.keys(article).some(key =>
+                    article[key].toString().toLowerCase().includes(term.toLowerCase().trim())
+                );
+            }
+
         }
 
     })
@@ -111,9 +159,11 @@ function SearchResults() {
                 <div className='sortBy'>
                     <div>
                         <DropdownButton id="dropdown-item-button" title={selectOption}>
-                            <Dropdown.Item value="author" onClick={(e) => selectSortBy(e)}>Author</Dropdown.Item>
-                            <Dropdown.Item value="title" onClick={(e) => selectSortBy(e)}>Title</Dropdown.Item>
-                            <Dropdown.Item value="year" onClick={(e) => selectSortBy(e)}>Year</Dropdown.Item>
+                            <Dropdown.Item value="author" onClick={(e) => sortByAuthor(e)}>Author</Dropdown.Item>
+                            <Dropdown.Item value = "title" onClick={(e) => sortByTitle(e)}>Title</Dropdown.Item>
+                            <Dropdown.Item value = "rating" onClick={(e) => sortByJournal(e)}>Journal</Dropdown.Item>
+                            <Dropdown.Item value = "year" onClick={(e) => sortByYear(e)}>Year</Dropdown.Item>
+                            <Dropdown.Item value = "rating" onClick={(e) => sortByRating(e)}>Rating</Dropdown.Item>
                         </DropdownButton>
                     </div>
                 </div>
@@ -123,12 +173,12 @@ function SearchResults() {
                     <ReactBootStrap.Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th style={{width: "31.66%"}}>Author</th>
-                                <th style={{width: "31.66%"}}>Title</th>
-                                <th style={{width: "16.66%"}}>Journal</th>
-                                <th style={{width: "5%"}}>Year</th>
-                                <th style={{width: "15%"}}>Rating</th>
-                            </tr>
+                            <th><button className="tableButtons" onClick={sortByAuthor}>Author</button></th>
+                            <th><button className="tableButtons" onClick={sortByTitle}>Title</button></th>                                
+                            <th><button className="tableButtons" onClick={sortByJournal}>Journal</button></th> 
+                            <th><button className="tableButtons" onClick={sortByYear}>Year</button></th> 
+                            <th><button className="tableButtons" onClick={sortByRating}>Rating</button></th> 
+                            </tr>    
                         </thead>
                         <tbody>
                             {filteredArticles.map(renderArticles)}
@@ -137,8 +187,6 @@ function SearchResults() {
                 </div>
             </div>
         </div>);
-
-
 };
 
 

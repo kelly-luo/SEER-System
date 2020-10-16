@@ -1,0 +1,9 @@
+.dropdown-menu {
+    height: 120px;
+    overflow-y: hidden;
+    width: 2%;
+    margin: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    
+  }

@@ -5,9 +5,7 @@ import ArticleForm from './ArticleForm.js';
 
 class UploadFile extends Component {
     state = {
-        file: null,
         fileName: null,
-        fileResult: null,
         author: "",
         title: "",
         publisher: "",
@@ -19,8 +17,6 @@ class UploadFile extends Component {
     handleFile(e) {
         //read file and save into state
         let file = e.target.files[0]
-        this.setState({ fileName: e.target.files[0].name })
-        this.setState({ file: file })
 
         let formData = new FormData();
         formData.append("uploaded-file", file);
@@ -87,7 +83,6 @@ class UploadFile extends Component {
             this.setState({ year: yearResult });
             this.setState({ month: monthResult });
             this.setState({ journal: journalResult });
-
 
         }
     }

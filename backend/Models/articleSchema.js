@@ -48,7 +48,7 @@ const articleSchema = new Schema({
     rating:{
         type: [Number]
     },
-    seMethod:{
+    semethod:{
         type: String
     }
 })
