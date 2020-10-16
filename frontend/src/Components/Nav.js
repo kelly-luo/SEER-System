@@ -8,7 +8,6 @@ import UploadArticlePage from './pages/UploadPage/UploadArticlePage'
 import ModerationPage from "./pages/ModerationPage"
 
 function Nav() {
-    
     return (
         <Router>
             <div className="nav">

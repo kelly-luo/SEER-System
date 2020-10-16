@@ -11,17 +11,20 @@ import {
 import "./CustomSearchCard.css";
 import { useDispatch } from "react-redux";
 import { addLeft, addMiddle, addRight } from "../../actions/index";
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
-function CustomSearchCard() {
-  const history = useHistory();
+function CustomSearchCard(props) {
+
   const dispatch = useDispatch();
+  const location = useLocation()
+  const history = useHistory();
 
   const [seMethods, setMethods] = useState([]);
   const [filterSeMethod, setFilterSeMethod] = useState([]);
   const [selectValue, setSelect] = useState("Select");
   const [operatorValue, setOperator] = useState("Operator");
   const [seValue, setSeValue] = useState("SE Method");
+  
 
   useEffect(() => {
     axios.get("/methods").then((response) => {
@@ -31,12 +34,20 @@ function CustomSearchCard() {
   }, []);
 
   useEffect(() => {
-    history.listen((location, action) => {
-      console.log(
-        `The current URL is ${location.pathname}${location.search}${location.hash}`
-      );
-      console.log(`The last navigation action was ${action}`);
-    });
+      var currentLocation = '';
+      var prevLocation = '';
+      history.listen((location) => {
+
+        if(currentLocation !== location.pathname){
+          prevLocation = currentLocation.toString()
+          currentLocation = location.pathname
+        }
+
+        console.log(
+          `The current URL is ${currentLocation}}`
+        );
+        console.log(`The last navigation location was ${prevLocation}`);
+      });
   });
 
   const changeSelect = (e) => {
@@ -62,10 +73,19 @@ function CustomSearchCard() {
 
   const changeSeMethod = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    // TOO DOOOOO dropdown box for e.target.textContent
-    setSeValue(e.target.textContent);
-    dispatch(addRight(e.target.textContent));
+
+    if(selectValue === "SE Method" || selectValue === "SE Methodology"){
+      // console.log(e.target.textContent);
+      // TOO DOOOOO dropdown box for e.target.textContent
+      setSeValue(e.target.textContent);
+      dispatch(addRight(e.target.textContent));
+    }else{
+      // console.log(e.target.textContent);
+      // TOO DOOOOO dropdown box for e.target.textContent
+      setSeValue(e.target.value);
+      dispatch(addRight(e.target.value));
+    }
+    console.log(seValue)
   };
 
   const displaySeMethods = (method, index) => {
