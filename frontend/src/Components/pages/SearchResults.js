@@ -173,11 +173,11 @@ function SearchResults() {
                     <ReactBootStrap.Table striped bordered hover>
                         <thead>
                             <tr>
-                            <th><button className="tableButtons" onClick={sortByAuthor}>Author</button></th>
-                            <th><button className="tableButtons" onClick={sortByTitle}>Title</button></th>                                
-                            <th><button className="tableButtons" onClick={sortByJournal}>Journal</button></th> 
-                            <th><button className="tableButtons" onClick={sortByYear}>Year</button></th> 
-                            <th><button className="tableButtons" onClick={sortByRating}>Rating</button></th> 
+                            <th style={{width: "31.66%"}}><button className="tableButtons" onClick={sortByAuthor}>Author</button></th>
+                            <th style={{width: "31.66%"}}><button className="tableButtons" onClick={sortByTitle}>Title</button></th>                                
+                            <th style={{width: "16.66%"}}><button className="tableButtons" onClick={sortByJournal}>Journal</button></th> 
+                            <th style={{width: "5%"}}><button className="tableButtons" onClick={sortByYear}>Year</button></th> 
+                            <th style={{width: "15%"}}><button className="tableButtons" onClick={sortByRating}>Rating</button></th> 
                             </tr>    
                         </thead>
                         <tbody>
