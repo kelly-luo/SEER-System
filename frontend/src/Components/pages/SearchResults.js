@@ -14,12 +14,12 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap"
 function SearchResults() {
     const leftCustomValue = useSelector(state => state.leftCustomValue)
     const operatorCustomValue = useSelector(state => state.operatorCustomValue)
-    const rightCustomValue = useSelector(state => state.rightCustomValue)
     const { term } = useParams();
     const { custom } = useParams();
 
     const [articles, setArticles] = useState([]);
     const [selectOption] = useState('Sort search by');
+    // eslint-disable-next-line
     const [showModal, setShowModal] = useState(false);
     const [index, setIndex] = useState();
     const [show, setShow] = useState(false);
@@ -76,10 +76,8 @@ function SearchResults() {
 
 
     const filteredArticles = articles.filter(article => {
-        console.log(custom)
-
         if (term === undefined || term === 'custom') {
-            if(custom !== null){
+            if(custom !== undefined){
                 var left = leftCustomValue.items[0].toString().toLowerCase().split(' ').join('')
                 var operator = operatorCustomValue.items[0]
 
@@ -90,6 +88,18 @@ function SearchResults() {
                 }else if(operator === 'does not contain'){
                     return Object.keys(article).some(key =>
                         (key === left) ? !article[left].toString().toLowerCase().includes(custom.toLowerCase().trim()) : false
+                    );
+                }else if(operator === 'begins with'){
+                    return Object.keys(article).some(key =>
+                        (key === left) ? article[left].toString().toLowerCase().trim().startsWith(custom.toLowerCase().trim()) : false
+                    );
+                }else if(operator === 'ends with'){
+                    return Object.keys(article).some(key =>
+                        (key === left) ? article[left].toString().toLowerCase().trim().endsWith(custom.toLowerCase().trim()) : false
+                    );
+                }else if(operator === 'is equal'){
+                    return Object.keys(article).some(key =>
+                        (key === left) ? (article[left].toString().toLowerCase().trim() === custom.toLowerCase().trim()) : false
                     );
                 }
 

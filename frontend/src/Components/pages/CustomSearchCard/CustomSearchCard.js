@@ -9,14 +9,14 @@ import {
   DropdownButton,
 } from "react-bootstrap";
 import "./CustomSearchCard.css";
-import { useDispatch } from "react-redux";
-import { addLeft, addMiddle, addRight, resetLists } from "../../actions/index";
+import { resetLists } from "../../actions/index";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 function CustomSearchCard(props) {
 
-  const dispatch = useDispatch();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [seMethods, setMethods] = useState([]);
   const [filterSeMethod, setFilterSeMethod] = useState([]);
@@ -27,7 +27,6 @@ function CustomSearchCard(props) {
 
   useEffect(() => {
     axios.get("/methods").then((response) => {
-      console.log(response.data);
       setMethods(response.data);
     });
   }, []);
@@ -42,15 +41,13 @@ function CustomSearchCard(props) {
           currentLocation = location.pathname
         }
 
-        console.log(
-          `The current URL is ${currentLocation}}`
-        );
-        console.log(`The last navigation location was ${prevLocation}`);
+        //UNCOMMENT WHEN YOU NEED TO SEE OUTPUT OF PREV AND CURRENT LOCATION
+        // console.log(
+        //   `The current URL is ${currentLocation}}`
+        // );
+        // console.log(`The last navigation location was ${prevLocation}`);
 
-        if(prevLocation === ''){
-          dispatch(addMiddle(operatorValue));
-        }
-        if(prevLocation === '/search'){
+        if(prevLocation.includes('/search')){
           dispatch(resetLists());
         }
 
@@ -60,7 +57,7 @@ function CustomSearchCard(props) {
   const changeSelect = (e) => {
     e.preventDefault();
     setSelect(e.target.textContent);
-    dispatch(addLeft(e.target.textContent));
+    props.changedSelectCallback(e.target.textContent);
 
     if (e.currentTarget.textContent === "SE Method") {
       setFilterSeMethod(seMethods[0]);
@@ -73,7 +70,7 @@ function CustomSearchCard(props) {
   const changeOperator = (e) => {
     e.preventDefault();
     setOperator(e.target.textContent);
-    dispatch(addMiddle(e.target.textContent));
+    props.changedOperatorCallback(e.target.textContent);
   };
 
   const changeSeMethod = (e) => {
@@ -82,11 +79,9 @@ function CustomSearchCard(props) {
     if(selectValue === "SE Method" || selectValue === "SE Methodology"){
       setSeValue(e.target.textContent);
       props.changedSeMethodCallback(e.target.textContent);
-      // dispatch(addRight(e.target.textContent));
     }else{
       setSeValue(e.target.value);
       props.changedSeMethodCallback(e.target.value);
-      // dispatch(addRight(e.target.value));
     }
     console.log(seValue)
   };
