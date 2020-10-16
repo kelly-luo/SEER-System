@@ -57,9 +57,12 @@ function SearchResults() {
 
     const sortByRating = (e) => {
         if (e.target.textContent.toLowerCase() === "rating") {
-            console.log("Sum of ratings: " + setArticles([...articles].reduce((a, b) => a.rating + b.rating, 0)))
-            setArticles([...articles].sort((a, b) => a.rating.index > b.rating.index ? 1 : -1));
+            setArticles([...articles].sort((a, b) => a.rating.reduce(add,0)/a.rating.length > b.rating.reduce(add,0)/b.rating.length  ? 1 : -1));
         }
+    }
+
+    const add = (accumulator,a) =>{
+        return accumulator + a;
     }
 
 
@@ -143,7 +146,7 @@ function SearchResults() {
                 <td>{article.title}</td>
                 <td>{article.journal}</td>
                 <td>{article.year}</td>
-                <td><StarRating id={article._id}></StarRating> Avg user rating: {article.rating}</td>
+                <td><StarRating id={article._id}></StarRating> Avg user rating: {sum}</td>
             </tr>
         );
     }
