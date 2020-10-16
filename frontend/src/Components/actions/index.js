@@ -12,14 +12,13 @@ const addMiddle = (value) => {
     };
 };
 
-const addRight = (value) => {
+const resetLists = () => {
     return{
-        type: 'ADD_RIGHT_DROPDOWN',
-        payload: value
+        type: 'RESET_LIST'
     };
 };
 
-export { addLeft, addMiddle, addRight };
+export { addLeft, addMiddle, resetLists };
 export const USER_LOADING = "USER_LOADING"
 export const USER_LOADED = "USER_LOADED"
 export const AUTH_ERROR = "AUTH_ERROR"

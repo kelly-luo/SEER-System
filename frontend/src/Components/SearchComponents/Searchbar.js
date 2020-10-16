@@ -6,21 +6,50 @@ import CustomSearchCard from '../pages/CustomSearchCard/CustomSearchCard.js'
 import { useHistory } from "react-router-dom";
 import BootstrapButton from 'react-bootstrap/Button';
 import UIButton from '@material-ui/core/Button'
+import { useDispatch } from "react-redux";
+import { addLeft, addMiddle} from "../actions/index";
 
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
+  const [operatorValue, setOperatorValue] = useState("");
+  const [selectionValue, setSelectionValue] = useState("");
+  const [customValue, setCustomValue] = useState("");
   const [customActive, setCustomActive] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const search = (e) => {
       e.preventDefault();
-      if (searchInput !== "") {
+      if (searchInput !== "" && customValue !== ""){
+        history.push(`/search/${searchInput}/${customValue}`)
+        dispatch(addLeft(selectionValue));
+        dispatch(addMiddle(operatorValue));
+      }
+      else if (customValue !== ""){
+        history.push(`/search/custom/${customValue}`)
+        dispatch(addLeft(selectionValue));
+        dispatch(addMiddle(operatorValue));
+
+      }
+      else if (searchInput !== "") {
         history.push(`/search/${searchInput}`)
       }
       else{
           history.push(`/search`)
       }
       setSearchInput("")
+  }
+
+  const changedSelectValue = (data) => {
+    setSelectionValue(data)
+  }
+
+  const changedOperatorValue = (data) => {
+    setOperatorValue(data)
+  }
+
+  const changedSeMethodValue = (data) => {
+    setCustomValue(data)
   }
 
   return (
@@ -53,9 +82,9 @@ function SearchBar() {
           {customActive && (
             <div className="d-flex justify-content-center">
               <CustomSearchCard
-              // changedSelectCallback={changedSelectValue.bind(this)}
-              // changedOperatorCallback={changedOperatorValue.bind(this)}
-              // changedSeMethodCallback={changedSeMethodValue.bind(this)}
+                changedSelectCallback={changedSelectValue.bind(this)}
+                changedOperatorCallback={changedOperatorValue.bind(this)}
+                changedSeMethodCallback={changedSeMethodValue.bind(this)}
               ></CustomSearchCard>
             </div>
           )}

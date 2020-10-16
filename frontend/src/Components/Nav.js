@@ -8,12 +8,11 @@ import UploadArticlePage from './pages/UploadPage/UploadArticlePage'
 import ModerationPage from "./pages/ModerationPage"
 
 function Nav() {
-    
     return (
         <Router>
             <div className="nav">
                 <Switch>
-                    <Route path={["/search/:term","/search"]} exact component={SearchResults}>
+                    <Route path={["/search/:term","/search/:term/:custom","/search/custom/:custom","/search"]} exact component={SearchResults}>
                     </Route>
                     <Route path="/analyse" exact component={AnalystPage}>
                     </Route>
