@@ -47,6 +47,10 @@ function CustomSearchCard(props) {
           `The current URL is ${currentLocation}}`
         );
         console.log(`The last navigation location was ${prevLocation}`);
+
+        // if(prevLocation === ''){
+        //   dispatch(addMiddle(operatorValue));
+        // }
       });
   });
 
