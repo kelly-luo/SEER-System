@@ -10,13 +10,12 @@ import {
 } from "react-bootstrap";
 import "./CustomSearchCard.css";
 import { useDispatch } from "react-redux";
-import { addLeft, addMiddle, addRight } from "../../actions/index";
-import { useLocation, useHistory } from "react-router-dom";
+import { addLeft, addMiddle, addRight, resetMiddle } from "../../actions/index";
+import { useHistory } from "react-router-dom";
 
-function CustomSearchCard(props) {
+function CustomSearchCard() {
 
   const dispatch = useDispatch();
-  const location = useLocation()
   const history = useHistory();
 
   const [seMethods, setMethods] = useState([]);
@@ -48,16 +47,19 @@ function CustomSearchCard(props) {
         );
         console.log(`The last navigation location was ${prevLocation}`);
 
-        // if(prevLocation === ''){
-        //   dispatch(addMiddle(operatorValue));
-        // }
+        if(prevLocation === ''){
+          dispatch(addMiddle(operatorValue));
+        }
+        if(prevLocation === '/search'){
+          dispatch(resetMiddle());
+        }
+
       });
   });
 
   const changeSelect = (e) => {
     e.preventDefault();
     setSelect(e.target.textContent);
-    console.log(e.target.textContent);
     dispatch(addLeft(e.target.textContent));
 
     if (e.currentTarget.textContent === "SE Method") {
@@ -71,7 +73,6 @@ function CustomSearchCard(props) {
   const changeOperator = (e) => {
     e.preventDefault();
     setOperator(e.target.textContent);
-    console.log(e.target.textContent);
     dispatch(addMiddle(e.target.textContent));
   };
 
@@ -79,13 +80,9 @@ function CustomSearchCard(props) {
     e.preventDefault();
 
     if(selectValue === "SE Method" || selectValue === "SE Methodology"){
-      // console.log(e.target.textContent);
-      // TOO DOOOOO dropdown box for e.target.textContent
       setSeValue(e.target.textContent);
       dispatch(addRight(e.target.textContent));
     }else{
-      // console.log(e.target.textContent);
-      // TOO DOOOOO dropdown box for e.target.textContent
       setSeValue(e.target.value);
       dispatch(addRight(e.target.value));
     }

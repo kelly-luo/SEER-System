@@ -4,7 +4,7 @@ const rightCustomValue = (state = {items: []}, action) => {
             return { items: [...state.items, action.payload] };
         case 'RESET_LIST':
             return {
-                items: [...state.items, []],
+                items: [],
             };
         default:
             return state;
