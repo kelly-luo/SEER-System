@@ -58,13 +58,10 @@ function SearchResults() {
 
     const sortByRating = (e) => {
         if (e.target.textContent.toLowerCase() === "rating") {
-            setArticles([...articles].sort((a, b) => a.rating.reduce(add,0)/a.rating.length > b.rating.reduce(add,0)/b.rating.length  ? 1 : -1));
+            setArticles([...articles].sort((b, a) => parseFloat(a.rating.reduce((a,v) => a = a+ v, 0)/a.rating.length) >= parseFloat(b.rating.reduce((a,v) => a = a+ v,0)/b.rating.length)  ? 1 : -1));
         }
     }
 
-    const add = (accumulator,a) =>{
-        return accumulator + a;
-    }
 
 
     useEffect(() => {
